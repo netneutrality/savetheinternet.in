@@ -26,7 +26,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -275,7 +275,7 @@
      xml:space="preserve"
      transform="translate(-152.1757,-77.464078)"><textPath
        id="textPath3027"
-       xlink:href="#circle3034" /></text>
+       xlink:href="#circle3034"></textPath></text>
   <text
      xml:space="preserve"
      style="font-size:15px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Varela Round;-inkscape-font-specification:Varela Round"
@@ -283,7 +283,7 @@
      sodipodi:linespacing="125%"
      transform="translate(-152.1757,-77.464078)"><textPath
        xlink:href="#circle3034"
-       id="textPath3033" /></text>
+       id="textPath3033"></textPath></text>
   <text
      sodipodi:linespacing="125%"
      id="text3037"
@@ -291,7 +291,7 @@
      xml:space="preserve"
      transform="translate(-152.1757,-77.464078)"><textPath
        id="textPath3039"
-       xlink:href="#circle3034" /></text>
+       xlink:href="#circle3034"></textPath></text>
   <path
      style="fill:none;stroke:none"
      d="M 4.5341221,78.275512 C 7.7040121,115.83188 40.719162,143.70763 78.275522,140.53772 115.83187,137.36783 143.70764,104.3527 140.53772,66.796332 137.36786,29.239972 104.35271,1.364214 66.796342,4.534098 29.239962,7.703992 1.3642421,40.719142 4.5341221,78.275512 z"
