@@ -13,6 +13,7 @@
   <style>
     /*      #email-raw, #email-edit { font-size: 13px; border: 1 p }*/
 
+/*
     .argument input[type=checkbox], .question input[type=checkbox] { vertical-align: middle; margin-right: 1em; height: 1em; }
     .argument input[type=text] {}
     .answer textarea { width: 100%; height: 4em; resize: vertical; }
@@ -26,6 +27,29 @@
 
 
     #email-edit { width: 100%; height: 40em; }
+*/
+      
+    p { padding: 0; margin: 1em 0; }
+    .hidden { display: none; }
+    .question { margin: 2em 0 0 0; }
+    .answer {
+        margin: 1em 0;
+        padding: 0 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        max-height: 6em;
+        overflow: hidden;
+
+        transition: 200ms all ease-in;
+    }
+
+    .answer.focused {
+        max-height: 50em;
+        overflow: auto;
+        transition: 200ms all ease-in;
+        outline: none;
+        box-shadow: inset 0 0 4px 0 #ff0;
+    }
   </style>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -41,6 +65,7 @@
   <div id="header">
   </div>
   <div class="container">
+      
     <div class="row">
       <div class="col-lg-6">
         <h2>Send your views to TRAI</h2>
@@ -72,15 +97,19 @@
       <div class="col-lg-6">
       </div>
     </div>
+      
     <h1>Purpose of this page</h1>
     <p>This page was created as a collection of the best arguments that may be made in favour
       of net neutrality, in the framework of the TRAI consultation paper.</p>
 
-      <p>The purpose is to assist supporters of strong net neutrality in articulating their own views on the matter in a legally precise manner, in order to submit a response to the TRAI before the deadline on 24 April 2015.</p>
+      <p>The purpose is to assist supporters of strong net neutrality in articulating their own views
+          on the matter in a legally precise manner, in order to submit a response to the TRAI before
+          the deadline on 24 April 2015.</p>
 
       <h1>Instructions</h1>
 
-      <p>Please select the arguments that you most agree with, and click next to display a suggested response. You are encouraged to edit these arguments to further match your viewpoint before sending it to TRAI.</p>
+      <p>Please select the arguments that you most agree with, and click next to display a suggested response.
+          You are encouraged to edit these arguments to further match your viewpoint before sending it to TRAI.</p>
 
       <p><a href="">Suggest changes or additions to the content</a> | <a href="http://github.com/netneutrality/netneutrality.in/issues/new">Report a technical problem</a></p>
       <h1>The email</h1>
@@ -354,22 +383,21 @@
 
           else {
             setTimeout(function() {
-          //set path
-          ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
-          //create client
-          var clip = new ZeroClipboard.Client();
-          //event
-          clip.addEventListener('mousedown',function() {
-            clip.setText(generateResponse());
-          });
-          clip.addEventListener('complete',function(client,text) {
-            alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
-            window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
-          });
-          //glue it to the button
-          clip.glue("sendEmail");
-        });
-
+              //set path
+              ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
+              //create client
+              var clip = new ZeroClipboard.Client();
+              //event
+              clip.addEventListener('mousedown',function() {
+                clip.setText(generateResponse());
+              });
+              clip.addEventListener('complete',function(client,text) {
+                alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
+                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
+              });
+              //glue it to the button
+              clip.glue("sendEmail");
+            });
           }
         }
 
@@ -378,6 +406,6 @@
           console.log(text);
           return text;
         }
-</script>
+      </script>
 </body>
 </html> 
