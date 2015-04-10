@@ -259,10 +259,6 @@ p {
   }
 }
 
-.text-left {
-  text-align: left;
-}
-
 .text-center {
   text-align: center;
 }
@@ -735,66 +731,6 @@ input[type="checkbox"]:focus {
   border-color: transparent;
 }
 
-.pagination {
-  display: inline-block;
-  padding-left: 0;
-  margin: 21px 0;
-  border-radius: 4px;
-}
-
-.pagination > li {
-  display: inline;
-}
-
-.pagination > li > a {
-  position: relative;
-  float: left;
-  padding: 10px 15px;
-  line-height: 1.42857143;
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #18bc9c;
-  border: 1px solid transparent;
-  margin-left: -1px;
-}
-
-.pagination > li:first-child > a {
-  margin-left: 0;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-}
-
-.pagination > li:last-child > a {
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
-}
-
-.pagination > li > a:hover,
-.pagination > li > a:focus {
-  color: #ffffff;
-  background-color: #0f7864;
-  border-color: transparent;
-}
-
-.pagination > .active > a,
-.pagination > .active > a:hover,
-.pagination > .active > a:focus {
-  z-index: 2;
-  color: #ffffff;
-  background-color: #0f7864;
-  border-color: transparent;
-  cursor: default;
-}
-
-.pagination > .disabled > a,
-.pagination > .disabled > a:hover,
-.pagination > .disabled > a:focus {
-  color: #ecf0f1;
-  background-color: #3be6c4;
-  border-color: transparent;
-  cursor: not-allowed;
-}
-
 .jumbotron {
   padding: 30px 15px;
   margin-bottom: 30px;
@@ -831,36 +767,6 @@ input[type="checkbox"]:focus {
   }
 }
 
-.panel {
-  margin-bottom: 21px;
-  background-color: #ffffff;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-}
-
-.panel-body {
-  padding: 15px;
-}
-
-.panel-heading {
-  padding: 10px 15px;
-  border-bottom: 1px solid transparent;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-}
-
-.panel-default {
-  border-color: #ecf0f1;
-}
-
-.panel-default > .panel-heading {
-  color: #2c3e50;
-  background-color: #ecf0f1;
-  border-color: #ecf0f1;
-}
-
 .container:before,
 .container:after,
 .row:before,
@@ -872,9 +778,7 @@ input[type="checkbox"]:focus {
 .navbar-header:before,
 .navbar-header:after,
 .navbar-collapse:before,
-.navbar-collapse:after,
-.panel-body:before,
-.panel-body:after {
+.navbar-collapse:after {
   content: " ";
   display: table;
 }
@@ -884,8 +788,7 @@ input[type="checkbox"]:focus {
 .form-horizontal .form-group:after,
 .navbar:after,
 .navbar-header:after,
-.navbar-collapse:after,
-.panel-body:after {
+.navbar-collapse:after {
   clear: both;
 }
 
@@ -975,31 +878,6 @@ body {
 
 .twitter-timeline {
   height: 300px;
-}
-
-.no-margin-bottom {
-  margin-bottom: 0px;
-}
-
-.answers-container {
-  visibility: hidden;
-  /* Hide until dragend's init is done */
-  height: 280px;
-  /* This is a bug with dragend. I have to set the height of the container else it doesn't work*/
-}
-
-@media (min-width: 768px) {
-  .answers-container {
-    height: 200px;
-    /* This is a bug with dragend. I have to set the height of the container else it doesn't work*/
-  }
-}
-
-@media (min-width: 1200px) {
-  .answers-container {
-    height: 130px;
-    /* This is a bug with dragend. I have to set the height of the container else it doesn't work*/
-  }
 }
 
 footer {
