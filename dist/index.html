@@ -364,19 +364,60 @@
 
                     <!-- end of raw email -->
                   </div>
-
+                  <div><button id="sendEmail">Send Email</button></div> 
                   <div><button id="generate">Generate a response</button></div>  
 
                   <textarea id="email-edit"></textarea>
 
                 </div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/ZeroClipboard.js"></script>
     <script>
       $(function () {
         addControls();
-        $("#generate").click(generate);
+        $("#generate").click(function() {
+          $("#email-edit").text(generateResponse());
+        });
+        $("#sendEmail").click(function() {
+          sendEmail();
+        });
+        
 
       });
+
+      function sendEmail() {
+        var isMobile = false;
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+          isMobile = true;
+        }
+        var toAddress = "advqos@trai.gov.in";
+        var bccAddress = "netneutralityindia@gmail.com";
+        var subject = "In response to the Consultation Paper on Regulatory Framework for Over-the-top (OTT) services";
+
+        if(isMobile) {
+          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse(), "_blank");
+        }
+
+        else {
+          setTimeout(function() {
+          //set path
+          ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
+          //create client
+          var clip = new ZeroClipboard.Client();
+          //event
+          clip.addEventListener('mousedown',function() {
+            clip.setText(generateResponse());
+          });
+          clip.addEventListener('complete',function(client,text) {
+            alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
+            window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
+          });
+          //glue it to the button
+          clip.glue("sendEmail");
+        });
+
+      }
+    }
       
       function addControls() {
         $("#email-raw").children("div").each(function (i, p) {
@@ -391,7 +432,7 @@
         });
       }
       
-      function generate() {
+      function generateResponse() {
         var skipQuestion = false, currentSectionHead = "";
         
         var text = "";
@@ -422,8 +463,6 @@
         });
         
         console.log(text);
-        
-        $("#email-edit").text(text);
       }
     </script>
   </body>
