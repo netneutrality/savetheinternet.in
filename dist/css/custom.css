@@ -1,0 +1,90 @@
+html, body { font-size: 18px; }
+
+#cover {
+	width: 100%;
+	position: relative;
+}
+
+#cover img.logo {
+	position: absolute;
+	bottom: 10%;
+	right: 5%;
+	max-height: 40%;
+}
+
+#cover img.background {
+	width: 100%;
+    margin-bottom: 20px;
+}
+
+#banner {
+    margin: 80px 0;
+}
+
+.jumbotron h1 {
+    font-size: 45px;
+}
+
+.jumbotron p {
+}
+
+.further-reading {
+}
+
+.twitter-timeline {
+    height: 300px;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0px;
+}
+
+.well {
+    margin:10px;
+}
+
+.answers-container {
+    visibility: hidden; /* Hide until dragend's init is done */
+    height: 280px; /* This is a bug with dragend. I have to set the height of the container else it doesn't work*/
+}
+
+@media (min-width: 768px) {
+    .answers-container {
+        height: 200px; /* This is a bug with dragend. I have to set the height of the container else it doesn't work*/
+    }
+}
+
+@media (min-width: 1200px) {
+    .answers-container {
+        height: 130px; /* This is a bug with dragend. I have to set the height of the container else it doesn't work*/
+    }
+
+}
+footer {
+    margin: 80px 0;
+}
+
+.how-help { padding: 0; }
+
+.how-help li {
+  list-style: none;
+  text-indent: 0;
+  padding: 0; margin: 0 0 1em 0;
+}
+
+label { font-weight: inherit; }
+input {
+  border-radius: 4px; display: inline-block; height: 2em; line-height: 2em; padding: 0 4px; margin: 0; border: 1px solid #ccc;
+  box-sizing: content-box; vertical-align: baseline;
+}
+
+input#mce-EMAIL {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input#mc-embedded-subscribe {
+  background: #ccc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
