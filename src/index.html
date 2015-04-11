@@ -478,7 +478,11 @@
         }
 
         function sendEmailMobile() {
-          var body = generateResponse().replace("\n","%0D%0A");
+          var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
+          var body = generateResponse()
+          if(iOS) {
+              body = body.replace("\n","%0D%0A");
+          }
           window.location.href = "mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body;
         }
 
