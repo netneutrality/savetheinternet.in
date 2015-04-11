@@ -414,7 +414,8 @@
         }
 
         function sendEmailMobile() {
-          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse(), "_blank");
+          var body = generateResponse().replace("&", "and"); // hotfix
+          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body, "_blank");
         }
 
         function generateResponse(forClipboard) {
