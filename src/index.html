@@ -66,8 +66,9 @@
         transition: 200ms all ease-in;
         outline: none;
     }
-
     
+    #copy-instruction { display: none; }
+    #response-copied { display: none; }
     #responseTextarea { width: 100%; height: 10em; font-size: 15px; line-height: 1em; border: 1px solid #ccc; }
   </style>
   <script>
@@ -312,7 +313,14 @@
           </div>
         </div>
       </footer>
-
+    
+    
+    <style>
+      <!-- got bored of scrolling up all the way -->
+      
+      #response-copied { display: none; }
+    
+    </style>
     
       <!-- Modal -->
       <div class="modal fade" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -323,18 +331,20 @@
               <h4 class="modal-title">Submit Response</h4>
             </div>
             <div class="modal-body">
-              <textarea class="form-control" id="responseTextarea" readonly=""></textarea>
-
-              <p>The response has been copied to your clipboard</p>
-              <p>Compose an email and paste this response using Right-click->Paste or Ctrl/Cmd+V</p>
+              <textarea class="form-control" id="responseTextarea" readonly></textarea>
+              <h1 id="copy-instruction">Press <span class="control-str">Ctrl</span>+C to copy <button id="copyBtn" class="btn btn-primary">Done</button></h1>
+              <div id="response-copied"><h1>Open email, then paste (<span class="control-str">Ctrl</span>+V)</h1>
               <p class="button-bar">
                 <a href="#" target="_blank" class="btn btn-primary btn" id="gmailSend">Gmail</a>
                 <a href="#" target="_blank" class="btn btn-primary btn" id="yahooSend">Yahoo</a>
                 <a href="#" target="_blank" class="btn btn-primary btn" id="otherSend">Other</a>
               </p>
-              <p>Emails should be sent to <span class="text-info">advqos@trai.gov.in</span>. Please bcc us at <span class="text-info">netneutralityindia@gmail.com</span></p>
-              <p>You will be able to edit before you send. We send ourselves a copy so that we can verify that your response is acknowledged by TRAI.</p>
-            </div>
+                <p>You will be able to edit before you send.</p>
+                </div>
+              <p>Emails should be sent to <span class="text-info">advqos@trai.gov.in</span><br />
+                Please bcc us at <span class="text-info">netneutralityindia@gmail.com</span><br />
+                We will try to ensure that your response is acknowledged by TRAI.</p>
+              </div>
           </div>
         </div>
       </div>
@@ -351,6 +361,7 @@
               <p class="button-bar">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Share on facebook</a>
                 <a href="https://twitter.com/home?status=Send%20TRAI%20your%20views,%20protect%20%23NetNeutralityIndia%20and%20%23SaveTheInternet%20-%20www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Tweet about this</a>
+              </p>
             </div>
           </div>
         </div>
@@ -358,9 +369,7 @@
   </div>
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-      <script src="/js/ZeroClipboard.js"></script>
-      <script src="/js/FlashDetect.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
       <script>
 
 
@@ -379,17 +388,17 @@
         var bccAddresses = ["netneutralityindia@gmail.com", "netneutralityindia02@gmail.com", "netneutralityindia03@gmail.com"];
         var bccAddress = pickOne(bccAddresses);
 
+//        ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
+        
         var subject = getSubject();
         $(function () {
           styleEm();
 
           $("#responseTextarea").focus(function(e) {
-            e.preventDefault();
             $('#responseTextarea').select();
           });
           
           $("#responseTextarea").click(function(e) {
-            e.preventDefault();
             $('#responseTextarea').select();
           });
 
@@ -408,76 +417,53 @@
           }
 
           if(isMobile) {
-            $('#sendResponse').click(function() {
+            $('#sendResponse, #sendResponseAuto').click(function() {
               sendEmailMobile();
               $('#submitModal').modal('show');
-              $('#responseTextarea').html(generateResponse(true));
-            });
-            $('#sendResponseAuto').click(function() {
-              sendEmailMobile();
-              $('#submitModal').modal('show');
-              $('#responseTextarea').html(generateResponse(true));
             });
           }
           else {
-            setTimeout(function() {
-              // One function to handle everything
-
-              // Check if Flash is present
-              if(FlashDetect.installed) {
-                //set path
-                ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
-                //create client
-                var clip = new ZeroClipboard.Client();
-                //event
-                clip.addEventListener('mousedown',function() {
-                  clip.setText(generateResponse(forClipboard=true));
-                });
-                clip.addEventListener('complete',function(client,text) {
-                  $("#sendModal").modal("show");
-                  $('#responseTextarea').html(generateResponse(true));
-                });
-                //glue it to the buttons
-                clip.glue("sendResponse");
-
-                var clip1 = new ZeroClipboard.Client();
-                clip1.addEventListener('mousedown',function() {
-                  clip1.setText(generateResponse(forClipboard=true));
-                });
-                clip1.addEventListener('complete',function(client,text) {
-                  $("#sendModal").modal("show");
-                  $('#responseTextarea').html(generateResponse(true));
-                });
-                clip1.glue("sendResponseAuto");
-              }
-              else {
-                // Hide irrelevant elements
-                $('#responseTextarea').next().css('display', 'none');
-                $('#responseTextarea').next().next().html('<p>Copy the text above (Left click to highlight the text, then Ctrl/Cmd+C), compose an email and paste this response using Right-click->Paste or Ctrl/Cmd+V</p>');
-
-                // Add event listeners
-                var handler = function() {
-                  $("#sendModal").modal("show");
-                  $('#responseTextarea').html(generateResponse(true));
-                }
-                $('#sendResponse').click(handler);
-                $('#sendResponseAuto').click(handler);
-              }
+            $("#sendResponse, #sendResponseAuto").click(function () {
+              showSendModal();
             });
+            
+            $("#responseTextarea").bind("copy", onCopyComplete);
+            $("#copyBtn").click(onCopyComplete);
+            
+            $("#sendModal a").click(function () {
+              $("#sendModal").modal("hide");
+              $("#submitModal").modal("show");
+            })
+
+            $("#gmailSend").attr("href", "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject);
+            $("#yahooSend").attr("href", "http://compose.mail.yahoo.com/?Subject="+subject+"&To="+toAddress+"&Bcc="+bccAddress);
+            $("#otherSend").attr("href", "mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress);
           }
+        }
+        
+        function showSendModal() {
+          var isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
+          var response = generateResponse(true);
+                    
+          $("#sendModal").modal("show");
+          $('#responseTextarea').val(response);
           
+          if(isMac) $(".control-str").html("Command");
           
-          $("#sendModal a").click(function () {
-            $("#sendModal").modal("hide");
-            $("#submitModal").modal("show");
-          })
-
-          $("#gmailSend").attr("href", "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject);
-
-          $("#yahooSend").attr("href", "http://compose.mail.yahoo.com/?Subject="+subject+"&To="+toAddress+"&Bcc="+bccAddress);
-
-          $("#otherSend").attr("href", "mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress);
-
+          $("#copyBtn").parent().hide();
+          $("#response-copied").hide();
+          
+          setTimeout(function() {
+            console.log("attaching stuff", $("#copyBtn"));
+            $('#responseTextarea').focus();
+            $("#copyBtn").parent().show();
+          }, 1000);
+        }
+        
+        function onCopyComplete () {
+          console.log("copyComplete called");
+              $("#response-copied").show();
+              $("#copyBtn").parent().hide();
         }
 
         function styleEm() {
@@ -493,8 +479,10 @@
           var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
           var body = generateResponse()
           if(iOS) {
+              /* I'm guessing encodeURIComponent works differently with line breaks on iOS? */
               body = body.replace("\n","%0D%0A");
           }
+          
           window.location.href = "mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body;
         }
 
@@ -514,8 +502,6 @@
               }).join(nLine+nLine) + nLine+nLine;
             }
           });
-          // Don't log in production
-          //console.log(text);
           return forClipboard? text: encodeURIComponent(text);
         }
       </script>
