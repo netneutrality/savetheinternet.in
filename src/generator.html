@@ -430,6 +430,9 @@
             }
           });
           console.log(text);
+          if (!forClipboard) {
+            return encodeURI(text);
+          }
           return text;
         }
       </script>
