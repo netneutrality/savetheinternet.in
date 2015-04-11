@@ -24,27 +24,7 @@
   <meta name="twitter:description" content="YOU need to act now! Telecom operators/ISPs can control either how much you access, what you access, how fast you access and how much you pay to access content and services on the Internet." /><!-- Limit: 200 characters -->
   <meta name="twitter:image:src" content="http://www.savetheinternet.in/images/ogimg.gif" />
   <meta name="twitter:site" content="neutrality_in" />
-  <style>
-    /*      #email-raw, #email-edit { font-size: 13px; border: 1 p }*/
-
-/*
-    .argument input[type=checkbox], .question input[type=checkbox] { vertical-align: middle; margin-right: 1em; height: 1em; }
-    .argument input[type=text] {}
-    .answer textarea { width: 100%; height: 4em; resize: vertical; }
-
-    .special label { margin-right: 2em; }
-
-    .question { font-weight: bold; }
-    .section-head { font-weight: bold; }
-
-    .argument, .section-head { display: none; }
-
-
-    #email-edit { width: 100%; height: 40em; }
-*/
-    
-    
-      
+  <style>  
     p { padding: 0; margin: 1em 0; }
     .hidden { display: none; }
     .question { margin: 2em 0 0 0; }
@@ -94,9 +74,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5 text-center">
         <img src="images/netneutrality.png" class="new-logo" />
-        <div class="button-bar">
-            <button class="btn btn-info btn-lg" id="sendResponseAuto">Send your response</button>
-            <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
+        <div class="button-bar hidden-md hidden-lg">
+          <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
+          <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
@@ -105,10 +85,15 @@
         <p>The purpose is to assist supporters of strong net neutrality in articulating their own views
           on the matter in a legally precise manner, in order to submit a response to the TRAI before
           the deadline on 24 April 2015.</p>
+        <div class="button-bar hidden-xs hidden-sm">
+          <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
+          <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
+        </div>
       </div>
     </div>
       <div class="container">
         <div class="content row collapse" id="responseContainer">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
           <h1>The Response</h1>
           <div class="hidden">
           <p>To the Chairman, TRAI
@@ -295,10 +280,11 @@
           <p>In the interim, TRAI should issue an order or regulation preventing network neutrality violations by telecom service providers. Some telecom companies have shown scant respect for the issues presently under consideration and despite its questionable legality have rolled out various services which violate network neutrality. Any delay in forming regulations or preventing them in the interim till the process is complete is only likely to consolidate their status. This is not only an affront to the Internet users in India but also to the regulatory powers of the TRAI.</p>
           <p>If the question of regulating subscription charges arises because of the fear of OTT communication services/VoIP cannibalising Voice services by telcos, then it needs to be pointed out that more than one telecom operator in India has already come out and said that there&rsquo;s no evidence to support such a fear.</p>
           <p>Earlier this year, Airtel India CEO Gopal Vittal had clearly said during the company&rsquo;s earnings conference call that there&rsquo;s no evidence of VoIP cannibalisation of voice services (http://www.airtel.in/wps/wcm/connect/6fee748a-91e1-48aa-84a4-320aef0db668/Transcript+of+Bharti+Airtel+Limited+Third+Quarter+Ended+December+31+2014+Earnings+Conference+Call.pdf?MOD=AJPERES - pdf). Last year, Idea Cellular MD Himanshu Kapania had also said that OTT apps like Viber have had some impact on their International calling business, but on regular voice calls, there was no impact (http://www.medianama.com/2014/07/223-idea-cellular-viber/).</p>
-          </div> 
+          </div>
+        </div>
 
           <div class="row skip">
-            <div class="col-lg-12">
+            <div class="col-lg-12 text-center">
                 <button class="btn btn-info btn-lg" id="sendResponse">Send your response</button>
             </div>
           </div>
@@ -404,8 +390,10 @@
 
           initListeners();
           
-          $('#chooseAnswers').click(function() {
+          $('.chooseAnswers').click(function() {
             initListeners();
+            $('.chooseAnswers').hide();
+            window.location.hash = '#responseContainer';
           });
         });
         
@@ -417,13 +405,13 @@
           }
 
           if(isMobile) {
-            $('#sendResponse, #sendResponseAuto').click(function() {
+            $('#sendResponse, .sendResponseAuto').click(function() {
               sendEmailMobile();
               $('#submitModal').modal('show');
             });
           }
           else {
-            $("#sendResponse, #sendResponseAuto").click(function () {
+            $("#sendResponse, .sendResponseAuto").click(function () {
               showSendModal();
             });
             
