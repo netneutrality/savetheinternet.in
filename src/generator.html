@@ -414,9 +414,7 @@
         }
 
         function sendEmailMobile() {
-          var body = generateResponse();
-          body = body.replace(/&/g, '%26'); // escape &
-          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body, "_blank");
+          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse(), "_blank");
         }
 
         function generateResponse(forClipboard) {
@@ -431,7 +429,12 @@
               text = text + nLine +nLine;
             }
             if(!$p.hasClass('skip')) {
-              text = text + $(p).text().trim()+nLine;
+              if(!forClipboard) {
+                text = text + unescape($(p).text().trim()) +nLine;
+              }
+              else {
+                text = text + $(p).text().trim()+nLine;
+              }
             }
           });
           console.log(text);
