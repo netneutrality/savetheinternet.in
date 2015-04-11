@@ -121,7 +121,7 @@
               <em>&ldquo;The Authority preferred least intrusive and minimal regulatory framework and thus no separate category of licence for value added services is envisaged. After second round of consultations, the Authority is also not favoring registration of Value Added Service Providers (VASPs) or content aggregators under the &ldquo;Other Service Provider (OSP)&rdquo; category.&rdquo;</em>
             </p>
             <p>
-              <em>&ldquo;Content shall be subject to relevant content regulation and compliance of prevailing copyrights including digital management rights and other laws on the subject (para 3.12.2). The content is subjected to content regulation/ guidelines of Ministry of Information &amp; Broadcasting, Information Technology Act, 2000, Cable Television Networks (Regulation) Act, 1995, Indian Copyright Act etc., as amended from time to time. The content regulation shall be as per law in force from time to time. There should be consistency in the treatment of content across all kinds of media including print, digital/multimedia to avoid any discrimination. (para 3.13.3):&rdquo;</em>
+              <em>&ldquo;Content shall be subject to relevant content regulation and compliance of prevailing copyrights including digital management rights and other laws on the subject (para 3.12.2). The content is subjected to content regulation/ guidelines of Ministry of Information and Broadcasting, Information Technology Act, 2000, Cable Television Networks (Regulation) Act, 1995, Indian Copyright Act etc., as amended from time to time. The content regulation shall be as per law in force from time to time. There should be consistency in the treatment of content across all kinds of media including print, digital/multimedia to avoid any discrimination. (para 3.13.3):&rdquo;</em>
             </p>
             <p>Imposing a licensing and regulation regime carry significant risks of destroying innovation. Launching new services and features will take more time and will make it difficult for new startups with low cash reserves to enter the market. It will basically ring the death knell for the country's fast-growing digital media sector.</p>
           </div>
@@ -278,7 +278,7 @@
             <strong>Question 16: What framework should be adopted to encourage India-specific OTT apps? Please comment with justifications.</strong>
           </div>
           <div class="answer">
-            <p> A recent Deloitte report titled Technology, Media &amp; Telecommunications India Predictions 2015 predicted that paid apps will generate over Rs 1500 crore revenues in 2015 (
+            <p> A recent Deloitte report titled Technology, Media and Telecommunications India Predictions 2015 predicted that paid apps will generate over Rs 1500 crore revenues in 2015 (
 
               http://www2.deloitte.com/in/en/pages/technology-media-and-telecommunications/articles/tmt-india-predictions-2015-press-release.html). Increased acceptance of paid apps can only be possible if there is Net Neutrality. The moment an app developer/company is forced to tie-up with a telecom operator to ensure that users opt for it, an artificial prohibitive barrier will be created. All app developers and the companies behind them need to be provided an even playing field.
 
@@ -310,7 +310,7 @@
           <div class="answer">
             <p>If the question of regulating subscription charges arises because of the fear of OTT communication services/VoIP cannibalising Voice services by telcos, then it needs to be pointed out that more than one telecom operator in India has already come out and said that there&rsquo;s no evidence to support such a fear.</p>
             <p>Earlier this year, Airtel India CEO Gopal Vittal had clearly said during the company&rsquo;s earnings conference call that there&rsquo;s no evidence of VoIP cannibalisation of voice services (
-              http://www.airtel.in/wps/wcm/connect/6fee748a-91e1-48aa-84a4-320aef0db668/Transcript+of+Bharti+Airtel+Limited+Third+Quarter+Ended+December+31+2014+Earnings+Conference+Call.pdf?MOD=AJPERES&amp;ContentCache=NONE - pdf). Last year, Idea Cellular MD Himanshu Kapania had also said that OTT apps like Viber have had some impact on their International calling business, but on regular voice calls, there was no impact (
+              http://www.airtel.in/wps/wcm/connect/6fee748a-91e1-48aa-84a4-320aef0db668/Transcript+of+Bharti+Airtel+Limited+Third+Quarter+Ended+December+31+2014+Earnings+Conference+Call.pdf?MOD=AJPERES%26ContentCache=NONE - pdf). Last year, Idea Cellular MD Himanshu Kapania had also said that OTT apps like Viber have had some impact on their International calling business, but on regular voice calls, there was no impact (
               http://www.medianama.com/2014/07/223-idea-cellular-viber/).
             </p>
           </div> 
@@ -414,8 +414,7 @@
         }
 
         function sendEmailMobile() {
-          var body = generateResponse().replace("&", "and"); // hotfix
-          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body, "_blank");
+          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse(), "_blank");
         }
 
         function generateResponse(forClipboard) {
