@@ -44,6 +44,7 @@
         box-shadow: inset 0 2px 2px 0 rgba(0,0,0,0.5);
         transition: 200ms all ease-in;
     }
+    .button-bar .btn { margin-bottom: 5px }
 
     .answer.focused {
         max-height: 50em;
@@ -53,7 +54,7 @@
     }
 
     
-    #responseTextarea { width: 100%; height: 10em; font-size: 10px; line-height: 1em; border: 1px solid #ccc; }
+    #responseTextarea { width: 100%; height: 10em; font-size: 15px; line-height: 1em; border: 1px solid #ccc; }
   </style>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -69,12 +70,6 @@
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
         <a class="navbar-brand" href="#">#SaveTheInternet</a>
       </div>
     </div>
@@ -83,7 +78,7 @@
   </div>
   <div class="container">
       
-    <h1>Purpose of this page</h1>
+    <h1>Save the internet. Tell TRAI we need network neutrality.</h1>
     <p>This page was created as a collection of the best arguments that may be made in favour
       of net neutrality, in the framework of the TRAI consultation paper.</p>
 
@@ -92,19 +87,22 @@
           the deadline on 24 April 2015.</p>
       
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 button-bar">
             <button class="btn btn-info btn-lg" id="sendResponseAuto">Send your response</button>
-            <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Choose answers</button>
+            <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
         </div>
       </div>
       <div class="container">
         <div class="content row collapse" id="responseContainer">
           <h1>The Response</h1>
           <div class="hidden">
-            <p>To the Chairman, TRAI</p>
-            <p>Thank you for giving me this opportunity to share my views on the consultation paper published by TRAI on March 27, 2015 titled "Regulatory Framework For Over-the-Top (OTT) Services&rdquo;. I am worried that this consultation paper makes sweeping assumptions about the Internet, and does not take a neutral and balanced view of the subject of Internet Licensing and Net Neutrality. Any public consultation must be approached in a neutral manner by the regulator, so that people can form an informed opinion. </p>
-            <p>I strongly support an open internet, for which I believe it is critical to uphold net neutrality and reject any moves towards licensing of Internet applications and Web services.
-              <strong>I urge TRAI to commit to outlining measures to protect and advance net neutrality for all Indians</strong>. Net neutrality requires that the Internet be maintained as an open platform, on which network providers treat all content, applications and services equally, without discrimination. The TRAI must give importance to safeguarding the interests of our country&rsquo;s citizens and the national objective of Digital India and Make In India, over claims made by some corporate interests.
+          <p>To the Chairman, TRAI
+          </p>
+          <p>Thank you for giving me this opportunity to share my views on the consultation paper published by TRAI on March 27, 2015 titled "Regulatory Framework For Over-the-Top (OTT) Services&rdquo;. I am worried that this consultation paper makes sweeping assumptions about the Internet, and does not take a neutral and balanced view of the subject of Internet Licensing and Net Neutrality. Any public consultation must be approached in a neutral manner by the regulator, so that people can form an informed opinion.
+          </p>
+          <p>I strongly support an open internet, for which I believe it is critical to uphold net neutrality and reject any moves towards licensing of Internet applications and Web services.
+          <strong>
+          I urge TRAI to commit to outlining measures to protect and advance net neutrality for all Indians</strong>. Net neutrality requires that the Internet be maintained as an open platform, on which network providers treat all content, applications and services equally, without discrimination. The TRAI must give importance to safeguarding the interests of our country&rsquo;s citizens and the national objective of Digital India and Make In India, over claims made by some corporate interests.
             </p>
             <p>I request that my response be published on the TRAI website alongside other comments filed, in line with past practice regarding public consultations. I urge that TRAI issue a specific response to user submissions after examining the concerns raised by them, and hold open house discussions across India, accessible to users and startups before making any recommendations.</p>
           </div>
@@ -117,12 +115,8 @@
             <p>Under the current regulatory framework, users can access the internet-based services and apps either for a low fee or for free where the application owners make money by selling advertisements based on user data. With additional regulations and licenses, it will make it expensive for these services to reach out to their customers eventually leading to higher prices and undesirable levels of advertising - which is against the public interest and counterproductive.</p>
             <p>It appears that the telecom companies are shifting goalposts. Many telecom companies have earlier argued in the consultation paper floated by TRAI on mobile value added services (MVAS) that it was not necessary to regulate these value added services. They said MVAS are already governed by general laws under the Indian legal system and comply with the security interests as they operate on the networks of legitimate telecom license holders. Internet platforms also are regulated and governed by general laws in addition to specialised laws such as the Information Technology Act, and the same treatment should be extended to them as well.  </p>
             <p>As TRAI said previously in its recommendations after consulting on MVAS regulation:</p>
-            <p>
-              <em>&ldquo;The Authority preferred least intrusive and minimal regulatory framework and thus no separate category of licence for value added services is envisaged. After second round of consultations, the Authority is also not favoring registration of Value Added Service Providers (VASPs) or content aggregators under the &ldquo;Other Service Provider (OSP)&rdquo; category.&rdquo;</em>
-            </p>
-            <p>
-              <em>&ldquo;Content shall be subject to relevant content regulation and compliance of prevailing copyrights including digital management rights and other laws on the subject (para 3.12.2). The content is subjected to content regulation/ guidelines of Ministry of Information &amp; Broadcasting, Information Technology Act, 2000, Cable Television Networks (Regulation) Act, 1995, Indian Copyright Act etc., as amended from time to time. The content regulation shall be as per law in force from time to time. There should be consistency in the treatment of content across all kinds of media including print, digital/multimedia to avoid any discrimination. (para 3.13.3):&rdquo;</em>
-            </p>
+            <p><em>&ldquo;The Authority preferred least intrusive and minimal regulatory framework and thus no separate category of licence for value added services is envisaged. After second round of consultations, the Authority is also not favoring registration of Value Added Service Providers (VASPs) or content aggregators under the &ldquo;Other Service Provider (OSP)&rdquo; category.&rdquo;</em></p>
+            <p><em>&ldquo;Content shall be subject to relevant content regulation and compliance of prevailing copyrights including digital management rights and other laws on the subject (para 3.12.2). The content is subjected to content regulation/ guidelines of Ministry of Information &amp; Broadcasting, Information Technology Act, 2000, Cable Television Networks (Regulation) Act, 1995, Indian Copyright Act etc., as amended from time to time. The content regulation shall be as per law in force from time to time. There should be consistency in the treatment of content across all kinds of media including print, digital/multimedia to avoid any discrimination. (para 3.13.3):&rdquo;</em></p>
             <p>Imposing a licensing and regulation regime carry significant risks of destroying innovation. Launching new services and features will take more time and will make it difficult for new startups with low cash reserves to enter the market. It will basically ring the death knell for the country's fast-growing digital media sector.</p>
           </div>
           <div class="question">
@@ -136,23 +130,17 @@
             <strong>Question 3: Is the growth of Internet/OTT impacting the traditional revenue stream of Telecom operators/Telecom operators? If so, is the increase in data revenues of the Telecom Operators sufficient to compensate for this impact? Please comment with reasons.</strong>
           </div>
           <div class="answer">
-            <p> There is no evidence of data revenues cannibalizing revenues from voice or SMS. In fact, data usage is soaring and it is driving the demand for telecom networks.  </p>
+            <p> There is no evidence of data revenues cannibalizing revenues from voice or SMS. In fact, data usage is soaring and it is driving the demand for telecom networks.</p>
             <p>The question fails to acknowledge that revenue from data services also fall under the traditional revenue streams category as per the Unified Access License Agreement 
-              [http://www.dot.gov.in/access-services/introduction-unified-access-servicescellular-mobile-services]. So, to assume that data services are impacting the growth of &ldquo;traditional revenue streams&rdquo; is wrong.
-
-            </p>
+              [http://www.dot.gov.in/access-services/introduction-unified-access-servicescellular-mobile-services]. So, to assume that data services are impacting the growth of &ldquo;traditional revenue streams&rdquo; is wrong.</p>
             <p>Services such as Skype and WhatsApp have specific use cases. They are not, and should not be, considered as substitutes to voice calling or SMS. For instance, calls made using VoIP don&rsquo;t have the same clarity that we have on voice calls. Moreover, services such as WhatsApp are used for real-time chatting as opposed to SMS. Voice and SMS have their own benefits and use cases, so do VoIP and internet messaging. Customers should be free to pick and choose among these.</p>
             <p>There is still no concrete evidence suggesting that the decline in the revenues from messaging and voice calling is due to the growth of revenues from data services, and statements from experts and industry experts appear to in fact point to there being no cannibalization of revenues.</p>
             <p>Gopal Vittal, CEO, Airtel</p>
-            <p>
-              <em>&ldquo;There is still no evidence that suggests that there is cannibalization,&rdquo; he said when asked about whether data is cannibalizing Airtel&rsquo;s voice business. On internet messaging cannibalizing SMS revenues, he said: &ldquo;At this point in time is very, very tiny. And so it is not really material as we look at it.&rdquo;</em>
-              [http://www.medianama.com/2015/02/223-no-evidence-of-voip-cannibalization-of-voice-airtel-india-ceo-gopal-vittal/]
-            </p>
+            <p><em>&ldquo;There is still no evidence that suggests that there is cannibalization,&rdquo; he said when asked about whether data is cannibalizing Airtel&rsquo;s voice business. On internet messaging cannibalizing SMS revenues, he said: &ldquo;At this point in time is very, very tiny. And so it is not really material as we look at it.&rdquo;</em>
+            [http://www.medianama.com/2015/02/223-no-evidence-of-voip-cannibalization-of-voice-airtel-india-ceo-gopal-vittal/]</p>
             <p>Vittorio Colao, CEO, Vodafone</p>
-            <p>
-              <em>&ldquo;Growth in India has accelerated again (October-December), driven by data&rdquo; </em>[http://computer.financialexpress.com/columns/india-high-on-3g/9462/]
-              <em>The company&rsquo;s India unit grew by 15%, going past its counterparts during the quarter ending December as customers used its data services. </em>[http://articles.economictimes.indiatimes.com/2015-02-06/news/58878696_1_organic-service-revenue-vittorio-colao-vodafone-india]
-            </p>
+            <p><em>&ldquo;Growth in India has accelerated again (October-December), driven by data&rdquo; </em>[http://computer.financialexpress.com/columns/india-high-on-3g/9462/]
+            <em>The company&rsquo;s India unit grew by 15%, going past its counterparts during the quarter ending December as customers used its data services. </em>[http://articles.economictimes.indiatimes.com/2015-02-06/news/58878696_1_organic-service-revenue-vittorio-colao-vodafone-india]</p>
           </div>
           <div class="question">
             <strong>Question 4: Should the Internet/OTT players pay for use of the Telecom Operators network over and above data charges paid by consumers? If yes, what pricing options can be adopted? Could such options include prices based on bandwidth consumption? Can prices be used as a means of product/service differentiation? Please comment with justifications.</strong>
@@ -167,11 +155,7 @@
           </div>
           <div class="answer">
             <p>There is no regulatory imbalance in the environment in which the internet services and applications operate. In fact, the word &ldquo;regulatory imbalance&rdquo; is incorrect here. Telecom operators holds licenses to spectrum which is a public resource. Internet services and applications don&rsquo;t have to acquire licenses. Moreover, there is a clear distinction between services provided by telecom operators and internet platforms&mdash;so no additional regulation is required.</p>
-            <p>Also, internet services and applications are already well-covered under the Information Technology Act, 2000 and Indian Penal Code, 1860. More importantly, internet services are intermediaries that allow a communication system for their users&mdash;and intermediaries cannot be held responsible for the acts of their  users as per Section 79 of the IT Act, 2000. Our Supreme Court has recently ruled on this area in the 
-
-              <em>Shreya Singhal versus Union of India </em>case, holding that Internet content is protected by our Constitution&rsquo;s right to free expression and setting out the acceptable limits for government regulation.
-
-            </p>
+            <p>Also, internet services and applications are already well-covered under the Information Technology Act, 2000 and Indian Penal Code, 1860. More importantly, internet services are intermediaries that allow a communication system for their users&mdash;and intermediaries cannot be held responsible for the acts of their  users as per Section 79 of the IT Act, 2000. Our Supreme Court has recently ruled on this area in the <em>Shreya Singhal versus Union of India </em>case, holding that Internet content is protected by our Constitution&rsquo;s right to free expression and setting out the acceptable limits for government regulation.</p>
           </div>
           <div class="question">
             <strong>Question 6: How should the security concerns be addressed with regard to OTT players providing communication services? What security conditions such as maintaining data records, logs etc. need to be mandated for such OTT players? And, how can compliance with these conditions be ensured if the applications of such OTT players reside outside the country? Please comment with justifications.</strong>
@@ -218,7 +202,7 @@
             <ul>
               <li>No preferential treatment of services and platforms by TSPs and ISPs.</li>
             </ul>
-            <p>It is also worth noting that the proposed framework will give too much power in the hands of the telecom companies, which is not healthy for the ecosystem.  </p>
+            <p>It is also worth noting that the proposed framework will give too much power in the hands of the telecom companies, which is not healthy for the ecosystem.Shreya</p>
           </div>
           <div class="question">
             <strong>Question 10: What forms of discrimination or traffic management practices are reasonable and consistent with a pragmatic approach? What should or can be permitted? Please comment with justifications.</strong>
@@ -327,15 +311,19 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Email copied</h4>
+              <h4 class="modal-title">Submit Response</h4>
             </div>
             <div class="modal-body">
-              <p>The response has been copied and can be pasted. Compose a new email using:</p>
-              <p>
+              <textarea class="form-control" id="responseTextarea" readonly=""></textarea>
+              
+              <p>The response has been copied to your clipboard</p>
+              <p>Compose an email and paste this response using Right-click->Paste or Ctrl+V</p>
+              <p class="button-bar">
                 <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=advqos@trai.gov.in&bcc=netneutralityindia@gmail.com&su=In+response+to+the+Consultation+Paper+on+Regulatory+Framework+for+Over-the-top+(OTT)+services" target="_blank" class="btn btn-primary btn">Gmail</a>
                 <a href="http://compose.mail.yahoo.com/?Subject=In+response+to+the+Consultation+Paper+on+Regulatory+Framework+for+Over-the-top+(OTT)+services&To=advqos@trai.gov.in&Bcc=netneutralityindia@gmail.com" target="_blank" class="btn btn-primary btn">Yahoo</a>
                 <a href="mailto:advqos@trai.gov.in?subject=In+response+to+the+Consultation+Paper+on+Regulatory+Framework+for+Over-the-top+(OTT)+services&bcc=netneutralityindia@gmail.com" target="_blank" class="btn btn-primary btn">Other</a>
               </p>
+
               <p>You will be able to edit before you send. We also send ourselves a copy so that we can verify that your response is acknowledged by TRAI.</p>
             </div>
           </div>
@@ -351,13 +339,9 @@
             </div>
             <div class="modal-body">
               <p>Sending a response to TRAI helps, we must also make our voices heard loud and clear. Share this website on Facebook and Twitter.</p>
-              <p>
+              <p class="button-bar">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=savetheinternet.in" target="_blank" class="btn btn-primary btn">Share on facebook</a>
                 <a href="https://twitter.com/home?status=Send%20TRAI%20your%20views,%20protect%20%23NetNeutralityIndia%20and%20%23SaveTheInternet%20-%20www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Tweet about this</a>
-              </p>
-              <p>Sending a response to TRAI helps, we must also make our voices heard loud and clear. Share on facebook and twitter. (Buttons to come)</p>
-              <p>If there was a problem, here’s a copy of the email (with your edits) you can copy and paste again.</p>
-              <textarea class="form-control" id="responseTextarea"></textarea>
             </div>
           </div>
         </div>
@@ -422,6 +406,7 @@
               });
               clip.addEventListener('complete',function(client,text) {
                 $("#sendModal").modal("show");
+                $('#responseTextarea').html(generateResponse(true));
               });
               //glue it to the button
               clip.glue("sendResponse");
@@ -438,6 +423,7 @@
               });
               clip.addEventListener('complete',function(client,text) {
                 $("#sendModal").modal("show");
+                $('#responseTextarea').html(generateResponse(true));
               });
               //glue it to the button
               clip.glue("sendResponseAuto");
@@ -448,7 +434,6 @@
           $("#sendModal a").click(function () {
             $("#sendModal").modal("hide");
             $("#submitModal").modal("show");
-            $('#responseTextarea').html(generateResponse(true));
           })
 
         }
