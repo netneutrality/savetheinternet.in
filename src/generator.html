@@ -454,21 +454,22 @@
 
         function generateResponse(forClipboard) {
           var nLine = "\r\n";
-          if(!forClipboard) {
-            nLine = "%0D%0A";
-          }
           var text = "";
           var container=$('#responseContainer').children("div").each(function (i, p) {
             var $p = $(p), val;
             if($p.hasClass('question')) {
-              text = text + nLine;
+              text = text + nLine+nLine;
             }
             if(!$p.hasClass('skip')) {
-              text = text + $(p).text().split('\n').map(function(x){return x.trim()}).join('\n') + nLine;
+              text = text + $(p).text().split('\n').map(function(x){
+                return x.trim();
+              }).filter(function (x) {
+                return !!x;
+              }).join(nLine+nLine) + nLine+nLine;
             }
           });
           console.log(text);
-          return text;
+          return forClipboard? text: encodeURIComponent(text);
         }
       </script>
 </body>
