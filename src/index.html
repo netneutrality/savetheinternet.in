@@ -454,6 +454,7 @@
                 // Hide irrelevant elements
                 $('#responseTextarea').next().css('display', 'none');
                 $('#responseTextarea').next().next().html('<p>Copy the text above (Left click to highlight the text, then Ctrl/Cmd+C), compose an email and paste this response using Right-click->Paste or Ctrl/Cmd+V</p>');
+                $('#responseTextarea').next().next().after('<p>You can use<br />&nbsp;&nbsp;&nbsp;&nbsp;<b>' + subject + '</b><br/> as the subject</p>');
 
                 // Add event listeners
                 var handler = function() {
