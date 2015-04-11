@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="images/favicon.ico">
     <!-- build:css css/compiled.min.css -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
     <!-- /build -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -21,45 +21,65 @@
     </script>
   </head>
   <body>
-    <div id="cover">
-      <img class="background" src="images/cover-bg.jpg" />
-      <div class="container-fluid">
-        <div class="row">
-          <div class="hidden-xs hidden-sm col-sm-8 col-md-9 col-lg-9 content">
-            <div class="well well-lg">
-              <h3>Save the Internet. Vote for Net Neutrality.</h3>
-              <p>Due to intense lobbying by telecom operators, TRAI is planning to allow them an extreme violation of net neutrality, putting at stake our freedom to choose &amp; privacy.</p>
-              <p>&nbsp;</p>
-              <p class="text-center">
-                <a href="/generator.html" class="btn btn-success" role="button">Submit your response to TRAI &raquo;</a>
-              </p>
-            </div>
-          </div>
-          <div class="col-xs-7 col-xs-push-5 col-sm-7 col-md-push-0 col-md-3 col-lg-3 logo text-center">
-            <p><a href="/generator.html"><img src="images/netneutrality.png" /></a></p>
-            <p class="hidden-xs hidden-lg hidden-md"><a href="/generator.html" class="btn btn-success" role="button">Submit your response to TRAI &raquo;</a></p>
-            <p class="visible-xs-inline-block hidden-sm hidden-lg hidden-md"><a href="/generator.html" class="btn btn-sm btn-success" role="button">Submit your response to TRAI &raquo;</a></p>
-          </div> 
+<!--
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">Net Neutrality India</a>
         </div>
       </div>
     </div>
+-->
+
+    <div id="cover">
+        <img class="background" src="images/banner.jpg" />
+        <a href="#join"><img class="logo" src="images/logo.png" /></a>
+    </div>
+
     <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="well" id="info">
-              <h2>Defend Internet Freedom in India!</h2>
+            <!-- <h1>Keep the internet open</h1>
+            <p class="lead">Send TRAI your thoughts before April 24th, 2015 and keep India's internet open</p> -->
+            <div class="jumbotron">
+              <h1>Defend Internet Freedom in India!</h1>
               <p>The internet's success in fostering innovation, access to knowledge and freedom of speech is in large part due to the principle of net neutrality — the idea that internet service providers give their customers equal access to all lawful websites and services on the internet, without giving priority to any website over another.</p>
               <p>Due to intense lobbying by telecom operators like Airtel and Vodafone, the Telecom Regulatory Authority of India (TRAI) is planning to allow them to block apps and websites to extort more money from consumers and businesses — an extreme violation of net neutrality.</p>
-              <p>TRAI has released a <a href="https://docs.google.com/document/d/1kNXtANR9UV6fSjV2DNrkcIMAJVVN4CJfHHiq_0kkx8E/preview?sle=true" title="Abridged version of TRAI's Consultation Paper" target="_blank">consultation paper</a> with <strong>20 questions</strong> spread across <strong>118 complicated pages</strong> and wants you to send them an e-mail by 24<sup>th</sup> of April, 2015.</p>
               <p>Join us in fighting for net neutrality. Let’s remind TRAI that their job is to protect the rights of consumers, not the profit margins of telcos. Let’s demand access to the free, open internet.</p>
-              <p class="hidden-sm hidden-lg hidden-md"><a href="/generator.html" class="btn btn-sm btn-success" role="button">Submit your response to TRAI &raquo;</a></p>
-              <p class="hidden-xs"><a href="/generator.html" class="btn btn-lg btn-success" role="button">Submit your response to TRAI &raquo;</a></p>
+              <p><a class="btn btn-primary btn-lg" id="signUpBtn" onclick="document.getElementById('mce-EMAIL').focus()">Join the effort!</a></p>
+              <p></p>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <h1>Further Reading</h1>
+          <div class="col-lg-6">
+            <h1>How can I help?</h1>
+            <ul class="how-help">
+              <li>Join our mailing list. We will keep you updated on actions we are taking, and how you can contribute.
+              <!-- Begin MailChimp Signup Form -->
+                <div id="mc_embed_signup">
+                <form action="//netneutrality.us10.list-manage.com/subscribe/post?u=7ed12b37d9268e64e464c178c&amp;id=81eddfb8a9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <label for="mce-EMAIL">Email Address </label> <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL"><div
+                        style="position: absolute; left: -5000px;"><input type="text" name="b_7ed12b37d9268e64e464c178c_81eddfb8a9" tabindex="-1" value="">
+                    </div><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                </form>
+                </div>
+
+              <!--End mc_embed_signup-->
+              </li>
+              <li><a href="https://docs.google.com/document/d/1kNXtANR9UV6fSjV2DNrkcIMAJVVN4CJfHHiq_0kkx8E/preview?sle=true">Read the abridged version of TRAI's consultation paper</a>, and send a response demanding net neutrality.
+                Make sure you cc: <span class="text-info">netneutralityindia@gmail.com</span> (we will get a better email set up soon!) so that we can take action if the TRAI fails to acknowledge your response.</li>
+              <li>Help raise awareness. Share links to net neutrality articles on Facebook and Twitter. 
+                See the tweets below for ideas. Make sure you use the hashtag #NetNeutralityIndia.
+                If you have access to journalists or politicians, write to them.</li>
+              <li>If you or someone you know runs an internet company or startup, please <a href="https://docs.google.com/forms/d/1lusp9OESUmEdnvaG2r5iU3-wysdIssGeIzE5OHrGb64/viewform" target="_blank">fill this form</a>. We will be in touch regarding a planned open letter and protest.</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div style="text-align:center">
+              <a class="twitter-timeline" href="https://twitter.com/neutrality_in" data-widget-id="585369386778624000">Tweets by @neutrality_in</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+            <h3>Further Reading</h3>
             <ul class="further-reading">
               <li><a href="http://www.medianama.com/2014/11/223-net-neutrality-simple-explanation/" target="_blank">What Net Neutrality is about: a simple explanation</a></li>
               <li><a href="https://docs.google.com/document/d/1kNXtANR9UV6fSjV2DNrkcIMAJVVN4CJfHHiq_0kkx8E/preview?sle=true" target="_blank">Short version of TRAI's consultation paper</a></li>
@@ -67,58 +87,9 @@
               <li><a href="http://scroll.in/article/718820/Airtel-wants-to-ruin-the-internet-by-bringing-in-a-digital-VIP-culture" target="_blank">Airtel wants to ruin the internet by bringing in a digital VIP culture</a></li>
               <li><a href="http://tnw.to/a4hl4" target="_blank">After the US, it’s India’s turn to fight for net neutrality</a></li>
               <li><a href="http://www.thehindu.com/opinion/editorial/the-importance-of-net-neutrality/article7065661.ece" target="_blank">The importance of net neutrality - The Hindu</a></li>
-              <li><a href="http://www.nytimes.com/2015/04/10/opinion/global-threats-to-net-neutrality.html?_r=0" target="_blank">Global Threats to Net Neutrality - New York Times</a></li>
-              <li><a href="http://aravindet.svbtle.com/appu-and-the-bus-operators" target="_blank">Appu and the Bus Operators - A parable on bus neutrality</a></li>
-              <li><a href="http://www.itforchange.net/sites/default/files/ITfC/Internet_mall-EPW.pdf" target="_blank">From a Public Internet to the Internet Mall[pdf]</a></li>
-              <li><a href="https://medium.com/@chupchap/india-s-net-neutrality-debate-explained-in-memes-3a8f6febaccf" target="_blank">India’s Net Neutrality debate explained in memes</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <h1>How can I help?</h1>
-            <ul class="how-help">
-              <li><h3>Help raise awareness</h3>
-                <ul>
-                  <li>Share links to net neutrality articles and campaigns on Social Media. See the posts below for ideas. Make sure you use the hashtag <strong>#NetNeutralityIndia</strong>.</li>
-                  <li>Have conversations with your family, friends, colleagues &amp; acquaintances about this.</li>
-                  <li>If you have access to journalists or politicians, write to them.</li>
-                </ul>
-              </li>
-              <li><h3>You're a startup? Know a startup?</h3>
-                If you or someone you know runs an internet company or startup, please <a href="https://docs.google.com/forms/d/1lusp9OESUmEdnvaG2r5iU3-wysdIssGeIzE5OHrGb64/viewform" target="_blank">fill this form</a>. We will be in touch regarding a planned open letter and protest.
-              </li>
             </ul>
           </div>
       </div>
-      <div class="row">
-          <div class="col-xs-12"><h1>Follow #NetNeutralityIndia</h1></div>
-          <div class="col-md-6 text-center">
-            <p>
-              Join our mailing list. We will keep you updated on actions we are taking, and how you can contribute.
-              <!-- Begin MailChimp Signup Form -->
-              <div id="mc_embed_signup">
-              <form action="//netneutrality.us10.list-manage.com/subscribe/post?u=7ed12b37d9268e64e464c178c&amp;id=81eddfb8a9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                  <label for="mce-EMAIL">Email Address </label> <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL"><div
-                      style="position: absolute; left: -5000px;"><input type="text" name="b_7ed12b37d9268e64e464c178c_81eddfb8a9" tabindex="-1" value="">
-                  </div><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-              </form>
-              </div>
-            </p>
-            <p>
-              <a class="twitter-timeline" href="https://twitter.com/neutrality_in" data-widget-id="585369386778624000">Tweets by @neutrality_in</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-          </div>
-          <div class="col-md-6 text-center">
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1618985638314484";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-            <div class="fb-page" data-href="https://www.facebook.com/netneutralityin" data-width="500" data-height="400" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/netneutralityin"><a href="https://www.facebook.com/netneutralityin">Save the Internet - net neutrality in India</a></blockquote></div></div>
-          </div>
-        </div>
       <footer>
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -127,13 +98,11 @@
           </div>
         </div>
       </footer>
-      <div id="submitnow" class="container-fluid">
-        <a href="/generator.html" class="btn btn-lg btn-block btn-success" role="button">Submit your response to TRAI &raquo;</a>
-      </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <!-- build:js js/compiled.min.js -->
     <script src="js/bootstrap.js"></script>
     <!-- /build -->
+    <!-- savetheinternet.in -->
   </body>
 </html>
