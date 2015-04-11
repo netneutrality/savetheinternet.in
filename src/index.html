@@ -94,8 +94,8 @@
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
         <img src="images/netneutrality.png" class="new-logo" />
         <div class="button-bar hidden-lg hidden-md">
-            <button class="btn btn-info btn-lg" id="sendResponseAuto">Send your response</button>
-            <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
+            <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
+            <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
@@ -105,8 +105,8 @@
           on the matter in a legally precise manner, in order to submit a response to the TRAI before
           the deadline on 24 April 2015.</p>
         <div class="button-bar hidden-sm hidden-xs">
-            <button class="btn btn-info btn-lg" id="sendResponseAuto">Send your response</button>
-            <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
+            <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
+            <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
         </div>
       </div>
     </div>
@@ -388,7 +388,7 @@
 
           initListeners();
           
-          $('#chooseAnswers').click(function() {
+          $('.chooseAnswers').click(function() {
             initListeners();
           });
         });
@@ -406,7 +406,7 @@
               $('#submitModal').modal('show');
               $('#responseTextarea').html(generateResponse(true));
             });
-            $('#sendResponseAuto').click(function() {
+            $('.sendResponseAuto').click(function() {
               sendEmailMobile();
               $('#submitModal').modal('show');
               $('#responseTextarea').html(generateResponse(true));
@@ -427,6 +427,7 @@
                 $('#responseTextarea').html(generateResponse(true));
               });
               //glue it to the button
+
               clip.glue("sendResponse");
             });
             
@@ -444,7 +445,12 @@
                 $('#responseTextarea').html(generateResponse(true));
               });
               //glue it to the button
-              clip.glue("sendResponseAuto");
+              $('.sendResponseAuto').on('mousedown', function(){
+                clip.receiveEvent('mousedown');
+              });
+              $('.sendResponseAuto').on('mouseup', function(){
+                clip.receiveEvent('complete');
+              });
             });
           }
           
