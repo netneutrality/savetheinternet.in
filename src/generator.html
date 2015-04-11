@@ -28,6 +28,8 @@
 
     #email-edit { width: 100%; height: 40em; }
 */
+    
+    
       
     p { padding: 0; margin: 1em 0; }
     .hidden { display: none; }
@@ -39,7 +41,7 @@
         border-radius: 4px;
         max-height: 6em;
         overflow: hidden;
-
+        box-shadow: inset 0 2px 2px 0 rgba(0,0,0,0.5);
         transition: 200ms all ease-in;
     }
 
@@ -48,7 +50,13 @@
         overflow: auto;
         transition: 200ms all ease-in;
         outline: none;
-        box-shadow: inset 0 0 4px 0 #ff0;
+    }
+    
+    #send-dialog {
+      display: none;
+      position: fixed;
+      left: 2em; right: 2em;
+      top: 25%;
     }
   </style>
   <script>
@@ -330,7 +338,27 @@
           </div>
         </div>
       </footer>
-
+    
+    
+      <div class="dialog" id="send-dialog">
+        <div class="container">
+          <h1>Email Copied</h1>
+          <p>The email has been copied and can be pasted in your email. Compose an email using:</p>
+          <p>
+            <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=advqos@trai.gov.in&bcc=netneutralityindia@gmail.com&su=In+response+to+the+Consultation+Paper+on+Regulatory+Framework+for+Over-the-top+(OTT)+services" target="_blank" class="btn btn-lg">Gmail</a>
+            <a href="http://compose.mail.yahoo.com/?Subject=In+response+to+the+Consultation+Paper+on+Regulatory+Framework+for+Over-the-top+(OTT)+services&To=advqos@trai.gov.in&Bcc=netneutralityindia@gmail.com" class="btn btn-lg">Yahoo</a>
+            <a href="mailto:advqos@trai.gov.in?subject=In+response+to+the+Consultation+Paper+on+Regulatory+Framework+for+Over-the-top+(OTT)+services&bcc=netneutralityindia@gmail.com" class="btn btn-lg">Desktop client (Outlook, Thunderbird, etc.)</a>
+          </p>
+          <p>You will be able to edit before you send. We are in bcc so that we can verify that your response is acknowledged by TRAI.</p>
+        </div>
+      </div>
+    
+      <div class="dialog" id="done-dialog">
+        <div class="container">
+          <h1>Thank you!</h1>
+          <p>Sending a response to TRAI helps, we must make our voices heard. Share on facebook and twitter. (Buttons to come)</p>
+        </div>
+      </div>
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -368,22 +396,6 @@
             });
           }
           else {
-              setTimeout(function() {
-              //set path
-              ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
-              //create client
-              var clip = new ZeroClipboard.Client();
-              //event
-              clip.addEventListener('mousedown',function() {
-                clip.setText(generateResponse(forClipboard=true));
-              });
-              clip.addEventListener('complete',function(client,text) {
-                alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
-                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
-              });
-              //glue it to the button
-              clip.glue("sendResponse");
-            });
             setTimeout(function() {
               //set path
               ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
@@ -394,13 +406,38 @@
                 clip.setText(generateResponse(forClipboard=true));
               });
               clip.addEventListener('complete',function(client,text) {
-                alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
-                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
+                $("#send-dialog").show();
+//                alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
+//                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
+              });
+              //glue it to the button
+              clip.glue("sendResponse");
+            });
+            
+            setTimeout(function() {
+              //set path
+              ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
+              //create client
+              var clip = new ZeroClipboard.Client();
+              //event
+              clip.addEventListener('mousedown',function() {
+                clip.setText(generateResponse(forClipboard=true));
+              });
+              clip.addEventListener('complete',function(client,text) {
+                $("#send-dialog").show();
+//                alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
+//                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
               });
               //glue it to the button
               clip.glue("sendResponseAuto");
-            });  
+            });
           }
+          
+          
+          $("#send-dialog a").click(function () {
+            $("#send-dialog").hide();
+            $("#done-dialog").show();
+          })
 
         }
 
