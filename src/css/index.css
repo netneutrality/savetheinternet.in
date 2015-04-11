@@ -1,0 +1,85 @@
+html, body { font-size: 18px; }
+
+#cover {width: 100%;}
+
+#cover .content .well {background: rgba(225, 225, 225, 0.85); box-shadow: 0px 0px 10px rgba(30,30,30, 0.3)}
+#cover .logo img {max-width: 90%}
+
+@media (max-width: 992px) {
+  #cover .container-fluid {margin-top: -24%}
+  #cover img.background {margin: -16% 0}
+  #cover .logo img {max-width: 50%}
+}
+@media (max-width: 768px) {
+  #cover .container-fluid {margin-top: -24%;}
+  #cover .logo img {max-width: 50%}
+}
+@media (min-width: 992px) {
+  #cover .container-fluid {position: absolute; width: 99%;top: 2%; left: 1%}
+}
+
+#cover img.background {width: 100%;
+  margin-bottom: 20px;
+}
+
+#submitnow {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  left: 0px;
+  padding: 10px 5%;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0px 0px 10px rgba(30,30,30, 0.3);
+  box-sizing: content;
+}
+
+.jumbotron h1 {
+    font-size: 45px;
+}
+
+.jumbotron p {
+}
+
+.further-reading {
+}
+
+.twitter-timeline {
+    height: 300px;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0px;
+}
+
+.well {
+    margin:10px;
+}
+
+footer {
+    margin: 80px 0;
+}
+
+.how-help { padding: 0; }
+
+.how-help li {
+  list-style: none;
+  text-indent: 0;
+  padding: 0; margin: 0 0 1em 0;
+}
+
+label { font-weight: inherit; }
+input {
+  border-radius: 4px; display: inline-block; height: 2em; line-height: 2em; padding: 0 4px; margin: 0; border: 1px solid #ccc;
+  box-sizing: content-box; vertical-align: baseline;
+}
+
+input#mce-EMAIL {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input#mc-embedded-subscribe {
+  background: #ccc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
