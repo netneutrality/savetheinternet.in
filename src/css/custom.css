@@ -1,20 +1,26 @@
 html, body { font-size: 18px; }
 
 #cover {
-	width: 100%;
-	position: relative;
+  width: 100%;
+  position: relative;
 }
 
 #cover img.logo {
-	position: absolute;
-	bottom: 10%;
-	right: 5%;
-	max-height: 40%;
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  max-height: 40%;
 }
 
 #cover img.background {
-	width: 100%;
+  width: 100%;
     margin-bottom: 20px;
+}
+
+.new-logo {max-width: 100%;}
+
+@media (max-width: 768px) {
+  .new-logo {max-width: 250px;}
 }
 
 #banner {
