@@ -100,12 +100,54 @@
       <img src="images/netneutrality.png" class="img-responsive"  />
       </div>
     </div>
+    
+
       <div class="row">
         <div class="col-lg-12 button-bar">
             <button class="btn btn-info btn-lg" id="sendResponseAuto">Send your response</button>
             <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <hr>
+          <h4>Spread words</h4>
+          <table border="0">
+            <tr>
+                <td style="padding-right: 20px;">
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=618628254890943&version=v2.0";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-share-button" data-href="http://www.savetheinternet.in" data-width="300px" data-type="box_count"></div>
+                </td>
+                <td style="padding-right: 20px;">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://www.savetheinternet.in" data-via="savetheinternet" data-lang="en" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </td>
+                <td style="padding-right: 20px;">
+                    <script src="//platform.linkedin.com/in.js" type="text/javascript">
+                        lang: en_US
+                    </script>
+                    <script type="IN/Share" data-url="http://www.savetheinternet.in" data-counter="top"></script>
+                </td>
+                <td style="padding-right: 20px;">
+                    <!-- Place this tag in your head or just before your close body tag. -->
+                    <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+
+                    <!-- Place this tag where you want the share button to render. -->
+                    <div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-height="60" data-href="http://savetheinternet.in"></div>
+                </td>
+            </tr>
+        </table>
+        </div>
+      </div>
+
       <div class="container">
         <div class="content row collapse" id="responseContainer">
           <h1>The Response</h1>
