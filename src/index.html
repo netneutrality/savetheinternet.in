@@ -395,8 +395,12 @@
 
           initListeners();
           
-          $('#chooseAnswers').click(function() {
+          $('#chooseAnswers').click(function(e) {
+            e.preventDefault();
             initListeners();
+            $('html, body').animate({
+                scrollTop: $("#responseContainer").offset().top
+            }, 400);
           });
         });
         
