@@ -326,13 +326,13 @@
               <textarea class="form-control" id="responseTextarea" readonly=""></textarea>
 
               <p>The response has been copied to your clipboard</p>
-              <p>Compose an email and paste this response using Right-click->Paste or Ctrl+V</p>
+              <p>Compose an email and paste this response using Right-click->Paste or Ctrl/Cmd+V</p>
               <p class="button-bar">
                 <a href="#" target="_blank" class="btn btn-primary btn" id="gmailSend">Gmail</a>
                 <a href="#" target="_blank" class="btn btn-primary btn" id="yahooSend">Yahoo</a>
                 <a href="#" target="_blank" class="btn btn-primary btn" id="otherSend">Other</a>
               </p>
-
+              <p>Emails should be sent to <span class="text-info">advqos@trai.gov.in</span> with bcc:<span class="text-info">netneutralityindia@gmail.com</p>
               <p>You will be able to edit before you send. We also send ourselves a copy so that we can verify that your response is acknowledged by TRAI.</p>
             </div>
           </div>
@@ -369,7 +369,7 @@
 
         function getSubject() {
           return pickOne([
-              pickOne(["Re:", "Regarding", "On the", "About the", "Sub:", "Response:"])+" "+pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+pickOne(["about", "on"])+" "+pickOne(["regulation of OTTs", "Breaking net neutrality"]),
+              pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:"])+" "+pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+pickOne(["about", "on"])+" "+pickOne(["regulation of OTTs", "Breaking net neutrality"]),
               pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs"]) + " from "]) + pickOne(["breaking ", "violating ", "destroying "]) + pickOne(["Net Neutrality", "the open internet", "the internet"])]);
         }
         var toAddress = "advqos@trai.gov.in";
