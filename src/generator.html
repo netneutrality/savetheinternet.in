@@ -411,7 +411,7 @@
         }
 
         function sendEmailMobile() {
-            window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse(), "_blank");
+            window.open(encodeURI("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse()), "_blank");
         }
 
         function generateResponse(forClipboard) {
@@ -430,9 +430,6 @@
             }
           });
           console.log(text);
-          if (!forClipboard) {
-            return encodeURI(text);
-          }
           return text;
         }
       </script>
