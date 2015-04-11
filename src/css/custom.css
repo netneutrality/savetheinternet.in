@@ -17,7 +17,7 @@ html, body { font-size: 18px; }
     margin-bottom: 20px;
 }
 
-.new-logo {max-width: 100%;}
+.new-logo {max-width: 100%; max-height: 400px}
 
 @media (max-width: 768px) {
   .new-logo {max-width: 250px;}
