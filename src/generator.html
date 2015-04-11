@@ -62,6 +62,25 @@
   </script>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">#SaveTheInternet</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" type="button" class="btn btn-default">Submit</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <div id="header">
   </div>
   <div class="container">
@@ -73,16 +92,16 @@
       <p>The purpose is to assist supporters of strong net neutrality in articulating their own views
           on the matter in a legally precise manner, in order to submit a response to the TRAI before
           the deadline on 24 April 2015.</p>
-
-      <h1>Instructions</h1>
-
-      <p>Please select the arguments that you most agree with, and click next to display a suggested response.
-          You are encouraged to edit these arguments to further match your viewpoint before sending it to TRAI.</p>
-
-      <p><a href="">Suggest changes or additions to the content</a> | <a href="http://github.com/netneutrality/netneutrality.in/issues/new">Report a technical problem</a></p>
-      <h1>The email</h1>
+      
+      <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-info btn-lg" id="sendResponseAuto">Send your response</button>
+            <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Choose answers</button>
+        </div>
+      </div>
       <div class="container">
-        <div class="content row" id="responseContainer">
+        <div class="content row collapse" id="responseContainer">
+          <h1>The Response</h1>
           <div class="hidden">
             <p>To the Chairman, TRAI</p>
             <p>Thank you for giving me this opportunity to share my views on the consultation paper published by TRAI on March 27, 2015 titled "Regulatory Framework For Over-the-Top (OTT) Services&rdquo;. Before answering the specific questions asked in the paper, I wish to emphasise that any public consultation must be approached in a neutral manner by the regulator that people can form an informed opinion. It is of concern to me and many others that this consultation paper does not take a neutral and balanced view of the subject, making sweeping assumptions about the Internet and reiterating claims made by one segment of the telecom industry without any proof.</p>
@@ -300,18 +319,18 @@
               http://www.airtel.in/wps/wcm/connect/6fee748a-91e1-48aa-84a4-320aef0db668/Transcript+of+Bharti+Airtel+Limited+Third+Quarter+Ended+December+31+2014+Earnings+Conference+Call.pdf?MOD=AJPERES&amp;ContentCache=NONE - pdf). Last year, Idea Cellular MD Himanshu Kapania had also said that OTT apps like Viber have had some impact on their International calling business, but on regular voice calls, there was no impact (
               http://www.medianama.com/2014/07/223-idea-cellular-viber/).
             </p>
+          </div> 
+          <div class="row skip">
+            <div class="col-lg-12">
+                <button class="btn btn-primary btn-lg" id="sendResponse">Send your response</button>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-            <button class="btn btn-default" id="sendResponse">Send a response</button>
         </div>
       </div>
       <footer>
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <p><a href="https://github.com/netneutrality/netneutrality.in">Made with ♥ by folks just like you.</a></p>
+          <div class="col-lg-12 text-center"> 
+            <p><a href="https://github.com/netneutrality/netneutrality.in">Made with ♥ by folks just like you.</a> | <a href="http://github.com/netneutrality/netneutrality.in/issues/new">Report a technical problem</a></p>
 <!--            <p>Based on <a href="http://getbootstrap.com" rel="nofollow">Bootstrap</a>. Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p> -->
           </div>
         </div>
@@ -319,22 +338,31 @@
 
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
       <script src="js/ZeroClipboard.js"></script>
       <script>
-        window.STI = {}
+        var toAddress = "advqos@trai.gov.in";
+        var bccAddress = "netneutralityindia@gmail.com";
+        var subject = "In response to the Consultation Paper on Regulatory Framework for Over-the-top (OTT) services";
         $(function () {
           styleEm();
           $("#generate").click(function() {
             $("#email-edit").text(generateResponse());
           });
+          
+          initListeners();
+          
+          $('#chooseAnswers').click(function() {
+            initListeners();
+          });
+        });
+        
+        function initListeners() {
 
           var isMobile = false;
           if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             isMobile = true;
           }
-          STI.toAddress = "advqos@trai.gov.in";
-          STI.bccAddress = "netneutralityindia@gmail.com";
-          STI.subject = "In response to the Consultation Paper on Regulatory Framework for Over-the-top (OTT) services";
 
           if(isMobile) {
             $('#sendResponse').click(function() {
@@ -349,17 +377,34 @@
               var clip = new ZeroClipboard.Client();
               //event
               clip.addEventListener('mousedown',function() {
-                clip.setText(generateResponse());
+                clip.setText(generateResponse(forClipboard=true));
               });
               clip.addEventListener('complete',function(client,text) {
                 alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
-                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+STI.toAddress+"&bcc="+STI.bccAddress+"&su="+STI.subject,"_blank");
+                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
               });
               //glue it to the button
               clip.glue("sendResponse");
+            });
+            setTimeout(function() {
+              //set path
+              ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
+              //create client
+              var clip = new ZeroClipboard.Client();
+              //event
+              clip.addEventListener('mousedown',function() {
+                clip.setText(generateResponse(forClipboard=true));
+              });
+              clip.addEventListener('complete',function(client,text) {
+                alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
+                window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
+              });
+              //glue it to the button
+              clip.glue("sendResponseAuto");
             });  
           }
-        });
+
+        }
 
         function styleEm() {
           $(".answer").prop("contenteditable", true).focus(function () {
@@ -371,15 +416,22 @@
         }
 
         function sendEmailMobile() {
-            window.open("mailto:"+STI.toAddress+"?subject="+STI.subject+"&bcc="+STI.bccAddress+"&body="+generateResponse(), "_blank");
+            window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse(), "_blank");
         }
 
-        function generateResponse() {
+        function generateResponse(forClipboard) {
+          var nLine = "\r\n";
+          if(!forClipboard) {
+            nLine = "%0D%0A";
+          }
           var text = "";
           var container=$('#responseContainer').children("div").each(function (i, p) {
             var $p = $(p), val;
+            if($p.hasClass('question')) {
+              text = text + nLine +nLine;
+            }
             if(!$p.hasClass('skip')) {
-              text = text + $(p).text().trim()+"\n";
+              text = text + $(p).text().trim()+nLine;
             }
           });
           console.log(text);
