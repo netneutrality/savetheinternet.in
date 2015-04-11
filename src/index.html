@@ -361,13 +361,24 @@
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
       <script src="js/ZeroClipboard.js"></script>
       <script>
+
+
+        function pickOne(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function getSubject() {
+          return pickOne([
+              pickOne(["Re:", "Regarding", "On the", "About the", "Sub:", "Response:"])+" "+pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+pickOne(["about", "on"])+" "+pickOne(["regulation of OTTs", "Breaking net neutrality"]),
+              pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs"]) + " from "]) + pickOne(["breaking ", "violating ", "destroying "]) + pickOne(["Net Neutrality", "the open internet", "the internet"])]);
+        }
         var toAddress = "advqos@trai.gov.in";
 
         // Don't give me that look. I know this is horrible. But limits ok! - https://support.google.com/a/answer/1366776?hl=en
         var bccAddresses = ["netneutralityindia@gmail.com", "netneutralityindia02@gmail.com", "netneutralityindia03@gmail.com"];
-        var bccAddress = bccAddresses[Math.floor(Math.random() * bccAddresses.length)];
+        var bccAddress = pickOne(bccAddresses);
 
-        var subject = "In response to the Consultation Paper on Regulatory Framework for Over-the-top (OTT) services";
+        var subject = getSubject();
         $(function () {
           styleEm();
 
