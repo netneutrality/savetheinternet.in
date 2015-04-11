@@ -363,6 +363,9 @@
             $('#sendResponse').click(function() {
               sendEmailMobile();
             });
+            $('#sendResponseAuto').click(function() {
+              sendEmailMobile();
+            });
           }
           else {
               setTimeout(function() {
@@ -412,7 +415,7 @@
 
         function sendEmailMobile() {
           var body = generateResponse();
-          body.replace(/&/g, '%26'); // escape &
+          body = body.replace(/&/g, '%26'); // escape &
           window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body, "_blank");
         }
 
