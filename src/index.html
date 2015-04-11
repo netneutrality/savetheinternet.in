@@ -360,6 +360,7 @@
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
       <script src="js/ZeroClipboard.js"></script>
+      <script src="js/FlashDetect.min.js"></script>
       <script>
 
 
@@ -420,37 +421,48 @@
           }
           else {
             setTimeout(function() {
-              //set path
-              ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
-              //create client
-              var clip = new ZeroClipboard.Client();
-              //event
-              clip.addEventListener('mousedown',function() {
-                clip.setText(generateResponse(forClipboard=true));
-              });
-              clip.addEventListener('complete',function(client,text) {
-                $("#sendModal").modal("show");
-                $('#responseTextarea').html(generateResponse(true));
-              });
-              //glue it to the button
-              clip.glue("sendResponse");
-            });
-            
-            setTimeout(function() {
-              //set path
-              ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
-              //create client
-              var clip = new ZeroClipboard.Client();
-              //event
-              clip.addEventListener('mousedown',function() {
-                clip.setText(generateResponse(forClipboard=true));
-              });
-              clip.addEventListener('complete',function(client,text) {
-                $("#sendModal").modal("show");
-                $('#responseTextarea').html(generateResponse(true));
-              });
-              //glue it to the button
-              clip.glue("sendResponseAuto");
+              // One function to handle everything
+
+              // Check if Flash is present
+              if(FlashDetect.installed) {
+                //set path
+                ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
+                //create client
+                var clip = new ZeroClipboard.Client();
+                //event
+                clip.addEventListener('mousedown',function() {
+                  clip.setText(generateResponse(forClipboard=true));
+                });
+                clip.addEventListener('complete',function(client,text) {
+                  $("#sendModal").modal("show");
+                  $('#responseTextarea').html(generateResponse(true));
+                });
+                //glue it to the buttons
+                clip.glue("sendResponse");
+
+                var clip1 = new ZeroClipboard.Client();
+                clip1.addEventListener('mousedown',function() {
+                  clip1.setText(generateResponse(forClipboard=true));
+                });
+                clip1.addEventListener('complete',function(client,text) {
+                  $("#sendModal").modal("show");
+                  $('#responseTextarea').html(generateResponse(true));
+                });
+                clip1.glue("sendResponseAuto");
+              }
+              else {
+                // Hide irrelevant elements
+                $('#responseTextarea').next().css('display', 'none');
+                $('#responseTextarea').next().next().html('<p>Copy the text above (Left click to highlight the text, then Ctrl/Cmd+C), compose an email and paste this response using Right-click->Paste or Ctrl/Cmd+V</p>');
+
+                // Add event listeners
+                var handler = function() {
+                  $("#sendModal").modal("show");
+                  $('#responseTextarea').html(generateResponse(true));
+                }
+                $('#sendResponse').click(handler);
+                $('#sendResponseAuto').click(handler);
+              }
             });
           }
           
@@ -498,7 +510,8 @@
               }).join(nLine+nLine) + nLine+nLine;
             }
           });
-          console.log(text);
+          // Don't log in production
+          //console.log(text);
           return forClipboard? text: encodeURIComponent(text);
         }
       </script>
