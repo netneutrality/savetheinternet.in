@@ -94,9 +94,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5 text-center">
         <img src="images/netneutrality.png" class="new-logo" />
-        <div class="button-bar">
-            <button class="btn btn-info btn-lg" id="sendResponseAuto">Send your response</button>
-            <button class="btn btn-success btn-lg" id="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
+        <div class="button-bar hidden-md hidden-lg">
+          <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
+          <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
@@ -105,6 +105,10 @@
         <p>The purpose is to assist supporters of strong net neutrality in articulating their own views
           on the matter in a legally precise manner, in order to submit a response to the TRAI before
           the deadline on 24 April 2015.</p>
+        <div class="button-bar hidden-xs hidden-sm">
+          <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
+          <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
+        </div>
       </div>
     </div>
       <div class="container">
@@ -404,8 +408,10 @@
 
           initListeners();
           
-          $('#chooseAnswers').click(function() {
+          $('.chooseAnswers').click(function() {
             initListeners();
+            $('.chooseAnswers').hide();
+            window.location.hash = '#responseContainer';
           });
         });
         
@@ -417,13 +423,13 @@
           }
 
           if(isMobile) {
-            $('#sendResponse, #sendResponseAuto').click(function() {
+            $('#sendResponse, .sendResponseAuto').click(function() {
               sendEmailMobile();
               $('#submitModal').modal('show');
             });
           }
           else {
-            $("#sendResponse, #sendResponseAuto").click(function () {
+            $("#sendResponse, .sendResponseAuto").click(function () {
               showSendModal();
             });
             
