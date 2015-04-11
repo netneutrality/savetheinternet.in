@@ -411,7 +411,9 @@
         }
 
         function sendEmailMobile() {
-            window.open(encodeURI("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+generateResponse()), "_blank");
+          var body = generateResponse();
+          body.replace(/&/g, '%26'); // escape &
+          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body, "_blank");
         }
 
         function generateResponse(forClipboard) {
