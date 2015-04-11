@@ -338,6 +338,7 @@
             </div>
             <div class="modal-body">
               <p>Incase you had trouble submitting the response, please copy paste the following content</p>
+              <textarea class="form-control" rows="2" id="responseTextarea" readonly>herere</textarea>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -357,10 +358,17 @@
         var subject = "In response to the Consultation Paper on Regulatory Framework for Over-the-top (OTT) services";
         $(function () {
           styleEm();
-          $("#generate").click(function() {
-            $("#email-edit").text(generateResponse());
+
+          $("#responseTextarea").focus(function(e) {
+            e.preventDefault();
+            $('#responseTextarea').select();
           });
           
+          $("#responseTextarea").click(function(e) {
+            e.preventDefault();
+            $('#responseTextarea').select();
+          });
+
           initListeners();
           
           $('#chooseAnswers').click(function() {
@@ -379,10 +387,12 @@
             $('#sendResponse').click(function() {
               sendEmailMobile();
               $('#submitModal').modal('show');
+              $('#responseTextarea').html(generateResponse(true));
             });
             $('#sendResponseAuto').click(function() {
               sendEmailMobile();
               $('#submitModal').modal('show');
+              $('#responseTextarea').html(generateResponse(true));
             });
           }
           else {
@@ -399,6 +409,7 @@
                 alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
                 window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
                 $('#submitModal').modal('show');
+                $('#responseTextarea').html(generateResponse(true));
 
               });
               //glue it to the button
@@ -417,6 +428,7 @@
                 alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
                 window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject,"_blank");
                 $('#submitModal').modal('show');
+                $('#responseTextarea').html(generateResponse(true));
               });
               //glue it to the button
               clip.glue("sendResponseAuto");
