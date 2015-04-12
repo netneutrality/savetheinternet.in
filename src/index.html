@@ -86,6 +86,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
         <h1>Save the internet. Tell TRAI we need network neutrality.</h1>
+        <div class="alert alert-warning hidden" id="browser_warning" role="alert">
+          <span class="browser_name">This browser</span> is known to have problems submitting this form. Please use another browser if it doesn't work.
+        </div>
         <div class="button-bar">
           <button class="btn btn-danger btn-lg sendResponseAuto">Respond to TRAI now</button>
           or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer">edit answers</a>
@@ -545,6 +548,11 @@
         loadSocialIcons();
         function loadSocialIcons() {
           Socialite.load($('.social-buttons'));
+        }
+        var uc = /UCBrowser/g.test( navigator.userAgent );
+        if(uc){
+          $('.browser_name').text('UC Browser');
+          $('#browser_warning').removeClass('hidden');
         }
       </script>
 </body>
