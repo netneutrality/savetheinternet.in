@@ -24,7 +24,8 @@
         color: #665244;
       }
       
-      h1, h2, h3, p { margin: 0; padding: 1em; line-height: 1.25em; position: relative; background: rgba(255,255,255,0.75); } 
+      h1, h2, h3, p, ul.help, .response-text { margin: 0; padding: 1em; line-height: 1.25em; position: relative; background: rgba(255,255,255,0.75); } 
+      ul.help li {margin-left: 1.5em;}
       a { color: #665244; text-decoration: none; }
       
       input, textarea, select {
@@ -119,7 +120,7 @@
 /*      Step selector */
       
       .step { display: none; }
-      .step h1 {margin-bottom: 1em}
+      .step h1, ul.help {margin-bottom: 1em}
       .step1 { display: block; }
       
     </style>
@@ -164,6 +165,14 @@
     
     <div class="container step step2">
       <h1>Choose your answers</h1>
+      <ul class="help">
+        <li>Each section below respresents a part of your email.</li>
+        <li>Click a section to choose your answer for that section.</li>
+        <li>In each section, there are various options that form a part of the answer for that question.</li>
+        <li>Some answer options have been pre-selected for you.</li>
+        <li>You may wish to read them in detail to understand what you are choosing.</li>
+        <li>Click each answer option to include or exclude it. Ticked options will be included in your answers.</li>
+      </ul>
       <div id="content">
 <!-- start of raw email -->
 
