@@ -26,6 +26,9 @@
   <meta name="twitter:image:src" content="http://www.savetheinternet.in/images/ogimg.gif" />
   <meta name="twitter:site" content="neutrality_in" />
   <style>  
+    #header {
+      padding-top: 81px;
+    }
     p { padding: 0; margin: 1em 0; }
     .hidden { display: none; }
     .question { margin: 2em 0 0 0; }
@@ -59,39 +62,45 @@
   ga('create', 'UA-9752294-8', 'auto');
   ga('send', 'pageview');
 </script>
+<script>
+    var shiftWindow = function() { scrollBy(0, -50) };
+    window.addEventListener("hashchange", shiftWindow);
+    if (window.location.hash) shiftWindow();
+</script>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">#SaveTheInternet</a>
+        <a class="navbar-toggle btn btn-danger hidden-md hidden-lg navBarSend sendResponse" style="display:none;">Send</a>
       </div>
+      <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm navBarSend" style="display:none;">
+        <li><button type="button" class="btn btn-danger navbar-btn sendResponse">Respond to TRAI now</button></li>
+      </ul>
     </div>
   </nav>
   <div id="header">
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5 text-center">
-        <img src="images/netneutrality.png" class="new-logo" />
-        <div class="button-bar hidden-md hidden-lg">
-          <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
-          <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+      <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
         <h1>Save the internet. Tell TRAI we need network neutrality.</h1>
+        <div class="button-bar">
+          <button class="btn btn-danger btn-lg sendResponseAuto">Respond to TRAI now</button>
+          or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">edit answers</a>
+        </div>
+
         <p>This page was created as a collection of the best arguments that may be made in favour of net neutrality, in the framework of the TRAI consultation paper.</p>
         <p>The purpose is to assist supporters of strong net neutrality in articulating their own views
           on the matter in a legally precise manner, in order to submit a response to the TRAI (at <span class="text-info"><strong>advqos@trai.gov.in</strong></span>) before the deadline on 24 April 2015.</p>
-        <div class="button-bar hidden-xs hidden-sm">
-          <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
-          <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
-        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+        <img src="images/netneutrality.png" class="new-logo" />
       </div>
     </div>
     <div class="content row collapse" id="responseContainer">
-      <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-9 col-lg-push-1">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1">
         <h1>The Response</h1>
         <div class="hidden">
         <p>To the Chairman, TRAI
@@ -345,6 +354,7 @@
                 <a href="https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Share on Facebook</a>
                 <a href="https://twitter.com/home?status=Send%20TRAI%20your%20views,%20protect%20%23NetNeutralityIndia%20and%20%23SaveTheInternet%20-%20www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Tweet this</a>
               </p>
+              <p><span class="mute">For more information on why Net Neutrality is important, visit </span> <a href="http://www.netneutrality.in">netneutrality.in</a></p>
             </div>
           </div>
         </div>
@@ -387,9 +397,10 @@
 
           initListeners();
           
-          $('.chooseAnswers').click(function() {
+          $('.chooseAnswers').click(function(e) {
+            $('.navBarSend').toggle();
+            e.preventDefault();
             initListeners();
-            $('.chooseAnswers').hide();
             window.location.hash = '#responseContainer';
           });
         });
@@ -404,13 +415,13 @@
           $('#bccAddressModal').html(bccAddress);
 
           if(isMobile) {
-            $('#sendResponse, .sendResponseAuto').click(function() {
+            $('.sendResponse, .sendResponseAuto').click(function() {
               sendEmailMobile();
               $('#submitModal').modal('show');
             });
           }
           else {
-            $("#sendResponse, .sendResponseAuto").click(function () {
+            $(".sendResponse, .sendResponseAuto").click(function () {
               showSendModal();
             });
             
