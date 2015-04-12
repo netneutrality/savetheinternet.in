@@ -12,15 +12,53 @@
       
       html, body { padding: 0; margin: 0; }
       body {
-        max-width: 40em; padding: 0 3em; margin: 6em auto;
+        margin-bottom: 8em;
+        background: #fff url('images/bluelogo.png') no-repeat center top;
+        background-size: 90%;
       }
       
       body, button, input, textarea, select, option {
         font: 16px/24px Georgia;
       }
       
-      p { margin: 0; padding: 1em; position: relative; border-radius: 4px; } 
+      h1, h2, h3, p { margin: 0; padding: 1em; line-height: 1.25em; position: relative; border-radius: 4px; background: rgba(255,255,255,0.75); } 
+      a { color: #06c; text-decoration: none; }
       
+      input, textarea, select {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding: 1em;
+        line-height: 1em;
+      }
+      
+      label { display: block; padding: 1em 0; }
+      
+      button { 
+        background: #036; color: white;
+        border: none; padding: 1em; margin: 0;
+        line-height: 1em; border-radius: 4px;
+      }
+      button:hover { background: #06c; }
+      
+      textarea {
+        resize: vertical;
+      }
+      
+      .response-text { height: 20em; font-size: 0.75em; }
+      
+      .logo-clear { width: 90% }
+      
+      .container {
+        display: block;
+        max-width: 55em; padding: 0 3em; margin: 0 auto;
+      }
+      
+/*--- Step 1: User info --- */
+
+            
+/*--- Step 2: Select answers (optional) ---- */
       
       .section { position: relative; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5); cursor: pointer; border-radius: 4px; }
       .section:hover { box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5); }
@@ -30,11 +68,6 @@
       .heading { font-weight: bold; }
       
       .question { border-bottom: 1px solid #ccc; }
-      
-/*
-      .question { background: #ccc; }
-      .answer, .argument, .heading { background: #eee; }
-*/
 
       .hidden { display: none; }
       .argument, .heading { display: none; }
@@ -62,24 +95,24 @@
         background: rgba(0,0,0,0.5); color: #fff; padding: 1em; line-height: 1em; border-radius: 1.5em;
       }
       
-      button { 
-        background: #036; color: white; border: none; padding: 1em; margin: 0;
-        line-height: 1em; border-radius: 4px;
-      }
-      button:hover { background: #06c; }
+/*      The action bar */
       
       .actions {
         background: #06c; color: #fff;
-        position: fixed; height: 3em; padding: 0.5em 0; bottom: 0; left: 0; right: 0;
+        position: fixed; height: auto; padding: 0.5em 0; bottom: 0; left: 0; right: 0;
         box-shadow: 0 4px 16px 0 rgba(0,0,0,0.5);
       }
-      .actions .container {
-        display: block;
-        max-width: 40em; padding: 0 3em; margin: 0 auto;
-      }
-      .actions button:hover { background: #fff; color: #036; }
       
+      .actions .container { text-align: right; }
+      .actions button.left { float: left; }
+      .actions button { padding: 1.5em; color: #fff; background: #036; margin: 0 0.25em; }
+      .actions button.primary { color: #036; background: #fff; font-weight: bold; }
+      .actions button:hover { box-shadow: 0 0 8px 0 #fff; }
       
+/*      Step selector */
+      
+      .step { display: none; }
+      .step1 { display: block; }
       
     </style>
     
@@ -95,18 +128,34 @@
     </script>
   </head>
   <body>
-    <div class="container">
-      <h1>Send a response to TRAI now!</h1>
+    <img src="images/clear.png" class="logo-clear" />
+    <div class="container step step1">
+      <h1>Email TRAI now!</h1>
 
-      <p>The purpose is to assist supporters of strong net neutrality in articulating their own
-        views on the matter in a legally precise manner, in order to submit a response to the TRAI
-        Consultation Paper on Regulation of the so-called “Over-The-Top” (OTT) services before the
-        deadline on 24 April 2015.</p>
-
-      <p><a href="">Suggest changes or additions to the content</a> | 
-        <a href="http://github.com/netneutrality/netneutrality.in/issues/new">Report a technical problem</a></p>
-
-      <h1>The email</h1>
+      <p>This site helps you defend the open internet by providing a list of strong answers and arguments
+        that you can choose from and send to TRAI before the deadline (24 April 2015)</p>
+      
+      <p>This information helps us customize your email.</p>
+      
+      <label>Your name<input type="text" id="usernameInput" /></label>
+      <label>You are a<select type="text" id="usercatInput">
+        <option value="student">Student</option>
+        <option value="startup">Startup founder</option>
+        <option value="startup">Tech professional</option>
+        <option value="startup">Professional</option>
+        <option value="startup">Net user</option>
+      </select></label>
+      
+      <div class="actions">
+        <div class="container">
+          <button class="choose-answers">Choose answers</button>
+          <button class="send-response primary">Send response</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container step step2">
+      <h1>Choose your answers</h1>
 
       <div id="content">
 <!-- start of raw email -->
@@ -443,19 +492,106 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
       
       <div class="actions">
         <div class="container">
-          <button id="generate">Generate a response</button>
+          <button class="start-over left">◀</button>
+          <button class="send-response primary">Send response</button>
         </div>
       </div>
       
     </div>
+    
+    <div class="container step step3">
+      <h1>Ctrl+C to Copy</h1>
+      <p>To: advqos@trai.gov.in<br />
+        Bcc: netneutralityindia@gmail.com</p>
+      <textarea class="response-text" readonly></textarea>
+      <div class="actions">
+        <div class="container">
+          <button class="start-over left">◀</button>
+          <button class="copy-complete primary">Done, copied</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container step step4">
+      <h1>Open email and paste (Ctrl+V)</h1>
+      <p>To: advqos@trai.gov.in<br />
+        Bcc: netneutralityindia@gmail.com</p>
+      <textarea class="response-text" readonly></textarea>
+      <p>You will be able to edit the email before sending. The following recipients
+        will be automatically filled:</p>
+      <div class="actions">
+        <div class="container">
+          <button class="start-over left">◀</button>
+          <button class="open-email primary gmail">Gmail</button>
+          <button class="open-email primary yahoo">Yahoo</button>
+          <button class="open-email primary other-email">Other</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container step step5">
+      <h1>Help spread the word!</h1>
+      <p>To: advqos@trai.gov.in<br />
+        Bcc: netneutralityindia@gmail.com</p>
+      <textarea class="response-text" readonly></textarea>
+
+      <p>Sending our views to TRAI is only half the battle. Unless there’s public awareness about
+        the freedom of the internet, they can still ignore our voices.</p>
+      
+      <div class="actions">
+        <div class="container">
+          <button class="start-over left">◀</button>
+          <button class="share-facebook primary">Share on Facebook</button>
+          <button class="share-twitter primary">Tweet out</button>
+        </div>
+      </div>
+      
+    </div>
+    
+    
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script>
+      var supports = {
+        mailto: false, // true for mobile
+        breakEncode: true, // false for iOS
+        commandKey: false  // true for Macs
+      };
+      
+      var body, subject, toEmail = "advqos@trai.gov.in", bccEmail;
+      
       $(function () {
         selectRandomArguments($("#content"));
+
+        $(".start-over").click(function () {
+          switchToStep(1);
+        });
         
-        $("#generate").click(function () {
-          text = generate($("#content"));
-          console.log(text);
+        $(".choose-answers").click(function () {
+          switchToStep(2);
+        });
+        
+        $(".send-response").click(function () {
+          var body = generate($("#content")),
+              subject = generateSubject();
+          
+          $(".response-text").val(body);
+          
+          if(supports.mailTo) {
+            location.href = encodeURIComponent("mailto:" + traimail + "?subject=" + subject + "..." + body);
+            switchToStep(5);
+          } else {
+            switchToStep(3);
+            $(".step3 .response-text").focus();
+          }
+        });
+        
+        $(".copy-complete").click(function () {
+          switchToStep(4);
+        });
+        
+        $(".open-email").click(function () {
+          // Todo: open email.
+          switchToStep(5);
         });
         
         $(".section").click(function () {
@@ -469,7 +605,17 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
           updateCount($(this).closest(".section"));
           e.stopPropagation();
         });
+        
+        $(".response-text").focus(function () {
+          this.select();
+        });
+        
       });
+      
+      function switchToStep(n) {
+        $(".step").hide();
+        $(".step" + n).show();
+      }
       
       function selectRandomArguments($el) {
         $el.children().each(function (i, p) {
@@ -551,6 +697,10 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         });
         
         return text;
+      }
+      
+      function generateSubject () {
+        return "Stop the telcos destroying the open internet!";
       }
     </script>
   </body>
