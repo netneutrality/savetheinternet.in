@@ -89,6 +89,24 @@
           <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
           <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
         </div>
+        <hr>
+        <h4>Help us to spread word</h4>
+        <table class="social-buttons cf">
+          <tr>
+            <td style="padding-right: 20px;">
+                <a href="http://twitter.com/share" class="socialite twitter-share" data-text="Socialite.js" data-url="http://savetheinternet.in" data-count="vertical" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a>
+            </td>
+            <td style="padding-right: 20px;">
+                <a href="https://plus.google.com/share?url=http://savetheinternet.in" class="socialite googleplus-one" data-size="tall" data-href="http://savetheinternet.in" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a>
+            </td>
+            <td style="padding-right: 20px;">
+                <a href="http://www.facebook.com/sharer.php?u=http://www.socialitejs.com&t=Socialite.js" class="socialite facebook-like" data-href="http://savetheinternet.in" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class="vhidden">Share on Facebook</span></a>
+            </td>
+            <td style="padding-right: 20px;">
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://savetheinternet.in&title=Socialite.js" class="socialite linkedin-share" data-url="http://savetheinternet.in" data-counter="top" rel="nofollow" target="_blank"><span class="vhidden">Share on LinkedIn</span></a>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
       <div class="container">
@@ -288,6 +306,7 @@
                 <button class="btn btn-info btn-lg" id="sendResponse">Send your response</button>
             </div>
           </div>
+                      
         </div>
       </div>
       <footer>
@@ -356,6 +375,7 @@
   </div>
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script src="/js/socialite.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
       <script>
 
@@ -494,6 +514,11 @@
             }
           });
           return forClipboard? text: encodeURIComponent(text);
+        }
+
+        loadSocialIcons();
+        function loadSocialIcons() {
+          Socialite.load($('.social-buttons'));
         }
       </script>
 </body>
