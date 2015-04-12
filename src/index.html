@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="icon" type="image/png" href="/images/favicon.ico">
+  <link type="text/plain" rel="author" href="http://www.savetheinternet.in/humans.txt" />
   <!-- build:css css/compiled.min.css -->
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/custom.css">
@@ -83,8 +84,7 @@
         <h1>Save the internet. Tell TRAI we need network neutrality.</h1>
         <p>This page was created as a collection of the best arguments that may be made in favour of net neutrality, in the framework of the TRAI consultation paper.</p>
         <p>The purpose is to assist supporters of strong net neutrality in articulating their own views
-          on the matter in a legally precise manner, in order to submit a response to the TRAI before
-          the deadline on 24 April 2015.</p>
+          on the matter in a legally precise manner, in order to submit a response to the TRAI (at <span class="text-info"><strong>advqos@trai.gov.in</strong></span>) before the deadline on 24 April 2015.</p>
         <div class="button-bar hidden-xs hidden-sm">
           <button class="btn btn-info btn-lg sendResponseAuto">Send your response</button>
           <button class="btn btn-success btn-lg chooseAnswers" data-toggle="collapse" data-target="#responseContainer">Edit answers</button>
@@ -93,7 +93,7 @@
     </div>
       <div class="container">
         <div class="content row collapse" id="responseContainer">
-          <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
+          <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-9 col-lg-push-1">
           <h1>The Response</h1>
           <div class="hidden">
           <p>To the Chairman, TRAI
@@ -317,9 +317,10 @@
               <h4 class="modal-title">Submit Response</h4>
             </div>
             <div class="modal-body">
+              <h4>Your response</h4>
               <textarea class="form-control" id="responseTextarea" readonly></textarea>
-              <h1 id="copy-instruction">Press <span class="control-str">Ctrl</span>+C to copy <button id="copyBtn" class="btn btn-primary">Done</button></h1>
-              <div id="response-copied"><h1>Open email, then paste (<span class="control-str">Ctrl</span>+V)</h1>
+              <h4 id="copy-instruction">Copy the text by Right-click->Copy (or <span class="control-str">Ctrl</span>+C)  <button id="copyBtn" class="btn btn-primary">Done</button></h4>
+              <div id="response-copied"><h4>Compose an email, then paste (<span class="control-str">Ctrl</span>+V) it in the body</h4>
               <p class="button-bar">
                 <a href="#" target="_blank" class="btn btn-primary btn" id="gmailSend">Gmail</a>
                 <a href="#" target="_blank" class="btn btn-primary btn" id="yahooSend">Yahoo</a>
@@ -327,8 +328,8 @@
               </p>
                 <p>You will be able to edit before you send.</p>
                 </div>
-              <p>Emails should be sent to <span class="text-info">advqos@trai.gov.in</span><br />
-                Please bcc us at <span class="text-info">netneutralityindia@gmail.com</span><br />
+                <p>Emails should be sent to <strong><span class="text-info">advqos@trai.gov.in</span></strong><br />
+                Please bcc us at <strong><span class="text-info" id="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
                 We will try to ensure that your response is acknowledged by TRAI.</p>
               </div>
           </div>
@@ -343,10 +344,10 @@
               <h4 class="modal-title">Thank you!</h4>
             </div>
             <div class="modal-body">
-              <p>Sending a response to TRAI helps, we must also make our voices heard loud and clear. Share this website on Facebook and Twitter.</p>
+              <p>Sending a response to TRAI helps, but we must also make our voices heard loud and clear. Share this website on Facebook and Twitter.</p>
               <p class="button-bar">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Share on facebook</a>
-                <a href="https://twitter.com/home?status=Send%20TRAI%20your%20views,%20protect%20%23NetNeutralityIndia%20and%20%23SaveTheInternet%20-%20www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Tweet about this</a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Share on Facebook</a>
+                <a href="https://twitter.com/home?status=Send%20TRAI%20your%20views,%20protect%20%23NetNeutralityIndia%20and%20%23SaveTheInternet%20-%20www.savetheinternet.in" target="_blank" class="btn btn-primary btn">Tweet this</a>
               </p>
             </div>
           </div>
@@ -404,6 +405,8 @@
             isMobile = true;
           }
 
+          $('#bccAddressModal').html(bccAddress);
+
           if(isMobile) {
             $('#sendResponse, .sendResponseAuto').click(function() {
               sendEmailMobile();
@@ -436,7 +439,7 @@
           $("#sendModal").modal("show");
           $('#responseTextarea').val(response);
           
-          if(isMac) $(".control-str").html("Command");
+          if(isMac) $(".control-str").html("Cmd");
           
           $("#copyBtn").parent().hide();
           $("#response-copied").hide();

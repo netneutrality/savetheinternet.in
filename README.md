@@ -17,7 +17,7 @@ If you are making major changes, create a new issue (or comment on the existing 
 ```
 > git checkout -b large-bug-fix-issue-19
 ```
-If there are conflicts while merging your pull request we will ask you to pull the latest changes, resolve conflicts, and come back. To do this:
+Please make sure you merge the latest commits from `stage` into your pull request at the time of creating it. If there are conflicts while merging your pull request we will ask you to pull the latest changes, resolve conflicts, and come back. To do this:
 ```
 > # add remote repo if you haven't already
 > git remote add upstream git@github.com:netneutrality/savetheinternet.in.git
@@ -33,8 +33,10 @@ If there are conflicts while merging your pull request we will ask you to pull t
 ```
 ### How to run it locally
 
+Install node
+
 ```
+> cd app_directory
 > npm install
-> grunt
 > node app.js
 ```
