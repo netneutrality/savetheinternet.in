@@ -13,16 +13,19 @@
       html, body { padding: 0; margin: 0; }
       body {
         margin-bottom: 8em;
-        background: #fff url('images/bluelogo.png') no-repeat center top;
-        background-size: 90%;
+        background: #c29b81 url('images/expert-bg.gif') no-repeat;
+        background-position: 25% 20%;
+        background-size: 175%;
+        background-attachment: fixed;
       }
       
       body, button, input, textarea, select, option {
-        font: 16px/24px Georgia;
+        font: 16px/24px Georgia, serif;
+        color: #665244;
       }
       
-      h1, h2, h3, p { margin: 0; padding: 1em; line-height: 1.25em; position: relative; border-radius: 4px; background: rgba(255,255,255,0.75); } 
-      a { color: #06c; text-decoration: none; }
+      h1, h2, h3, p { margin: 0; padding: 1em; line-height: 1.25em; position: relative; background: rgba(255,255,255,0.75); } 
+      a { color: #665244; text-decoration: none; }
       
       input, textarea, select {
         display: block;
@@ -36,11 +39,11 @@
       label { display: block; padding: 1em 0; }
       
       button { 
-        background: #036; color: white;
+        background: #cca388; color: white;
         border: none; padding: 1em; margin: 0;
         line-height: 1em; border-radius: 4px;
       }
-      button:hover { background: #06c; }
+      button:hover { background: #665244; }
       
       textarea {
         resize: vertical;
@@ -48,12 +51,13 @@
       
       .response-text { height: 20em; font-size: 0.75em; }
       
-      .logo-clear { width: 90% }
-      
       .container {
         display: block;
         max-width: 55em; padding: 0 3em; margin: 0 auto;
       }
+
+      .container.logo {text-align: center; min-height: 150px; padding: 1em}
+      .container.logo img {width: 40%;}
       
 /*--- Step 1: User info --- */
 
@@ -85,7 +89,7 @@
       .argument:hover { background: #eee; }
       .argument.selected::before {
         content: "✓"; position: absolute; top: 0.25em; left: -0.5em;
-        font-size: 64px; color: #06c;
+        font-size: 64px; color: #665244;
       }
       
       .heading { color: #999; }
@@ -98,20 +102,24 @@
 /*      The action bar */
       
       .actions {
-        background: #06c; color: #fff;
+        background: #665244; color: #fff;
         position: fixed; height: auto; padding: 0.5em 0; bottom: 0; left: 0; right: 0;
         box-shadow: 0 4px 16px 0 rgba(0,0,0,0.5);
       }
       
       .actions .container { text-align: right; }
       .actions button.left { float: left; }
-      .actions button { padding: 1.5em; color: #fff; background: #036; margin: 0 0.25em; }
-      .actions button.primary { color: #036; background: #fff; font-weight: bold; }
+      .actions button { padding: 1.5em; color: #fff; background: #cca388; margin: 0.1em 0.25em; }
+      @media (max-width: 768px) {
+        .actions button { padding: 0.5em; }
+      }
+      .actions button.primary { color: #cca388; background: #fff; font-weight: bold; }
       .actions button:hover { box-shadow: 0 0 8px 0 #fff; }
       
 /*      Step selector */
       
       .step { display: none; }
+      .step h1 {margin-bottom: 1em}
       .step1 { display: block; }
       
     </style>
@@ -128,7 +136,7 @@
     </script>
   </head>
   <body>
-    <img src="images/clear.png" class="logo-clear" />
+    <div class="container logo"><img src="/images/netneutrality.png"></div>
     <div class="container step step1">
       <h1>Email TRAI now!</h1>
 
@@ -156,7 +164,6 @@
     
     <div class="container step step2">
       <h1>Choose your answers</h1>
-
       <div id="content">
 <!-- start of raw email -->
 
@@ -605,9 +612,17 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         });
         
         $(".section").click(function () {
-          $(".section.expanded").removeClass("expanded");
-          $(this).addClass("expanded");
-          this.scrollIntoView();
+          if(!$(this).hasClass('expanded')) {
+            $(".section.expanded").removeClass("expanded");
+            $(this).addClass("expanded");
+            this.scrollIntoView();
+          }
+        });
+        $(".section > p:nth-child(1)").click(function (e) {
+          if($(this).parent().hasClass("expanded")) {
+            $(this).parent().removeClass("expanded");
+            e.stopPropagation();
+          }
         });
         
         $(".argument").click(function (e) {
