@@ -385,6 +385,7 @@
         
         var subject = getSubject();
         $(function () {
+          initAnswers();
           styleEm();
 
           $("#responseTextarea").focus(function(e) {
@@ -404,6 +405,25 @@
             window.location.hash = '#responseContainer';
           });
         });
+
+        function selectOneAnswer(arr) {
+          $(pickOne(arr)).removeClass("hidden skip");
+        }
+
+        function initAnswers() {
+            $('.answer').addClass("hidden skip");
+            var qs = $('.question');
+            for (var i = 0; i < qs.length; i++) {
+              var answers = [];
+              if(i!=qs.length-1) {
+                answers = $(qs[i]).nextUntil(qs[i+1]);
+              }
+              else {
+                  answers = $(qs[i]).nextAll();
+              }
+              selectOneAnswer(answers);
+            };
+        }
         
         function initListeners() {
 
