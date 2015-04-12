@@ -180,7 +180,7 @@
 <div class="hidden">To<br>Dr. Rahul  Khullar<br>Chairman, Telecom Regulatory Authority of India<br/>
   Mahanagar Doorsanchar Bhawan, Jawahar Lal Nehru Marg (Old Minto Road), New Delhi – 110002</div>
 
-<div class="hidden">Dated: April <script>document.write(new Date().getDate())</script>, 2015</div>
+<div class="hidden">Dated: April <span class="date"></span>, 2015</div>
 
 <div class="hidden">Dear Sir,</div>
 
@@ -193,7 +193,7 @@
 <p class="argument">The way the paper is structured is a cause of concern. Experts like us are demanding network neutrality laws to protect against discrimination in traffic data and blocking and double charging on specific internet services. To this the TRAI has posed question on the licensing of such services itself. By doing so, it has adopted an extremely regressive position which is contrary to user interest. The signatories to this, clearly want two things. First, no licensing of Internet Services and second network neutrality regulations to be issued urgently. This is our clear position and of many other supporting organisations and individuals. Further detail on this is provided in answers to the specific queries listed in the Internet Licensing Paper below.</p>
 <p class="argument">We request that a transparent process with respect to this consultation may be followed to inspire greater confidence and trust. You are requested to publicly publish our response on the TRAI website as has been done in the past when any member of the public has commented. Further the TRAI is requested to issue a specific response to submissions after collating the concerns which arise from them before making any recommendation.</p>
 <p class="hidden">Thanking you,</p>
-<p class="hidden" id="username">An internet user</p>
+<p class="hidden username">An internet user</p>
 </div>
 
 <div class="section">
@@ -512,7 +512,6 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
           <button class="send-response primary">Send response</button>
         </div>
       </div>
-      
     </div>
     
     <div class="container step step3">
@@ -578,7 +577,16 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
       }
 
       var body, subject, toAddress = "advqos@trai.gov.in",
-          bccAddress = pickOne(["netneutralityindia@gmail.com", "netneutralityindia02@gmail.com", "netneutralityindia03@gmail.com"]);
+          bccAddress = pickOne([
+            "netneutralityindia@gmail.com",
+            "netneutralityindia02@gmail.com", 
+            "netneutralityindia03@gmail.com",
+            "netneutralityindia04@gmail.com",
+            "netneutralityindia05@gmail.com",
+            "netneutralityindia06@gmail.com",
+            "netneutralityindia07@gmail.com",
+            "netneutralityindia08@gmail.com"
+          ]);
       
       $(function () {
         selectRandomArguments($("#content"));
@@ -592,16 +600,17 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         });
         
         $(".send-response").click(function () {
-          var body = generateBody($("#content")),
-              subject = generateSubject(),
-              encodedBody;
+          var encodedBody;
+          
+          body = generateBody($("#content"));
+          subject = generateSubject();
           
           $(".response-text").val(body);
           
           if(supports.mailTo) {
             encodedBody = encodeURIComponent(body);
             if(!supports.breakEncode) encodedBody = encodedBody.replace("\n","%0A");
-            window.location.href = "mailto:"+toAddress+"?subject="+subject.replace(/\s+/, "+")+"&bcc="+bccAddress+"&body="+encodedBody;
+            window.location.href = "mailto:"+toAddress+"?subject="+encodeURIComponent(subject)+"&bcc="+bccAddress+"&body="+encodedBody;
             switchToStep(5);
           } else {
             switchToStep(3);
@@ -609,14 +618,19 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
           }
         });
         
+        $(".step3 .response-text").bind("copy", function () {
+          switchToStep(4);
+        })
+        
         $(".copy-complete").click(function () {
           switchToStep(4);
         });
         
         $(".open-email").click(function () {
-          window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject);
-          window.open("http://compose.mail.yahoo.com/?Subject="+subject+"&To="+toAddress+"&Bcc="+bccAddress);
-          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress);
+          console.log(subject);
+          if ($(this).hasClass("gmail")) window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+encodeURIComponent(subject));
+          if ($(this).hasClass("yahoo")) window.open("http://compose.mail.yahoo.com/?Subject="+encodeURIComponent(subject)+"&To="+toAddress+"&Bcc="+bccAddress);
+          if ($(this).hasClass("other-email")) location.href = "mailto:"+toAddress+"?subject="+encodeURIComponent(subject)+"&bcc="+bccAddress;
           switchToStep(5);
         });
         
@@ -643,6 +657,21 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         $(".response-text").focus(function () {
           this.select();
         });
+        
+        $("#usernameInput").change(function () {
+          $(".username").html($(this).val());
+        });
+        
+        $(".share-facebook").click(function () {
+          window.open("https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in");
+        });
+        
+        $(".share-twitter").click(function () {
+          window.open("https://twitter.com/home?status=Send%20TRAI%20your%20views,%20protect%20%23NetNeutralityIndia%20and%20%23SaveTheInternet%20-%20www.savetheinternet.in");
+        });
+        
+        $(".username").html($("#usernameInput").val());
+        $(".date").html((new Date().getDate()));
         
       });
       
@@ -696,12 +725,12 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         var head = "", args = [], text = "";
         
         function getText($p) {
-          /* further work needed to handle links and whitespace correctly*/
           return $p.html().
-            replace(/\s+/, " ").
-            replace(/<a[^>]+href="([^"]*)"[^>]+>/g, "$1").
-            replace(/<[^>]+>/g, "\n").
-            replace(/\n+/, "\n\n");
+            replace(/\s+/g, " ").
+            replace(/<a[^>]*href="([^"]*)"[^>]*>.*?<\/a>/g, " $1 ").
+            split(/<br[^>]*>/).map(function (line) {
+              return line.trim();
+            }).join("\n").replace(/<[^>]+>/g, " ").trim();
         }
         
         $el.children().each(function (i, p) {
@@ -723,10 +752,10 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
             }
             
             if ($p.hasClass("section")) {
-              text += generateBody($p);
+              text += generateBody($p) + '\n\n';
             } else if ($p.hasClass("heading")) {
               head = getText($p);
-            } else if (!$p.hasClass("skip")){
+            } else if (!$p.hasClass("skip")) {
               text += getText($p) + '\n\n';
             }
           }
@@ -739,8 +768,8 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         return pickOne([
           pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:"])+" "+
           pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+
-          pickOne(["about", "on"])+" "+
-          pickOne(["regulation of OTTs", "Breaking net neutrality"]),
+          pickOne(["about", "on", "regarding"])+" "+
+          pickOne(["regulation of OTTs", "net neutrality"]),
           
           pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs", "telcos"]) + " from "]) +
           pickOne(["breaking ", "violating ", "destroying "]) + 
