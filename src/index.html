@@ -597,10 +597,9 @@
           Socialite.load($('.social-buttons'));
         }
         var uc = /UCBrowser/g.test( navigator.userAgent );
-        if(uc){
-          $('.browser_name').text('UC Browser');
-          $('#browser_warning').removeClass('hidden');
-        }
+        var uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(navigator.userAgent);
+        if(uc) $('.browser_name').text('UC Browser');
+        if(uc || uiwebview)$('#browser_warning').removeClass('hidden');
       </script>
 </body>
 </html> 
