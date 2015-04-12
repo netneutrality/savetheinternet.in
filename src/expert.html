@@ -161,7 +161,7 @@
 <!-- start of raw email -->
 
 
-<div class="hidden">To<br>Dr. Rahul  Khullar<br>Chairman, Telecom Regulatory Authority of India<br>
+<div class="hidden">To<br>Dr. Rahul  Khullar<br>Chairman, Telecom Regulatory Authority of India<br/>
   Mahanagar Doorsanchar Bhawan, Jawahar Lal Nehru Marg (Old Minto Road), New Delhi – 110002</div>
 
 <div class="hidden">Dated: April <script>document.write(new Date().getDate())</script>, 2015</div>
@@ -552,12 +552,17 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script>
       var supports = {
-        mailto: false, // true for mobile
-        breakEncode: true, // false for iOS
+        mailto: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent), // use mailto on mobile
+        breakEncode: !(/(iPad|iPhone|iPod)/g.test(navigator.userAgent)), // line breaks are not encoded by encodeURIComponent on iOS
         commandKey: false  // true for Macs
       };
       
-      var body, subject, toEmail = "advqos@trai.gov.in", bccEmail;
+      function pickOne(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      var body, subject, toAddress = "advqos@trai.gov.in",
+          bccAddress = pickOne(["netneutralityindia@gmail.com", "netneutralityindia02@gmail.com", "netneutralityindia03@gmail.com"]);
       
       $(function () {
         selectRandomArguments($("#content"));
@@ -571,13 +576,16 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         });
         
         $(".send-response").click(function () {
-          var body = generate($("#content")),
-              subject = generateSubject();
+          var body = generateBody($("#content")),
+              subject = generateSubject(),
+              encodedBody;
           
           $(".response-text").val(body);
           
           if(supports.mailTo) {
-            location.href = encodeURIComponent("mailto:" + traimail + "?subject=" + subject + "..." + body);
+            encodedBody = encodeURIComponent(body);
+            if(!supports.breakEncode) encodedBody = encodedBody.replace("\n","%0A");
+            window.location.href = "mailto:"+toAddress+"?subject="+subject.replace(/\s+/, "+")+"&bcc="+bccAddress+"&body="+encodedBody;
             switchToStep(5);
           } else {
             switchToStep(3);
@@ -590,7 +598,9 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         });
         
         $(".open-email").click(function () {
-          // Todo: open email.
+          window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+subject);
+          window.open("http://compose.mail.yahoo.com/?Subject="+subject+"&To="+toAddress+"&Bcc="+bccAddress);
+          window.open("mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress);
           switchToStep(5);
         });
         
@@ -621,7 +631,7 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         $el.children().each(function (i, p) {
           var $p = $(p);
           if ($p.hasClass("argument")) {
-            if (Math.random() < 0.3) $p.addClass("selected");
+            if (Math.random() < 0.35) $p.addClass("selected");
           } else if($p.hasClass("section")) {
             selectRandomArguments($p);
             updateCount($p);
@@ -658,12 +668,14 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         return array;
       }
       
-      function generate($el) {
+      function generateBody($el) {
         var head = "", args = [], text = "";
         
         function getText($p) {
           /* further work needed to handle links and whitespace correctly*/
           return $p.html().
+            replace(/\s+/, " ").
+            replace(/<a[^>]+href="([^"]*)"[^>]+>/g, "$1").
             replace(/<[^>]+>/g, "\n").
             replace(/\n+/, "\n\n");
         }
@@ -687,7 +699,7 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
             }
             
             if ($p.hasClass("section")) {
-              text += generate($p);
+              text += generateBody($p);
             } else if ($p.hasClass("heading")) {
               head = getText($p);
             } else if (!$p.hasClass("skip")){
@@ -700,8 +712,17 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
       }
       
       function generateSubject () {
-        return "Stop the telcos destroying the open internet!";
+        return pickOne([
+          pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:"])+" "+
+          pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+
+          pickOne(["about", "on"])+" "+
+          pickOne(["regulation of OTTs", "Breaking net neutrality"]),
+          
+          pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs", "telcos"]) + " from "]) +
+          pickOne(["breaking ", "violating ", "destroying "]) + 
+          pickOne(["Net Neutrality", "network neutrality", "net neutrality", "the open internet", "the internet"])
+        ]);
       }
     </script>
   </body>
-</html> 
+</html>
