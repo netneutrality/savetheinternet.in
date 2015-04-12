@@ -378,13 +378,14 @@
         var toAddress = "advqos@trai.gov.in";
 
         // Don't give me that look. I know this is horrible. But limits ok! - https://support.google.com/a/answer/1366776?hl=en
-        var bccAddresses = ["netneutralityindia@gmail.com", "netneutralityindia02@gmail.com", "netneutralityindia03@gmail.com"];
+        var bccAddresses = ["netneutralityindia04@gmail.com", "netneutralityindia05@gmail.com", "netneutralityindia06@gmail.com", "netneutralityindia07@gmail.com", "netneutralityindia08@gmail.com"];
         var bccAddress = pickOne(bccAddresses);
 
 //        ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
         
         var subject = getSubject();
         $(function () {
+          initAnswers();
           styleEm();
 
           $("#responseTextarea").focus(function(e) {
@@ -404,6 +405,25 @@
             window.location.hash = '#responseContainer';
           });
         });
+
+        function selectOneAnswer(arr) {
+          $(pickOne(arr)).removeClass("hidden skip");
+        }
+
+        function initAnswers() {
+            $('.answer').addClass("hidden skip");
+            var qs = $('.question');
+            for (var i = 0; i < qs.length; i++) {
+              var answers = [];
+              if(i!=qs.length-1) {
+                answers = $(qs[i]).nextUntil(qs[i+1]);
+              }
+              else {
+                  answers = $(qs[i]).nextAll();
+              }
+              selectOneAnswer(answers);
+            };
+        }
         
         function initListeners() {
 
