@@ -88,7 +88,7 @@
         <h1>Save the internet. Tell TRAI we need network neutrality.</h1>
         <div class="button-bar">
           <button class="btn btn-danger btn-lg sendResponseAuto">Respond to TRAI now</button>
-          or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#responseContainer">edit answers</a>
+          or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer">edit answers</a>
         </div>
 
         <p>This page was created as a collection of the best arguments that may be made in favour of net neutrality, in the framework of the TRAI consultation paper.</p>
@@ -99,8 +99,8 @@
         <img src="images/netneutrality.png" class="new-logo" />
       </div>
     </div>
-    <div class="content row collapse" id="responseContainer">
-      <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1">
+    <div class="content row collapse" id="collapseContainer">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1" id="responseContainer">
         <h1>The Response</h1>
         <div class="hidden">
         <p>To the Chairman, TRAI
@@ -291,7 +291,7 @@
       </div>
       <div class="clearfix"></div>
       <div class="col-lg-12 text-center">
-        <button class="btn btn-info btn-lg" id="sendResponse">Send your response</button>
+        <button class="btn btn-info btn-lg sendResponse">Send your response</button>
       </div>
     </div>
   </div>
@@ -387,7 +387,7 @@
         
         var subject = getSubject();
         $(function () {
-          // initAnswers(); Off for now
+          initAnswers();
           styleEm();
 
           $("#responseTextarea").focus(function(e) {
@@ -404,7 +404,7 @@
             $('.navBarSend').toggle();
             e.preventDefault();
             initListeners();
-            window.location.hash = '#responseContainer';
+            window.location.hash = '#collapseContainer';
           });
         });
 
@@ -505,7 +505,7 @@
           
           window.location.href = "mailto:"+toAddress+"?subject="+subject+"&bcc="+bccAddress+"&body="+body;
         }
-
+        
         function generateResponse(forClipboard) {
           var nLine = "\r\n";
           var text = "";
