@@ -13,16 +13,20 @@
       html, body { padding: 0; margin: 0; }
       body {
         margin-bottom: 8em;
-        background: #fff url('images/bluelogo.png') no-repeat center top;
-        background-size: 90%;
+        background: #c29b81 url('images/expert-bg.gif') no-repeat;
+        background-position: 25% 20%;
+        background-size: 175%;
+        background-attachment: fixed;
       }
       
       body, button, input, textarea, select, option {
-        font: 16px/24px Georgia;
+        font: 16px/24px Georgia, serif;
+        color: #665244;
       }
       
-      h1, h2, h3, p { margin: 0; padding: 1em; line-height: 1.25em; position: relative; border-radius: 4px; background: rgba(255,255,255,0.75); } 
-      a { color: #06c; text-decoration: none; }
+      h1, h2, h3, p, ul.help, .response-text { margin: 0; padding: 1em; line-height: 1.25em; position: relative; background: rgba(255,255,255,0.75); } 
+      ul.help li {margin-left: 1.5em;}
+      a { color: #665244; text-decoration: none; }
       
       input, textarea, select {
         display: block;
@@ -36,11 +40,11 @@
       label { display: block; padding: 1em 0; }
       
       button { 
-        background: #036; color: white;
+        background: #cca388; color: white;
         border: none; padding: 1em; margin: 0;
         line-height: 1em; border-radius: 4px;
       }
-      button:hover { background: #06c; }
+      button:hover { background: #665244; }
       
       textarea {
         resize: vertical;
@@ -48,12 +52,13 @@
       
       .response-text { height: 20em; font-size: 0.75em; }
       
-      .logo-clear { width: 90% }
-      
       .container {
         display: block;
         max-width: 55em; padding: 0 3em; margin: 0 auto;
       }
+
+      .container.logo {text-align: center; min-height: 150px; padding: 1em}
+      .container.logo img {width: 40%;}
       
 /*--- Step 1: User info --- */
 
@@ -85,7 +90,7 @@
       .argument:hover { background: #eee; }
       .argument.selected::before {
         content: "✓"; position: absolute; top: 0.25em; left: -0.5em;
-        font-size: 64px; color: #06c;
+        font-size: 64px; color: #665244;
       }
       
       .heading { color: #999; }
@@ -98,20 +103,24 @@
 /*      The action bar */
       
       .actions {
-        background: #06c; color: #fff;
+        background: #665244; color: #fff;
         position: fixed; height: auto; padding: 0.5em 0; bottom: 0; left: 0; right: 0;
         box-shadow: 0 4px 16px 0 rgba(0,0,0,0.5);
       }
       
       .actions .container { text-align: right; }
       .actions button.left { float: left; }
-      .actions button { padding: 1.5em; color: #fff; background: #036; margin: 0 0.25em; }
-      .actions button.primary { color: #036; background: #fff; font-weight: bold; }
+      .actions button { padding: 1.5em; color: #fff; background: #cca388; margin: 0.1em 0.25em; }
+      @media (max-width: 768px) {
+        .actions button { padding: 0.5em; }
+      }
+      .actions button.primary { color: #cca388; background: #fff; font-weight: bold; }
       .actions button:hover { box-shadow: 0 0 8px 0 #fff; }
       
 /*      Step selector */
       
       .step { display: none; }
+      .step h1, ul.help {margin-bottom: 1em}
       .step1 { display: block; }
       
     </style>
@@ -128,7 +137,7 @@
     </script>
   </head>
   <body>
-    <img src="images/clear.png" class="logo-clear" />
+    <div class="container logo"><img src="/images/netneutrality.png"></div>
     <div class="container step step1">
       <h1>Email TRAI now!</h1>
 
@@ -156,15 +165,22 @@
     
     <div class="container step step2">
       <h1>Choose your answers</h1>
-
+      <ul class="help">
+        <li>Each section below respresents a part of your email.</li>
+        <li>Click a section to choose your answer for that section.</li>
+        <li>In each section, there are various options that form a part of the answer for that question.</li>
+        <li>Some answer options have been pre-selected for you.</li>
+        <li>You may wish to read them in detail to understand what you are choosing.</li>
+        <li>Click each answer option to include or exclude it. Ticked options will be included in your answers.</li>
+      </ul>
       <div id="content">
 <!-- start of raw email -->
 
 
-<div class="hidden">To<br>Dr. Rahul  Khullar<br>Chairman, Telecom Regulatory Authority of India<br>
+<div class="hidden">To<br>Dr. Rahul  Khullar<br>Chairman, Telecom Regulatory Authority of India<br/>
   Mahanagar Doorsanchar Bhawan, Jawahar Lal Nehru Marg (Old Minto Road), New Delhi – 110002</div>
 
-<div class="hidden">Dated: April <script>document.write(new Date().getDate())</script>, 2015</div>
+<div class="hidden">Dated: April <span class="date"></span>, 2015</div>
 
 <div class="hidden">Dear Sir,</div>
 
@@ -177,7 +193,7 @@
 <p class="argument">The way the paper is structured is a cause of concern. Experts like us are demanding network neutrality laws to protect against discrimination in traffic data and blocking and double charging on specific internet services. To this the TRAI has posed question on the licensing of such services itself. By doing so, it has adopted an extremely regressive position which is contrary to user interest. The signatories to this, clearly want two things. First, no licensing of Internet Services and second network neutrality regulations to be issued urgently. This is our clear position and of many other supporting organisations and individuals. Further detail on this is provided in answers to the specific queries listed in the Internet Licensing Paper below.</p>
 <p class="argument">We request that a transparent process with respect to this consultation may be followed to inspire greater confidence and trust. You are requested to publicly publish our response on the TRAI website as has been done in the past when any member of the public has commented. Further the TRAI is requested to issue a specific response to submissions after collating the concerns which arise from them before making any recommendation.</p>
 <p class="hidden">Thanking you,</p>
-<p class="hidden" id="username">An internet user</p>
+<p class="hidden username">An internet user</p>
 </div>
 
 <div class="section">
@@ -496,7 +512,6 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
           <button class="send-response primary">Send response</button>
         </div>
       </div>
-      
     </div>
     
     <div class="container step step3">
@@ -552,12 +567,26 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script>
       var supports = {
-        mailto: false, // true for mobile
-        breakEncode: true, // false for iOS
+        mailto: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent), // use mailto on mobile
+        breakEncode: !(/(iPad|iPhone|iPod)/g.test(navigator.userAgent)), // line breaks are not encoded by encodeURIComponent on iOS
         commandKey: false  // true for Macs
       };
       
-      var body, subject, toEmail = "advqos@trai.gov.in", bccEmail;
+      function pickOne(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      var body, subject, toAddress = "advqos@trai.gov.in",
+          bccAddress = pickOne([
+            "netneutralityindia@gmail.com",
+            "netneutralityindia02@gmail.com", 
+            "netneutralityindia03@gmail.com",
+            "netneutralityindia04@gmail.com",
+            "netneutralityindia05@gmail.com",
+            "netneutralityindia06@gmail.com",
+            "netneutralityindia07@gmail.com",
+            "netneutralityindia08@gmail.com"
+          ]);
       
       $(function () {
         selectRandomArguments($("#content"));
@@ -571,13 +600,17 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         });
         
         $(".send-response").click(function () {
-          var body = generate($("#content")),
-              subject = generateSubject();
+          var encodedBody;
+          
+          body = generateBody($("#content"));
+          subject = generateSubject();
           
           $(".response-text").val(body);
           
           if(supports.mailTo) {
-            location.href = encodeURIComponent("mailto:" + traimail + "?subject=" + subject + "..." + body);
+            encodedBody = encodeURIComponent(body);
+            if(!supports.breakEncode) encodedBody = encodedBody.replace("\n","%0A");
+            window.location.href = "mailto:"+toAddress+"?subject="+encodeURIComponent(subject)+"&bcc="+bccAddress+"&body="+encodedBody;
             switchToStep(5);
           } else {
             switchToStep(3);
@@ -585,19 +618,34 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
           }
         });
         
+        $(".step3 .response-text").bind("copy", function () {
+          switchToStep(4);
+        })
+        
         $(".copy-complete").click(function () {
           switchToStep(4);
         });
         
         $(".open-email").click(function () {
-          // Todo: open email.
+          console.log(subject);
+          if ($(this).hasClass("gmail")) window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+toAddress+"&bcc="+bccAddress+"&su="+encodeURIComponent(subject));
+          if ($(this).hasClass("yahoo")) window.open("http://compose.mail.yahoo.com/?Subject="+encodeURIComponent(subject)+"&To="+toAddress+"&Bcc="+bccAddress);
+          if ($(this).hasClass("other-email")) location.href = "mailto:"+toAddress+"?subject="+encodeURIComponent(subject)+"&bcc="+bccAddress;
           switchToStep(5);
         });
         
         $(".section").click(function () {
-          $(".section.expanded").removeClass("expanded");
-          $(this).addClass("expanded");
-          this.scrollIntoView();
+          if(!$(this).hasClass('expanded')) {
+            $(".section.expanded").removeClass("expanded");
+            $(this).addClass("expanded");
+            this.scrollIntoView();
+          }
+        });
+        $(".section > p:nth-child(1)").click(function (e) {
+          if($(this).parent().hasClass("expanded")) {
+            $(this).parent().removeClass("expanded");
+            e.stopPropagation();
+          }
         });
         
         $(".argument").click(function (e) {
@@ -610,6 +658,21 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
           this.select();
         });
         
+        $("#usernameInput").change(function () {
+          $(".username").html($(this).val());
+        });
+        
+        $(".share-facebook").click(function () {
+          window.open("https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in");
+        });
+        
+        $(".share-twitter").click(function () {
+          window.open("https://twitter.com/home?status=Send%20TRAI%20your%20views,%20protect%20%23NetNeutralityIndia%20and%20%23SaveTheInternet%20-%20www.savetheinternet.in");
+        });
+        
+        $(".username").html($("#usernameInput").val());
+        $(".date").html((new Date().getDate()));
+        
       });
       
       function switchToStep(n) {
@@ -621,7 +684,7 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         $el.children().each(function (i, p) {
           var $p = $(p);
           if ($p.hasClass("argument")) {
-            if (Math.random() < 0.3) $p.addClass("selected");
+            if (Math.random() < 0.35) $p.addClass("selected");
           } else if($p.hasClass("section")) {
             selectRandomArguments($p);
             updateCount($p);
@@ -658,14 +721,16 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
         return array;
       }
       
-      function generate($el) {
+      function generateBody($el) {
         var head = "", args = [], text = "";
         
         function getText($p) {
-          /* further work needed to handle links and whitespace correctly*/
           return $p.html().
-            replace(/<[^>]+>/g, "\n").
-            replace(/\n+/, "\n\n");
+            replace(/\s+/g, " ").
+            replace(/<a[^>]*href="([^"]*)"[^>]*>.*?<\/a>/g, " $1 ").
+            split(/<br[^>]*>/).map(function (line) {
+              return line.trim();
+            }).join("\n").replace(/<[^>]+>/g, " ").trim();
         }
         
         $el.children().each(function (i, p) {
@@ -687,10 +752,10 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
             }
             
             if ($p.hasClass("section")) {
-              text += generate($p);
+              text += generateBody($p) + '\n\n';
             } else if ($p.hasClass("heading")) {
               head = getText($p);
-            } else if (!$p.hasClass("skip")){
+            } else if (!$p.hasClass("skip")) {
               text += getText($p) + '\n\n';
             }
           }
@@ -700,8 +765,17 @@ The discrimination or degradation of traffic shall be regulated in accordance wi
       }
       
       function generateSubject () {
-        return "Stop the telcos destroying the open internet!";
+        return pickOne([
+          pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:"])+" "+
+          pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+
+          pickOne(["about", "on", "regarding"])+" "+
+          pickOne(["regulation of OTTs", "net neutrality"]),
+          
+          pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs", "telcos"]) + " from "]) +
+          pickOne(["breaking ", "violating ", "destroying "]) + 
+          pickOne(["Net Neutrality", "network neutrality", "net neutrality", "the open internet", "the internet"])
+        ]);
       }
     </script>
   </body>
-</html> 
+</html>
