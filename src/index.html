@@ -328,7 +328,7 @@
                 <p>You will be able to edit before you send.</p>
                 </div>
                 <p>Emails should be sent to <strong><span class="text-info">advqos@trai.gov.in</span></strong><br />
-                Please bcc us at <strong><span class="text-info">netneutralityindia@gmail.com</span></strong><br />
+                Please bcc us at <strong><span class="text-info" id="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
                 We will try to ensure that your response is acknowledged by TRAI.</p>
               </div>
           </div>
@@ -403,6 +403,8 @@
           if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             isMobile = true;
           }
+
+          $('#bccAddressModal').html(bccAddress);
 
           if(isMobile) {
             $('#sendResponse, .sendResponseAuto').click(function() {
