@@ -509,7 +509,7 @@
         function generateResponse(forClipboard) {
           var nLine = "\r\n";
           var text = "";
-          var container=$('#responseContainer').children("div").each(function (i, p) {
+          var container=$('#responseContainer > div').children("div").each(function (i, p) {
             var $p = $(p), val;
             if($p.hasClass('question')) {
               text = text + nLine+nLine;
