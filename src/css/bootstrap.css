@@ -1088,7 +1088,7 @@ body {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.42857143;
-  color: #2c3e50;
+  color: #444;
   background-color: #ffffff;
 }
 input,
@@ -1269,6 +1269,7 @@ h6 .small,
 h1,
 .h1 {
   font-size: 39px;
+  color: #655244;
 }
 h2,
 .h2 {
@@ -3096,8 +3097,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #1a242f;
-  border-color: #161f29;
+  background-color: #846A58;
+  border-color: #594B41;
 }
 .btn-primary:active,
 .btn-primary.active,
