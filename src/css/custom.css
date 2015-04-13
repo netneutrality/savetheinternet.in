@@ -94,3 +94,9 @@ input#mc-embedded-subscribe {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+.social-col {
+  display: inline-block;
+  padding: 0 8px;
+  vertical-align: top;
+}
