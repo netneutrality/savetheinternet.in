@@ -66,6 +66,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-9752294-8', 'auto');
   ga('set', 'forceSSL', true);
+  ga('require', 'linkid');
   ga('send', 'pageview');
 </script>
 <script>
@@ -79,10 +80,10 @@
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">#SaveTheInternet</a>
-        <a class="navbar-toggle btn btn-danger hidden-md hidden-lg navBarSend sendResponse" style="display:none;">Send</a>
+        <a class="navbar-toggle btn btn-danger hidden-md hidden-lg navBarSend sendResponse" style="display:none;" id="mobileNavBarSend">Send</a>
       </div>
       <div class="nav navbar-nav navbar-right hidden-xs hidden-sm navBarSend" style="display:none;">
-        <button type="button" class="btn btn-danger navbar-btn sendResponse">Respond to TRAI now</button>
+        <button type="button" class="btn btn-danger navbar-btn sendResponse" id="navBarSend">Respond to TRAI now</button>
       </div>
     </div>
   </nav>
@@ -97,8 +98,8 @@
         </div>
         <noscript>You need a JavaScript-capable browser to submit this form.</noscript>
         <div class="button-bar">
-          <button class="btn btn-danger btn-lg sendResponseAuto">Respond to TRAI now</button>
-          or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer">edit answers</a>
+          <button class="btn btn-danger btn-lg sendResponseAuto" id="mainSend">Respond to TRAI now</button>
+          or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">edit answers</a>
         </div>
         <p>This page was created as a collection of the best arguments that may be made in favour of net neutrality, in the framework of the TRAI consultation paper.</p>
         <p>The purpose is to assist supporters of strong net neutrality in articulating their own views
@@ -257,7 +258,7 @@
           <strong>Question 11: Should the TSPs be mandated to publish various traffic management techniques used for different OTT applications? Is this a sufficient condition to ensure transparency and a fair regulatory regime?</strong>
         </div>
         <div class="answer">
-          <p>The question is based on the premise that publishing various traffic management techniques  for Internet services will ensure a fair regulatory regime and therefore such discrimination is permissible. We have repeatedly said in the above answers that discrimination of services will not bring about a fair regime for users.</p>
+          <p>The question is based on the premise that publishing various traffic management techniques  for Internet services will ensure a fair regulatory regime and therefore such discrimination is permissible. As I have repeatedly said in the above answers, discrimination of services will not bring about a fair regime for users.</p>
           <p>Further, a recent study [http://bit.ly/1D7QEp9] in the UK has pointed out that merely publishing data on traffic management will not translate into a fair regime. The study found that most consumers did not understand traffic management or use it as a basis for switching operators. Those who did do so comprised a group perceived to be small or insignificant enough that most network operators did not seek to factor them into their product decisions, despite some consumers&rsquo; complaints about traffic management. In India where awareness and activism on issues of net neutrality is considerably less, it is unlikely to play the critical role that the Consultation Paper suggests.</p>
         </div>
         <div class="answer">
@@ -349,7 +350,7 @@
       </div>
       <div class="clearfix"></div>
       <div class="col-lg-12 text-center">
-        <button class="btn btn-info btn-lg sendResponse">Send your response</button>
+        <button class="btn btn-info btn-lg sendResponse" id="bottomSend">Send your response</button>
       </div>
     </div>
   </div>
