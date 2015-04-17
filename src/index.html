@@ -420,8 +420,8 @@
             </div>
             <div class="modal-body">
               <p>Sending a response to TRAI helps, but we must also make our voices heard loud and clear.</p>
-              <p><strong>You can do more</strong> by contacting your MP and sharing this website to help spread the word.</p>
-              <p><strong>Demand a free and open internet.</strong> <a href="http://j.mp/MailMyMP" target="_blank" class="btn btn-info btn-sm">Contact your MP now</a></p>
+              <p><strong>You can do a lot more with just a little effort</strong>. From contacting MPs &amp; popular people to open letters to being active on social media to having conversations with people you know and much more.</p>
+              <p><a href="http://netneutrality.in/support/" target="_blank" class="btn btn-info btn-sm">We have a lot of ideas! Check them out &raquo;</a></p>
               <div class="social-buttons cf">
                 <div class="social-col">
                       <a href="http://twitter.com/share" class="socialite twitter-share" data-text="Send TRAI your views, protect #NetNeutralityIndia and #SaveTheInternet" data-url="http://www.savetheinternet.in" data-count="vertical" rel="nofollow" target="_blank"><span class="vhidden">Share on Twitter</span></a>
@@ -458,7 +458,8 @@
 
         function getSubject() {
           return pickOne([
-          pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:", "In reply to the"])+" "+pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+pickOne(["about", "on", "concerned with", "regarding", ])+" "+pickOne(["regulation of OTTs", "Breaking net neutrality", "regulation of On-The-Top services"]), pickOne(pickOne["Stop ","Desist ","Disallow ","Hold back ","Don't permit ","Disapprove "] + pickOne(["operators", "ISPs", "TSPs", "telecom service providers","telecom operators", "internet service providers",]) + " from "]) + pickOne(["breaking ", "violating ", "destroying ", "beraching ","tampering with ", "disrupting ","disregarding ", "meddling ","encroaching ","defying ","trampling on "]) + pickOne(["Net Neutrality", "the open internet", "the internet", "the equally open Internet", "the equally accessible Internet"])]);
+              pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:"])+" "+pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+pickOne(["about", "on"])+" "+pickOne(["regulation of OTTs", "Breaking net neutrality"]),
+              pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs"]) + " from "]) + pickOne(["breaking ", "violating ", "destroying "]) + pickOne(["Net Neutrality", "the open internet", "the internet"])]);
         }
         var toAddress = "advqos@trai.gov.in";
 
