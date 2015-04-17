@@ -3,9 +3,6 @@
   "version": "0.0.2",
   "description": "Response generator for the TRAI consultation paper",
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
   "dependencies": {
     "express": "4.x"
   },
@@ -22,5 +19,23 @@
   "engines": {
     "node": "0.10.x"
   },
-  "license": "MIT"
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/netneutrality/savetheinternet.in"
+  },
+  "keywords": [
+    "save",
+    "internet",
+    "neutrality",
+    "netneutrality"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netneutrality/savetheinternet.in/issues"
+  },
+  "homepage": "https://github.com/netneutrality/savetheinternet.in"
 }

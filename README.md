@@ -31,6 +31,9 @@ Please make sure you merge the latest commits from `stage` into your pull reques
 > git checkout large-bug-fix-issue-19
 > git rebase stage
 ```
+
+*Optional:* Install [editorconfig plugin](http://editorconfig.org/#download) on your editor/IDE, in order to maintain consistence file formatting.
+
 ### How to run it locally
 
 Install node
@@ -38,5 +41,5 @@ Install node
 ```
 > cd app_directory
 > npm install
-> node app.js
+> npm start
 ```
