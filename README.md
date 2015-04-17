@@ -11,8 +11,6 @@ Help us by [reporting issues, suggestions](https://github.com/netneutrality/save
 If you'd like to join our discussions, please contact us via email.
 
 ### Code
-Please install [editorconfig plugin](http://editorconfig.org/#download) to your editor/IDE, in order to maintain consistence file formatting.
-
 Please make all Pull Requests against the `stage` branch. Pull Requests made against `master` will have to be closed and made against `stage`.
 
 If you are making major changes, create a new issue (or comment on the existing issue) and tell that you are working on it (we might already be working on it). And work on a new branch. For example,
@@ -33,6 +31,9 @@ Please make sure you merge the latest commits from `stage` into your pull reques
 > git checkout large-bug-fix-issue-19
 > git rebase stage
 ```
+
+*Optional:* Install [editorconfig plugin](http://editorconfig.org/#download) on your editor/IDE, in order to maintain consistence file formatting.
+
 ### How to run it locally
 
 Install node
