@@ -11,6 +11,8 @@ Help us by [reporting issues, suggestions](https://github.com/netneutrality/save
 If you'd like to join our discussions, please contact us via email.
 
 ### Code
+Please install [editorconfig plugin](http://editorconfig.org/#download) to your editor/IDE, in order to maintain consistence file formatting.
+
 Please make all Pull Requests against the `stage` branch. Pull Requests made against `master` will have to be closed and made against `stage`.
 
 If you are making major changes, create a new issue (or comment on the existing issue) and tell that you are working on it (we might already be working on it). And work on a new branch. For example,
@@ -38,5 +40,5 @@ Install node
 ```
 > cd app_directory
 > npm install
-> node app.js
+> npm start
 ```
