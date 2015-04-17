@@ -456,8 +456,7 @@
 
         function getSubject() {
           return pickOne([
-              pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:"])+" "+pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+pickOne(["about", "on"])+" "+pickOne(["regulation of OTTs", "Breaking net neutrality"]),
-              pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs"]) + " from "]) + pickOne(["breaking ", "violating ", "destroying "]) + pickOne(["Net Neutrality", "the open internet", "the internet"])]);
+          pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:", "In reply to the"])+" "+pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+pickOne(["about", "on", "concerned with", "regarding", ])+" "+pickOne(["regulation of OTTs", "Breaking net neutrality", "regulation of On-The-Top services"]), pickOne(pickOne["Stop ","Desist ","Disallow ","Hold back ","Don't permit ","Disapprove "] + pickOne(["operators", "ISPs", "TSPs", "telecom service providers","telecom operators", "internet service providers",]) + " from "]) + pickOne(["breaking ", "violating ", "destroying ", "beraching ","tampering with ", "disrupting ","disregarding ", "meddling ","encroaching ","defying ","trampling on "]) + pickOne(["Net Neutrality", "the open internet", "the internet", "the equally open Internet", "the equally accessible Internet"])]);
         }
         var toAddress = "advqos@trai.gov.in";
 
