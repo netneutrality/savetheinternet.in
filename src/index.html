@@ -368,6 +368,18 @@
       <div class="row">
         <div class="col-lg-12 text-center"> 
           <p><span class="mute">For more information on why Net Neutrality is important, visit </span> <a href="http://www.netneutrality.in">netneutrality.in</a></p>
+          
+          <p><span id="ama-link"><a href="https://scrollback.io/savetheinternet">Chat with members of the savetheinternet.in team</a>
+            on Saturday 18 April at 6:00 pm IST <span id="ama-timer"></span></span></p>
+          <script>
+            setInterval(function () {
+              function pad(n) { return (n<10?"0":"") + Math.floor(n); }
+              var t = (new Date("2015-04-18T12:30:00Z").getTime() - new Date().getTime())/1000,
+                  s = pad(t%60), m = pad((t/60)%60), h = pad(t/3600);
+              document.getElementById("ama-timer").innerHTML = "(" + (t<-3600? "Finished": t<0? "Started": ("Starts in " + h+"h "+m+"m "+s+"s")) + ")";
+            }, 1000);
+          </script>
+          
           <p><a href="https://github.com/netneutrality/" role="button" class="btn btn-sm btn-default">Made with ♥ by folks just like you</a> <a href="http://j.mp/ReportSaveTheInternetin" class="btn btn-sm btn-default" role="button">Report a Technical Problem with site</a></p>
   <!--            <p>Based on <a href="http://getbootstrap.com" rel="nofollow">Bootstrap</a>. Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p> -->
         </div>
