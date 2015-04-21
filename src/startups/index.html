@@ -43,7 +43,7 @@
         line-height: 1em; border-radius: 4px;
       }
       button:hover, a.btn:hover { background: #665244; }
-      button.muted { background: #cccccc; }
+      button.muted, a.btn.muted { background: #cccccc; }
       
       textarea {
         resize: vertical;
@@ -91,6 +91,15 @@
       }
       .content.expanded:after { display: none; }
       
+      
+      #signatures a {
+        margin-right: 1em;
+        white-space: nowrap;
+      }
+      
+      #signatures a:hover {
+        text-shadow: 0 0 4px #cca388;
+      }
     </style>
     
     <!-- /build -->
@@ -109,62 +118,9 @@
     <div class="container">
       <h1>Open Letter to the PM from Tech Startups</h1>
       <p class="info">This letter was drafted by the team at savetheinternet.in. Many of us are from startups.</p>
-      <p class="info">Are you part of India’s startup ecosystem? Tell the TRAI to preserve the open, competitive internet by enforcing net neutrality.</p>
-      <p><a class="btn" href="#sign">Sign this open letter</a></p>
+      <p class="info">Are you a part of India’s startup ecosystem? Ask the PM to preserve the open, competitive internet by enforcing net neutrality.</p>
+      <p><a class="btn" href="#sign">Sign this open letter</a> <a class="btn" href="#share">Ask startups to sign</a></p>
       
-      <h1>Spread the word!</h1> <h3>Tweet to some startup founders:</h3>
-      <blockquote id="tweet-preview"></blockquote>
-      <p><button id="tweet-send">Tweet out!</button> <button id="tweet-reset" class="muted">Change tweet</button><br />
-        Five tweets please. New tweet each time.</p>
-      <script>
-        var twhs = ["@_sachinbansal", "@_sumant", "@1KunalBahl", "@aakuvaish", "@aasaanpay", "@abhishekaggy", "@albinder", "@alexsouter", "@alokg",
-                    "@amanmalhotra911", "@aneeshb", "@anishamydala", "@AnkitPandey", "@annkur", "@anupammittal", "@apurv_agrawal", "@apurvbansal11",
-                    "@arihantpatni", "@arrahman", "@ArtZolo", "@ashishkashyap", "@AshOnIndia", "@ayanb", "@BalconyTVDelhi", "@bhash", "@bhavintu",
-                    "@Binary2Boot", "@bipinsingh", "@BoldKiln", "@BomFilmFactory", "@bookmyshow", "@BuyHatke", "@c_assisi", "@cardback", "@Cashkarocom",
-                    "@cbkrish", "@cherianthomas", "@cleartrip", "@codeshepherd", "@crowdfire", "@deepakravindran", "@deepigoyal", "@deepkalra",
-                    "@Delhivery", "@desi_rohan", "@dipench", "@directi", "@doselecthq", "@fabricegrinda", "@faircent1", "@FlatChatApp", "@flipkart",
-                    "@FloorKey", "@FoundingF", "@freecharge", "@freshdesk", "@gauravdahake", "@gauravmunjal", "@getshifu", "@ghoseb", "@GoAthlos",
-                    "@GOqiiLife", "@GrayRoutes", "@Grofers", "@Hardik", "@harshmandad", "@hasgeek", "@hashcube", "@healthtokri", "@helloanand",
-                    "@helpshift", "@hikeapp", "@hitobs", "@hiway", "@Housing", "@iimjobs", "@iliyas_shirol", "@IndrajitGupta", "@InstaLively",
-                    "@instamojo", "@InstaSafe", "@intouchapp", "@itsumang", "@jackerhack", "@kapilhetamsaria", "@karanbehal", "@kavinbm", "@khasnis",
-                    "@krisnair", "@kunalb11", "@LifesPurple", "@makemytrip", "@Manojmunna0", "@medianama", "@mobikwik", "@mrgirish", "@MrSoubhagya",
-                    "@myAkosha", "@mydala", "@mynoticeperiod", "@myntra", "@myqyuki", "@namansr", "@Naukri", "@nidhigurnani", "@nikhilwason",
-                    "@NischalShetty", "@nitinm07", "@nixxin", "@Olacabs", "@Olx_India", "@pacificleo", "@paraschopra", "@Partiko1", "@paytm", "@pchulet",
-                    "@porush", "@postergully", "@practo", "@PragyaTiwari", "@pranavprakash", "@pranayc", "@pratshukla", "@pravkrsingh", "@pricebaba",
-                    "@profoundis", "@Qlicket", "@quintoapp", "@raghugnandan", "@rahulyadav", "@rajatgandhi", "@rarjunpillai", "@rodinhood", "@rohit_ty",
-                    "@rohitkbansal", "@RoposoLove", "@saavn", "@sachingupta006", "@sahilbarua", "@sahilk", "@Sainathgupta", "@samirbangara", "@sampad",
-                    "@sandipkp", "@sanketsaurav", "@SarangLakare", "@satyangajwani", "@sbikh", "@Scroll", "@seanb", "@sharmashradha", "@shashanknd",
-                    "@shawnlewis", "@shekharkapur", "@shiladitya", "@singlaank", "@snapdeal", "@SolidryIndia", "@sportskeeda", "@SquadRunApp", "@sumjain",
-                    "@surajsaharan", "@svembu", "@swarajshop1", "@Swats26", "@tarunmatta", "@taruntanu", "@Testbookdotcom", "@the88rash", "@theHereNowapp",
-                    "@theknownface", "@Tinyowl_App", "@toshendrasharma", "@traverik", "@upasanataku", "@vammok", "@vbhat", "@vijayshekhar", "@vishalgondal",
-                    "@vishysinghal", "@vivpahwa", "@wanderingraptor", "@waqarazmi", "@warikoo", "@wegilant", "@wingify", "@wizrocket", "@yashish001",
-                    "@YourStoryCo", "@zoho", "@Zomato"],
-            twts = ["Show your support. Sign the open letter",
-                    "Support net neutrality. Sign the open letter",
-                    "Open letter from startups to PM. Be counted,",
-                    "Sign the open letter from startups to PM",
-                    "Help protect the open internet. Sign the letter"],
-            url  = "http://bit.ly/1OsEYR2",
-            hash = "#SaveTheInternet";
-        
-        function generateTweet() {
-          function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
-          document.getElementById("tweet-preview").innerHTML =
-            [ pick(twts), pick(twhs), pick(twhs), pick(twhs), url, hash ].join(" ");
-        }
-        
-        generateTweet();
-        document.getElementById("tweet-reset").onclick = generateTweet;
-        document.getElementById("tweet-send").onclick = function () {
-          window.open(
-            "http://twitter.com/home?status=" +
-            encodeURIComponent(document.getElementById("tweet-preview").innerHTML)
-          );
-          generateTweet();
-        };
-      </script>
-      <h3>Prefer facebook?</h3>
-      <p><a href="https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in/startups" class="btn">Share this page on facebook</a></p>
         <h1>The letter</h1>
       
       <div id="content" class="content">
@@ -185,56 +141,197 @@ Minister of State for Commerce and Industry</p>
 <p>Subject: Protect the Open Internet in India</p>
 
 <p>Dear Sir,</p>
-<p>We are writing to you as founders and stakeholders of Indian technology startups.</p>
-<p>Each of us set out on this entrepreneurial journey with a dream to create a world-leading technology company from India. We dream that an Indian startup may one day become the next Google, Facebook or Amazon. We know that you share our dream.</p>
-<p>We share another dream with you, the dream of a Digital India. We dream of this as Indians, and also as businesses that wish to serve a fast-growing Indian internet market.</p>
-<p>These dreams cannot be achieved without the open Internet.</p>
+        
+<p>We are writing to you as founders and stakeholders of Indian internet-enabled start-ups.</p>
+<p>Each of us set out on this entrepreneurial journey dreaming of creating world-leading companies from India. There is no reason why an Indian company cannot be the next Google, Facebook or Amazon. We know that you share our dream; you put it into words: Make in India.</p>
+<p>We share another dream with you, the dream of a Digital India. We dream of this as Indians, and also as businesses that wish to serve a fast-growing Indian market. The Internet gives us all the potential to do that.</p>
+<p>But for these dreams to come true, we need an open Internet.</p>
 
-<h3>Preserving the Startup Ecosystem</h3>
-<p>The Internet is a fountain of creativity because it is a single, global market where anyone can offer a product and be reachable by every user. This results in global competition and exchange of ideas, and drives innovation and progress.</p>
-<p>If startups or online service providers had to first obtain a government license, or pay each Internet Service Provider in the world (there are tens of thousands of them), this global market, competition and innovation would disappear.</p>
-<p>This is what we stand to lose if telecom operators are allowed to strike deals to favour some online services over their competitors. Under these deals, companies may pay the ISP to make their competitors’ websites inaccessible, slower or more expensive to access than their own.</p>
-<p>These practices, if allowed, will exclude promising startups from the Internet and end our dream of seeing them flourish. The western companies that dominate the Indian internet ecosystem today will use their deep pockets to perpetuate their position. The few startups that can afford it will be forced to find growth in foreign markets before they can return to India with the funds to pay ISPs, while the rest shut shop.</p>
-<p>This would be a catastrophic outcome for our startup ecosystem.</p>
+<h3>Preserving the Start-up Ecosystem</h3>
+<p>The Internet is a single, global market where anyone can offer a product and be reachable by every user. This results in global competition and exchange of ideas, and drives innovation and progress.</p>
+<p>If internet-enabled start-ups or online service providers had to first obtain a government license, or pay each Internet Service Provider (ISP) in the world—there are tens of thousands of them—this global market and competition, and the innovation and progress, would all disappear.</p>
+<p>This is what we stand to lose if ISPs—which includes, now, telecom operators—are allowed to strike deals that favour some online services over their competitors, or worse, accept payment from companies to make their competitors’ websites inaccessible, slower or more expensive to access than their own.</p>
+<p>These practices, if allowed, will prevent promising start-ups from using the Internet and end our dream of seeing them flourish. The western companies that dominate the Indian internet ecosystem today will use their deep pockets to perpetuate their position. The few start-ups that can afford it will be forced to find growth in foreign markets before they can return to India with the funds to pay ISPs. The rest will have to shut shop.</p>
+<p>This would be a catastrophic for our budding start-up ecosystem.</p>
 
 <h3>Building a Digital India</h3>
 <p>India has the fastest growing internet user base in the world, but over 100 crore Indians still don’t use the Internet.</p>
-<p>Bringing them online is not merely a question of infrastructure or affordability; there should first be demand for Internet access. No-one will begin using the Internet just because access is cheap or even free, if all the content and applications are in foreign languages and don’t solve their problems.</p>
-<p>These content and applications will not be created by the large western companies that dominate the Internet today, but by Indian startups like us. We can only do this if there is a level playing field, freedom to innovate, and yes, competition to drive us. Which of our apps solves these problems best is a decision for each user to make, and not for a corporate gatekeeper.</p>
-<p>As consumer demand rises, and the profitable market for data will drive an expansion in infrastructure. Cellular operators claim, contradicting their own annual reports, that providing internet access is not profitable enough to expand infrastructure. The fact that they haven’t increased prices and continue to advertize their internet plans heavily show that these claims are untrue.</p>
-<p>The key to attaining a Digital India is to let Indian startups experiment and build the must-have apps for the next 100 crore Internet users.</p>
+<p>Bringing them online is not merely a question of infrastructure or affordability; there should first be need and demand for Internet access. No poor person will begin to use the Internet just because access is cheap or even free. She would find no use for content that is not relevant to her needs; even less so when that content is in foreign languages.</p>
+<p>This content will not be created by the large western companies that dominate the Internet today, but by Indian start-ups like us. We can only do this if there is a level playing field, freedom to innovate, and yes, competition to drive us. Which of our products best fill these needs is a decision for each user to make; not for a corporate gatekeeper to decide.</p>
+<p>The key to attaining a Digital India is to let Indian start-ups experiment and build the must-have services for the next 100 crore Internet users.</p>
+
+<h3>Where is the money?</h3>
+<p>Cellular operators claim that providing internet access is not profitable enough to expand infrastructure. This claim contradicts their own annual reports. If that was not enough evidence, the fact that they haven’t increased prices and continue to advertise their internet plans heavily demonstrates that these claims are untrue.</p>
+<p>Moreover, as consumer demand rises, the profitable market for services delivered via the Internet will drive expansion in infrastructure.</p>
 
 <h3>Zero Rating is Harmful Discrimination</h3>
-<p>Some telecom operators and large foreign companies try to use Digital India against the open Internet. They attempt to justify a form of discrimination called zero-rating by saying it allows them to offer “free internet for the poor”. We must point out that these offerings are neither “free”, “the internet” nor “for the poor”.</p>
-<p>They are not free but bundled with a paid mobile connection, just as when a toothbrush is given “free” with toothpaste, it is really priced together as a bundle. They don’t even pretend to provide Internet access — the Internet has 100 crore websites and the freedom to start your own, while these offers only have a few dozen cherry-picked websites. Finally, these plans are not marketed to the poor or those who currently lack access, but only to existing internet users of competing operators.</p>
-<p>Some argue that even with these flaws a few bundled websites are better than none. On the contrary, permitting these plans will cause serious harm — as a proprietary alternative to the public Internet, it will slow down Internet adoption and delay Digital India. It must be noted that websites of government departments, educational institutions, healthcare providers and others are not accessible in these plans. In addition, these offers will also cause a collapse of competition as crores of Indians will be locked into a few cherry-picked services, resulting in a decline in quality of service and progress.</p>
-<p>There are other, equally economical ways to offer non-internet users a bundled data plan to get acquainted with the Internet, that does not take away their freedom.</p>
+<p>Some telecom operators and large foreign companies try to pit the idea of a Digital India against the principle of an open Internet.</p>
+<p>They attempt to justify a form of discrimination called zero-rating by saying it allows them to offer “free internet for the poor”.</p>
+<p>We must point out that these offerings are neither “free”, “the internet” nor “for the poor”. They are not free but bundled with a paid mobile connection, just as when a toothbrush is given “free” with toothpaste, it is really priced together as a bundle. The handful of sites that they offer in their packages—a few dozen at most—is a mere sliver of the over 100 crore websites that the Internet currently offers. As to inluding the poor, the sites in these “free” offerings are primarily aimed at luring away the primarily middle-class customers of their competitors rather than the poor or those who currently lack access.</p>
+<p>Some argue that even with these flaws a few bundled websites are better than none. Quite the contrary: permitting these plans will cause serious harm. Proprietary alternatives to the public Internet will only slow down Internet adoption and delay Digital India. It must also be noted that websites of government departments, educational institutions, healthcare providers and others are not accessible in these plans. In addition, these offers will also cause a collapse of competition as crores of Indians will be locked into a few services—those that the ISPs have relationships with—resulting in a decline in quality of service and progress.</p>
+<p>There are other ways to bring new Internet users gently into the net without losing money. To suggest just one example: free-to-the-end-user bundles that are supported by advertising, similar to what the television industry does. Such plans leave it to the user to decide how his Internet plan is used, which is a powerful incentive to start-ups to provide services that benefit the novice and the disadvantaged.</p>
 
 <h3>Net Neutrality is in the Public Interest</h3>
 <p>Our desire for a level playing field on the Internet is shared overwhelmingly by consumers. Over the last two weeks over 10 lakh of India’s best-informed citizens have written to TRAI to ask it to uphold equality on the Internet.</p>
-<p>Many foreign nations share these views as well. Several, most recently Brazil, have passed laws to ensure “network neutrality” or non-discrimination by ISPs; many more countries like the US and European Union are in the process of doing so. Here is the status of such laws in other countries as of December 2014:</p>
+<p>Many foreign nations share these views as well. Several, most recently Brazil, have passed laws to ensure “network neutrality” or non-discrimination by ISPs; many more countries like the US and European Union are in the process of doing so.</p>
+<p>Here is the status of such laws in other countries as of December 2014:</p>
 <img src="../images/other-countries.jpg" style="width:100%" />
+
+<h3>Neutrality is already being violated</h3>
+<p>Some telecom companies have shown scant respect for the issues presently under consideration by TRAI. In legally questionable moves, they have rolled out various services which violate network neutrality, apparently confident that they can do so without repercussions.</p>
+<p>This is not only an affront to the Internet users in India but also to the regulatory powers of the TRAI. Forming regulations will take time. In the meanwhile, the Indian Internet user must be protected.</p>
+<p>In the absence of formal regulations on net neutrality, TRAI should issue an interim order or regulation preventing ongoing network neutrality violations by telecom service providers.</p>
+
 <h3>The Way Forward</h3>
-<p>We sincerely wish that our government would also protect the open, competitive Internet in India. We request that network neutrality is enforced and all discriminatory practices by ISPs are forbidden — including zero-rating, throttling, blocking, paid prioritization, toll-gating and others. We also hope that the regressive proposal to license online services will be dropped.</p>
-<p>We, the startups that are at the forefront of creating the next wave of online applications, request you to take action now. We need you to protect our nation’s innovation ecosystem.</p>
+<p>We urge our government to protect the open, competitive Internet in India. We request that network neutrality is enforced and all discriminatory practices by ISPs are forbidden, including zero-rating, throttling, blocking, paid prioritisation, toll-gating and others. We also hope that the regressive proposal to license online services will be dropped.</p>
+<p>We request TRAI to publish all the responses and counter-responses to the consultation, including any other additional material, on its website.</p>
+<p>For better public involvement and awareness, we request that open-house debates be held in major Indian cities after the consultation process is over.</p>
+<p>We, the start-ups that are at the forefront of creating Digital India, request you to take action now. We need you to protect our nation’s innovation ecosystem.</p>
+
 <p>Best regards,</p>
-<p>(Signatures)</p>
+<p>(Signatures below)</p>
+        
+        
+        <p class="info">Please fill the form below to sign. You may email <a href="mailto:aravindet@gmail.com">aravindet@gmail.com</a> to discuss the content.</p>
+
+        
+      </div> <!-- /content-->
+      
 <script>
   document.getElementById("content").onclick = function () {
     document.getElementById("content").className = "content expanded";
   }
 </script>
-<p class="info">Please fill the form below to sign. You may email <a href="mailto:aravindet@gmail.com">aravindet@gmail.com</a> to discuss the content.</p>
+      
+      <div class="content expanded" id="signatures">
+<h1>Signatures so far</h1>
+
+<a href="http://knolskape.com" rel="nofollow" target="_blank">KNOLSKAPE</a> 
+<a href="http://housing.com" rel="nofollow" target="_blank">Housing.com</a> 
+<a href="http://walnuts.co.in" rel="nofollow" target="_blank">Walnut Knowledge Solutions</a> 
+<a href="http://akshaytyagi.me" rel="nofollow" target="_blank">F-GRAPE</a> 
+<a href="http://ibibogroup.com" rel="nofollow" target="_blank">Goibibo </a> 
+<a href="http://whatsthescene.com" rel="nofollow" target="_blank">What's The Scene India</a> 
+<a href="http://hasgeek.com" rel="nofollow" target="_blank">HasGeek Media LLP</a> 
+<a href="http://adaptready.com" rel="nofollow" target="_blank">Adapt Ready</a> 
+<a href="http://squadrun.co" rel="nofollow" target="_blank">Squadrun</a> 
+<a href="http://sourceeasy.com" rel="nofollow" target="_blank">Sourceeasy</a> 
+<a href="http://scrollback.io" rel="nofollow" target="_blank">Scrollback</a> 
+<a href="http://boldkiln.com" rel="nofollow" target="_blank">Bold Kiln</a> 
+<a href="http://yelo.red" rel="nofollow" target="_blank">yelo</a> 
+<a href="http://medianama.com" rel="nofollow" target="_blank">Medianama</a> 
+<a href="http://bearddesign.co" rel="nofollow" target="_blank">Beard Design</a> 
+<a href="http://smartmumbaikar.com" rel="nofollow" target="_blank">SmartMumbaikar</a> 
+<a href="http://ozonetel.com" rel="nofollow" target="_blank">Ozonetel Systems Pvt Ltd</a> 
+<a href="http://instamojo.com" rel="nofollow" target="_blank">Instamojo Technologies Pvt. Ltd.</a> 
+<a href="http://tookitaki.com" rel="nofollow" target="_blank">Tookitaki</a> 
+<a href="http://walkinto.in" rel="nofollow" target="_blank">Walkinto Inc.</a> 
+<a href="http://dataculture.in" rel="nofollow" target="_blank">DataCulture</a> 
+<a href="http://qed42.com" rel="nofollow" target="_blank">QED42 Engineering Pvt Ltd</a> 
+<a href="http://startupoxide.com" rel="nofollow" target="_blank">StartAP</a> 
+<a href="http://backspace.net.in" rel="nofollow" target="_blank">Backspace Consulting LLP</a> 
+<a href="http://mathharbor.com" rel="nofollow" target="_blank">Mathharbor</a> 
+<a href="http://teewe.in" rel="nofollow" target="_blank">Mango Man Consumer Electronics Pvt Ltd</a> 
+<a href="http://informantnetworks.com" rel="nofollow" target="_blank">informant networks</a> 
+<a href="http://pyrodactyl.com" rel="nofollow" target="_blank">Pyrodactyl Games</a> 
+<a href="http://epictions.com" rel="nofollow" target="_blank">Epictions Transmedia</a> 
+<a href="http://codlash.com" rel="nofollow" target="_blank">Codlash Technologies Private Limited</a> 
+<a href="http://protecta.in" rel="nofollow" target="_blank">Protecta Inc</a> 
+<a href="http://appknox.com" rel="nofollow" target="_blank">Appknox</a> 
+<a href="http://ideaflask.com" rel="nofollow" target="_blank">Ideaflask</a> 
+<a href="http://cosawaari.com" rel="nofollow" target="_blank">Muto Technologies pvt.ltd</a> 
+<a href="http://blubotindia.com" rel="nofollow" target="_blank">BluBot Technologies</a> 
+<a href="http://allevents.in" rel="nofollow" target="_blank">All Events in City</a> 
+<a href="http://yellbow.com" rel="nofollow" target="_blank">Yellbow Fashions Private Limited</a> 
+<a href="http://superlativeds.com" rel="nofollow" target="_blank">Superlative Digital Solutions</a> 
+<a href="http://grannyads.com" rel="nofollow" target="_blank">grannyads</a> 
+<a href="http://waverr.in" rel="nofollow" target="_blank">Waverr</a> 
+<a href="http://thesilverlabs.com" rel="nofollow" target="_blank">Silverlabs</a> 
+<a href="http://creativizt.com" rel="nofollow" target="_blank">Creativizt Communications</a> 
+<a href="http://spayee.com" rel="nofollow" target="_blank">Spayee Labs. Pvt. Ltd.</a> 
+<a href="http://autoraja.org" rel="nofollow" target="_blank">AutoRaja</a> 
+<a href="http://makash.com" rel="nofollow" target="_blank">The App Sec Lab</a> 
+<a href="http://eko.co.in" rel="nofollow" target="_blank">Eko India Financial Services Pvt. Ltd.</a> 
+<a href="http://logicroots.com" rel="nofollow" target="_blank">LogicRoots</a> 
+<a href="http://thesecretkart.com" rel="nofollow" target="_blank">TheSecretKart.com</a> 
+<a href="http://trendysouk.com" rel="nofollow" target="_blank">Trendy Souk Retail Pvt. Ltd.</a> 
+<a href="http://crispsocialventures.com" rel="nofollow" target="_blank">CRISP Social Ventures India</a> 
+<a href="http://river-valley.org" rel="nofollow" target="_blank">River Valley Technologies</a> 
+<a href="http://shack.co.in" rel="nofollow" target="_blank">Shack Design</a> 
+<a href="http://xercesblue.in" rel="nofollow" target="_blank">Xerces Blue Software Solutions Pvt Ltd</a> 
+<a href="http://yumweb.com" rel="nofollow" target="_blank">YumWeb</a> 
+<a href="http://capillarytech.com" rel="nofollow" target="_blank">Capillary Technologies</a> 
+<a href="http://glamshutter.com" rel="nofollow" target="_blank">GlamShutter Studio</a> 
+<a href="http://cloudcover.in" rel="nofollow" target="_blank">CloudCover</a>
         
-      </div> <!-- /content-->
+<a href="#sign"><strong>You!</strong></a>
+        
+      </div>
+      
+      
       <a name="sign"></a>
       <div class="sign">
         <iframe src="https://docs.google.com/forms/d/172o6skZVS3h1xuiBoq_Y0KlbqSEmJb6zSYM6SzWI6f8/viewform" style="height: 850px; width: 100%; border: none;"></iframe>
       </div>
+      
+      <a name="share"></a>
+      <h1>Ask startups to sign</h1>
+      <p>We've generated a unique tweet for you to send out:</p>
+      <blockquote id="tweet-preview"></blockquote>
+      <p><a class="btn" target="_blank" id="tweet-send">Tweet out!</a> <button id="tweet-reset" class="muted">Generate a new tweet</button><br />
+        Send five different tweets please.</p>
+      <script>
+        var twhs = ["@_sachinbansal", "@_sumant", "@1KunalBahl", "@aakuvaish", "@aasaanpay", "@abhishekaggy", "@albinder", "@alexsouter", "@alokg",
+                    "@amanmalhotra911", "@aneeshb", "@anishamydala", "@AnkitPandey", "@annkur", "@anupammittal", "@apurv_agrawal", "@apurvbansal11",
+                    "@arihantpatni", "@arrahman", "@ArtZolo", "@ashishkashyap", "@AshOnIndia", "@ayanb", "@BalconyTVDelhi", "@bhash", "@bhavintu",
+                    "@Binary2Boot", "@bipinsingh", "@BomFilmFactory", "@bookmyshow", "@BuyHatke", "@c_assisi", "@cardback", "@Cashkarocom",
+                    "@cbkrish", "@cherianthomas", "@cleartrip", "@codeshepherd", "@crowdfire", "@deepakravindran", "@deepigoyal", "@deepkalra",
+                    "@Delhivery", "@desi_rohan", "@dipench", "@directi", "@doselecthq", "@fabricegrinda", "@faircent1", "@FlatChatApp", "@flipkart",
+                    "@FloorKey", "@FoundingF", "@freecharge", "@freshdesk", "@gauravdahake", "@gauravmunjal", "@getshifu", "@ghoseb", "@GoAthlos",
+                    "@GOqiiLife", "@GrayRoutes", "@Grofers", "@Hardik", "@harshmandad", "@hashcube", "@healthtokri", "@helloanand",
+                    "@helpshift", "@hikeapp", "@hitobs", "@hiway", "@iimjobs", "@iliyas_shirol", "@IndrajitGupta", "@InstaLively",
+                    "@InstaSafe", "@intouchapp", "@itsumang", "@kapilhetamsaria", "@karanbehal", "@kavinbm", "@khasnis",
+                    "@krisnair", "@kunalb11", "@LifesPurple", "@makemytrip", "@Manojmunna0", "@mobikwik", "@mrgirish", "@MrSoubhagya",
+                    "@myAkosha", "@mydala", "@mynoticeperiod", "@myntra", "@myqyuki", "@namansr", "@Naukri", "@nidhigurnani", "@nikhilwason",
+                    "@NischalShetty", "@nitinm07", "@Olacabs", "@Olx_India", "@pacificleo", "@paraschopra", "@Partiko1", "@paytm", "@pchulet",
+                    "@porush", "@postergully", "@practo", "@PragyaTiwari", "@pranavprakash", "@pranayc", "@pratshukla", "@pravkrsingh", "@pricebaba",
+                    "@profoundis", "@Qlicket", "@quintoapp", "@raghugnandan", "@rahulyadav", "@rajatgandhi", "@rarjunpillai", "@rodinhood", "@rohit_ty",
+                    "@rohitkbansal", "@RoposoLove", "@saavn", "@sachingupta006", "@sahilbarua", "@sahilk", "@Sainathgupta", "@samirbangara", "@sampad",
+                    "@sandipkp", "@sanketsaurav", "@SarangLakare", "@satyangajwani", "@sbikh", "@Scroll", "@seanb", "@sharmashradha", "@shashanknd",
+                    "@shawnlewis", "@shekharkapur", "@shiladitya", "@singlaank", "@snapdeal", "@SolidryIndia", "@sportskeeda", "@SquadRunApp", "@sumjain",
+                    "@surajsaharan", "@svembu", "@swarajshop1", "@Swats26", "@tarunmatta", "@taruntanu", "@Testbookdotcom", "@the88rash", "@theHereNowapp",
+                    "@theknownface", "@Tinyowl_App", "@toshendrasharma", "@traverik", "@upasanataku", "@vammok", "@vbhat", "@vijayshekhar", "@vishalgondal",
+                    "@vishysinghal", "@vivpahwa", "@wanderingraptor", "@waqarazmi", "@warikoo", "@wegilant", "@wingify", "@wizrocket", "@yashish001",
+                    "@YourStoryCo", "@zoho", "@Zomato"],
+            twts = ["Show your support. Sign the open letter",
+                    "Support net neutrality. Sign the open letter",
+                    "Open letter from startups to PM. Be counted,",
+                    "Sign the open letter from startups to PM",
+                    "Help protect the open internet. Sign the letter"],
+            url  = "http://bit.ly/1OsEYR2",
+            hash = "#SaveTheInternet";
+        
+        function generateTweet() {
+          function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+          var tweet = [ pick(twts), pick(twhs), pick(twhs), pick(twhs), url, hash ].join(" ");
+          document.getElementById("tweet-preview").innerHTML = tweet;
+          document.getElementById("tweet-send").href = "http://twitter.com/home?status=" + encodeURIComponent(tweet);
+        }
+        
+        generateTweet();
+        document.getElementById("tweet-reset").onclick = generateTweet;
+        document.getElementById("tweet-send").onclick = function () {
+          setTimeout(generateTweet, 500);
+        };
+      </script>
+      <h3>Connected to startups on Facebook?</h3>
+      <p><a href="https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in/startups" class="btn">Share this page </a></p>
+      
+      
       <!-- <div class="">
         <a class="btn" href="https://scrollback.io/savetheinternet">Chat with the people who built the savetheinternet.in site</a> Saturday 18 Apr 6:00 - 7:00 pm IST
       </div> -->
-      <p style="text-align:center;"><a href="http://savetheinternet.in">SaveTheInternet.in</a></p>
+      <p style="text-align:center; margin-top: 3em;">CC-BY 2.0 <a href="http://savetheinternet.in">SaveTheInternet.in</a></p>
     </div> <!-- container -->
   </body>
 </html>
