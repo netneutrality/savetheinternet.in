@@ -244,8 +244,8 @@ Minister of State for Commerce and Industry</p>
 <a href="http://www.broadamptechnologies.com" rel="nofollow" target="_blank">Broadamp technologies</a> 
 <a href="http://www.buyhatke.com" rel="nofollow" target="_blank">BuyHatke</a> 
 <a href="http://www.buyt.in" rel="nofollow" target="_blank">Rocket Science Innovations (BuyT.in)</a> 
-<a href="http://www.byte-matrix.com" rel="nofollow" target="_blank">Byte matrix</a> 
-<a href="http://www.byteridge.com" rel="nofollow" target="_blank">Byteridge</a> 
+<a href="http://www.byte-matrix.com" rel="nofollow" target="_blank">Byte matrix</a>
+<a href="http://www.byteridge.com" rel="nofollow" target="_blank">Byteridge</a>
 <a href="http://www.cabbageheads.co" rel="nofollow" target="_blank">Cabbageheads</a> 
 <a href="http://www.campusdiaries.com" rel="nofollow" target="_blank">Campus Diaries</a> 
 <a href="http://www.capillarytech.com" rel="nofollow" target="_blank">Capillary Technologies</a> 
@@ -479,17 +479,27 @@ Minister of State for Commerce and Industry</p>
                     "@theknownface", "@Tinyowl_App", "@toshendrasharma", "@traverik", "@upasanataku", "@vammok", "@vbhat", "@vijayshekhar", "@vishalgondal",
                     "@vishysinghal", "@vivpahwa", "@wanderingraptor", "@waqarazmi", "@warikoo", "@wegilant", "@wingify", "@wizrocket", "@yashish001",
                     "@YourStoryCo", "@zoho"],
-            twts = ["Show your support. Sign the open letter",
+            twts = ["Show your support. Sign the open letter,",
                     "Support net neutrality. Sign the open letter",
                     "Open letter from startups to PM. Be counted,",
-                    "Sign the open letter from startups to PM",
+                    "Sign the open letter from startups to the PM:",
                     "Help protect the open internet. Sign the letter"],
             url  = "http://bit.ly/1OsEYR2",
             hash = "#SaveTheInternet";
         
         function generateTweet() {
-          function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
-          var tweet = [ pick(twts), pick(twhs), pick(twhs), pick(twhs), url, hash ].join(" ");
+          function pick(arr, num) {
+            var r = [], i, c;
+            for(i=0; i<num; i++) {
+              do {
+                c = arr[Math.floor(Math.random()*arr.length)];
+              } while (r.indexOf(c) >= 0);
+              r.push(c);
+            }
+            return r;
+          }
+          
+          var tweet = pick(twts, 1).concat(pick(twhs, 3)).concat([ url, hash ]).join(" ");
           document.getElementById("tweet-preview").innerHTML = tweet;
           document.getElementById("tweet-send").href = "http://twitter.com/home?status=" + encodeURIComponent(tweet);
         }
