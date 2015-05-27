@@ -1,0 +1,887 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Email your MP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/images/favicon.ico" />
+    
+    <link type="text/plain" rel="author" href="http://www.savetheinternet.in/humans.txt" />
+
+    <meta property="og:description" content="Telco lobbies have gone to parliament, demanding control over what we do online. Ask your MP to stop them and protect Net Neutrality." />
+    <!-- TODO: make new image 
+    <meta property="og:image" content="http://www.savetheinternet.in/images/ogimg.gif" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    -->
+    <meta property="og:site_name" content="Save the Internet" />
+    <meta property="og:title" content="Save the Internet" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.savetheinternet.in" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://www.savetheinternet.in" />
+    <meta name="twitter:title" content="Save the Internet" /><!-- Limit: 70 characters -->
+    <meta name="twitter:description" content="Telco lobbies have gone to parliament, demanding control over what we do online. Ask your MP to stop them and protect Net Neutrality." /><!-- Limit: 200 characters -->
+    <!-- <meta name="twitter:image:src" content="http://www.savetheinternet.in/images/ogimg.gif" /> -->
+    <meta name="twitter:site" content="savetheinternet_in" />
+
+    <style>
+      
+      html, body { padding: 0; margin: 0; }
+      body {
+        margin-bottom: 8em;
+      }
+      
+      body, button, input, textarea, select, option {
+        font: 16px/24px Georgia;
+      }
+      
+      h1, h2, h3, p { margin: 0; padding: 1em 0; line-height: 1.25em; position: relative; border-radius: 4px; background: rgba(255,255,255,0.75); } 
+      a { color: #654; text-decoration: none; }
+      
+      input, textarea, select {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding: 1em;
+        line-height: 1em;
+      }
+      
+      label { display: block; padding: 1em 0; }
+      
+      button, a.btn { 
+        display: inline-block;
+        background: #654; color: white;
+        border: none; padding: 1em; margin: 0;
+        line-height: 1em; border-radius: 4px;
+      }
+      button:hover, a.btn:hover { background: #654; }
+      button.next {
+        float: right; margin: 1em 0;
+      }
+      
+      textarea {
+        resize: vertical;
+      }
+      
+      .personal-message { height: 5em; }
+      .response-text { height: 20em; font-size: 0.75em; }
+      
+      .container.logo {
+        height: 10em;
+        padding: 0 3em 0 14em;
+        margin-top: 1em;
+        background: #fff url('/images/logow.png') no-repeat 3em top;
+        background-size: contain;
+      }
+      
+      .container {
+        display: block;
+        box-sizing: border-box;
+        max-width: 55em; padding: 0 3em; margin: 0 auto;
+      }
+      
+/*--- Step 1: MP Selection --- */
+    
+      
+      input.search {
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px 0 rgba(0,0,0,0.5);
+        border-radius: 3em;
+      }
+      
+      input.search:focus { outline: none; }
+      
+      .picker { margin: 1em 0 0 0; }
+      
+      .mp {
+        display: block;
+        float: left;
+        width: 50%;
+        margin: 0;
+        border: 4px solid #fff;
+        background: #ca9;
+        box-sizing: border-box;
+        padding: 1em;
+        border-radius: 8px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.2s;
+      }
+      
+      .mp:hover {
+        background: #654; 
+        color: #fff;
+      }
+      
+      .mp:after {
+        content: "▶";
+        color: "#654";
+        position: absolute;
+        line-height: 1em;
+        margin-top: -0.5em;
+        right: 1em;
+        top: 50%;
+      }
+      
+      .mp:hover:after { color: #ca9; }
+      
+      @media (max-width: 640px) {
+        .mp { width: 100%; }
+      }
+            
+/*--- Step 2: Personal message (optional) ---- */
+      
+      
+      
+/*      The action bar */
+      
+      .actions {
+        clear: both;
+        background: #654; color: #fff;
+        position: fixed; height: auto; padding: 0.5em 0; bottom: 0; left: 0; right: 0;
+        box-shadow: 0 4px 16px 0 rgba(0,0,0,0.5);
+      }
+      
+      .actions .container { text-align: right; }
+      .actions button.left { float: left; }
+      .actions button { padding: 1.5em; color: #fff; background: #321; margin: 0 0.25em; }
+      .actions button.primary { color: #000; background: #ca9; font-weight: bold; }
+      .actions button:hover { box-shadow: 0 0 8px 0 #fff; }
+      
+/*      Step selector */
+      
+      .step { display: none; }
+      .step1 { display: block; }
+      
+    </style>
+    
+    <!-- /build -->
+    <script>
+      (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+
+      ga("create","UA-9752294-7","auto");
+      ga("send","pageview");
+    </script>
+  </head>
+  <body>
+    <div class="container logo">
+		  <h1>Ask your MP to support net neutrality.</h1>
+    </div>
+    <div class="container step step1">
+      <h2>Click to select your constituency and MP from the list below.</h2>
+      
+	    <input type="text" class="search" placeholder="Type constituency or MP name to search" />
+      <div class="picker"></div>
+      
+      <div style="clear: both">There are some MP’s whose email addresses we couldn’t find. If your MP is not listed and you know his/her email address, please tell us.</div>
+    </div>
+    
+    <div class="container step step2">
+      <h2>Add a personal message to <span class="mp-name"></span> (optional)</h2>
+      <p>Please explain why you are writing to him/her.</p>
+      <textarea class="personal-message">I am a resident of your constituency.</textarea>
+      <button class="send-response next">Send the email</button>
+    </div>
+    
+    <div class="container step step3">
+      <h2>Ctrl+C to Copy</h2>
+      <p>To: <span class="mp-email"></span><br />
+        Bcc: netneutralityindia@gmail.com<br />
+        Subject: <span class="subject-text"></span></p>
+      <textarea class="response-text" readonly></textarea>
+      <button class="copy-complete next">Done, copied</button>
+    </div>
+    
+    <div class="container step step4">
+      <h2>Open your email and paste (Ctrl+V)</h2>
+      <button class="open-email gmail">Gmail</button>
+      <button class="open-email yahoo">Yahoo</button>
+      <button class="open-email other-email">Other</button>
+      <p>You will be able to edit the email before sending. The following recipients
+        will be automatically filled:</p>
+      
+      <h2>Your email</h2>
+      <p>To: <span class="mp-email"></span><br />
+        Bcc: netneutralityindia@gmail.com<br />
+        Subject: <span class="subject-text"></span></p>
+      <textarea class="response-text" readonly></textarea>
+    </div>
+    
+    <div class="container step step5">
+      <h2>Help spread the word!</h2>
+
+      <p>Every email counts! Let our MPs know that every internet user demands net neutrality.</p>
+      <a class="btn share-facebook primary" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsavetheinternet.in" target="_blank">Share on Facebook</a>
+      <a class="btn share-twitter primary" href="https://twitter.com/intent/tweet?text=Telcos+lobbying+parliament+for+control+over+what+we+do+online.+Email+your+MP+to+stop+them+and+%23SaveTheInternet+http%3A%2F%2Fsavetheinternet.in" target="_blank">Tweet out</a>
+
+      <h2>Your email</h2>
+      <p>To: <span class="mp-email"></span><br />
+        Bcc: netneutralityindia@gmail.com<br />
+        Subject: <span class="subject-text"></span></p>
+      <textarea class="response-text" readonly></textarea>
+
+      
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script>
+		
+		var mps = [
+		{cons: "ADILABAD", name: "Godam Nagesh", email: "nagesh.gadam@gmail.com, nageshgodam@gmail.com"},
+		{cons: "AGRA", name: "Dr. Ramshankar Katheria", email: "office.mpagre@gmail.com"},
+		{cons: "AHMEDABAD EAST", name: "Paresh Dahyalal Rawal", email: "rawalpareshbjp@gmail.com"},
+		{cons: "AHMEDABAD WEST", name: "Dr. Solanki Kiritbhai Premjibhai", email: "sansadkiritsolanki@gmail.com"},
+		{cons: "AHMEDNAGAR", name: "Gandhi Dilipkumar Mansukhlal", email: "dilipmgandhi@gmail.com"},
+		{cons: "AJMER", name: "Sanwar Lal Jat", email: "sanwarlaljat@gmail.com"},
+		{cons: "AKBARPUR", name: "Devendra Singh Urf Bhole Singh", email: "devendrasinghbhole2014@gmail.com"},
+		{cons: "AKOLA", name: "Dhotre Sanjay Shyamrao", email: "sanjaysdhotre@gmail.com"},
+		{cons: "ALAPPUZHA", name: "K C Venugopal", email: "k.c.venugopal.org@gmail.com"},
+		{cons: "ALATHUR", name: "P.K.Biju", email: "pk.biju@sansad.nic.in, pkbijump@gmail.com"},
+		{cons: "ALIGARH", name: "Satish Kumar", email: "satish.gautam@sansad.nic.in"},
+		{cons: "ALIPURDUARS", name: "Dasrath Tirkey", email: "dasrathirey@gmail.com, dasrath.tirkey@sansad.nic.in"},
+		{cons: "ALLAHABAD", name: "Shyama Charan Gupta", email: "Shyamacharangupta@shyamacharangupta.co.in"},
+		{cons: "ALMORA", name: "Ajay Tamta", email: "ajaytamta40@gmail.com"},
+		{cons: "ALWAR", name: "Mahant Chand Nath Yogi", email: "mahentchandnathyogi@gmail.com"},
+		{cons: "AMALAPURAM", name: "Pandula Ravindra Babu", email: "pandularavi@gmail.com"},
+		{cons: "AMBALA", name: "Rattan Lal Kataria", email: "rattanlalkataria.bjp@gmail.com"},
+		{cons: "AMBEDKAR NAGAR", name: "Hariom", email: "hariompandey55lok@gmail.com"},
+		{cons: "AMETHI", name: "Rahul Gandhi", email: "amethi.inc@gmail.com"},
+		{cons: "AMRAVATI", name: "Adsul Anandrao Vithoba", email: "anandraoadsul001@gmail.com, av.adsul@sansad.nic.in"},
+		{cons: "AMRELI", name: "Kachhadiya Naranbhai Bhikhabhai", email: "mp_amreli@rediffmail.com"},
+		{cons: "AMRITSAR", name: "Captain Amarinder Singh", email: "Yuvie42@hotmail.com"},
+		{cons: "AMROHA", name: "Kanwar Singh Tanwar", email: "rajrealgroup@gmail.com"},
+		{cons: "ANAKAPALLE", name: "Muttamsetti Srinivasa Rao", email: "avanthi.msrakp@gmail.com"},
+		{cons: "ANAND", name: "Patel Dilipbhai Manibhai", email: "dilip2455@gmail.com"},
+		{cons: "ANANDPUR SAHIB", name: "Prem Singh Chandumajra", email: "Chandumajraps@gmail.com, ps.chandumajra@sansad.nic.in "},
+		{cons: "ANDAMAN & NICOBAR ISLANDS", name: "Bishnu Pada Ray", email: "andamanmp@gmail.com"},
+		{cons: "AONLA", name: "Dharmendra Kumar", email: "kumar.dharmendra@sansad.nic.in"},
+		{cons: "ARAKKONAM", name: "Hari G", email: "thiruttani.hari@gmail.com, hari.g@sansad.nic.in, tiruttani.hari@gmail.com"},
+		{cons: "ARAKU", name: "Kothapalli Geetha", email: "kothapalligeetha@gmail.com"},
+		{cons: "ARAMBAG", name: "Aparupa Poddar (Afrin Ali)", email: "aparupa29afrin@gmail.com, aparupa.poddar@sansad.nic.in"},
+		{cons: "ARANI", name: "V.Elumalai", email: "sevalelumalai@yahoo.com, v.elumalai@sansad.nic.in"},
+		{cons: "ARRAH", name: "Raj Kumar Singh", email: "rksinghias@gmail.com"},
+		{cons: "ARUNACHAL EAST", name: "Ninong Ering", email: "ninong2ering@gmail.com"},
+		{cons: "ARUNACHAL WEST", name: "Kiren Rijiju", email: "Krijiju@gmail.com"},
+		{cons: "ASANSOL", name: "Babul Supriya Boral (Babul Supriyo)", email: "babulsupriya@gmail.com, mos4ud@gmail.com, mos.ud@nic.in, bs.baral@sansad.nic.in"},
+		{cons: "ASKA", name: "Ladu Kishore Swain", email: "ladukishore.swain@sansad.nic.in, lksmpaska@gmail.com, lkisor81@gmail.com"},
+		{cons: "ATTINGAL", name: "A Sampath", email: "a.smpath@sansad.ic.in, attingalopoffice@gmail.com"},
+		{cons: "AURANGABAD", name: "Sushil Kumar Singh", email: "sushilsinghmp@gmail.com"},
+		{cons: "AURANGABAD", name: "Chandrakant Bhaurao Khaire", email: "bk.chandrakant@sansad.nic.in, cbkhaire@gmail.com"},
+		{cons: "AUTONOMOUS DISTRICT", name: "Biren Singh Engti", email: "birens.engti@sansad.nic.in, shisude@yahoo.com"},
+		{cons: "AZAMGARH", name: "Mulayam Singh Yadav", email: "mulayamsingh.yadav@sansad.nic.in"},
+		{cons: "BADAUN", name: "Dharmandra Yadav", email: "dharmandrayadavbadaun@gmail.com, d.yadav@sansad.nic.in"},
+		{cons: "BAGALKOT", name: "P.C. Gaddigoudar", email: "pcgaddigoudar@radiffmail.com"},
+		{cons: "BAGHPAT", name: "Dr. Satyapal Singh", email: "allasatya@gmail.com"},
+		{cons: "BAHARAMPUR", name: "Adhir Ranjan Chowdhury", email: "adhir@sanad.nic.in"},
+		{cons: "BAHRAICH", name: "Savitri Bai Foole", email: "sadhvisavitrib.foole@sansad.nic.in"},
+		{cons: "BALAGHAT", name: "Bodhsingh Bhagat", email: "bodhsingh.bhagat@sansad.nic.in"},
+		{cons: "BALASORE", name: "Rabindra Kumar Jena", email: "rabindra.jena@sansad.nic.in, rkjena.mpblsloksabha@gmail.com, rabindrakumarjena2014@gmail.com"},
+		{cons: "BALLIA", name: "Bharat Singh", email: "sheraybharat1952@gmail.com"},
+		{cons: "BALURGHAT", name: "Arpita Ghosh", email: "ghosharpita@gmail.com, ghosh.arpita@sansad.nic.in"},
+		{cons: "BANASKANTHA", name: "Chaudhry Haribhai Parthibhai", email: "haribhaipchaudhary@gmail.com"},
+		{cons: "BANDA", name: "Bhairon Prasad Mishra", email: "bhairdoprasadbta@gmail.com"},
+		{cons: "BANGALORE CENTRAL", name: "P.C. Mohan", email: "pcmohan@pcmohanbjp.com"},
+		{cons: "BANGALORE NORTH", name: "D.V. Sadananda Gowda", email: "sadanandagowda@yahoo.com"},
+		{cons: "BANGALORE RURAL", name: "D.K.Suresh", email: "dksuresh10@gmail.com"},
+		{cons: "BANGALORE SOUTH", name: "Ananth Kumar", email: "ananthkumar84@gmail.com"},
+		{cons: "BANGAON", name: "Mamata Thakur", email: "mamatathakur67@gmail.com"},
+		{cons: "BANKA", name: "Jaiprakash Narayan Yadav", email: "jaiprakashnarayanyadav@gmail.com"},
+		{cons: "BANKURA", name: "Sreemati Dev Varma (Moon Moon Sen)", email: "sd.verma@sansad.nic.in, raimadevsen@gmail.com"},
+		{cons: "BANSGAON", name: "Kamlesh Paswan", email: "kamleshpassi67@gmail.com"},
+		{cons: "BAPATLA", name: "Malyadri Sriram", email: "malaydri@gmail.com"},
+		{cons: "BARABANKI", name: "Priyanka Singh Rawat", email: "priyankasinghrawat50@gmail.com"},
+		{cons: "BARAMATI", name: "Supriya Sule", email: "supriya.s@sansad.nic.in, supriyasule@yahoo.co.in"},
+		{cons: "BARAMULLA", name: "Muzaffar Hussain Baig", email: "muzaffarhbaig@gmail.com"},
+		{cons: "BARASAT", name: "Dr. Kakali Ghoshdostidar", email: "kakolighosh.dastidar@gmail.com, kakoli.dastidar@sansad.nic.in"},
+		{cons: "BARDHAMAN PURBA", name: "Sunil Kumar Mondal", email: "sunilk.mondal@sansad.nic.in"},
+		{cons: "BARDHAMAN-DURGAPUR", name: "Mamtaz Sanghamita", email: "msanghamita@hotmail.com, mamtaz.sanghamita@sansad.nic.in"},
+		{cons: "BARDOLI", name: "Parbhubhai Nagarbhai Vasava", email: "mlaprabhuvasava@gmail.com"},
+		{cons: "BAREILLY", name: "Santosh Gangwar", email: "santosh.gangwar.bareilly@gmail.com"},
+		{cons: "BARGARH", name: "Prabhas Kumar Singh", email: "prabhas-07@yahoo.co.in, parbhas.singh@sansad.nic.in"},
+		{cons: "BARMER", name: "Col. Sona Ram", email: "col.sonaram@sansad.nic.in"},
+		{cons: "BARPETA", name: "Siraj Uddin Ajmal", email: "msirajuddinajmal@gmail.com"},
+		{cons: "BARRACKPUR", name: "Dinesh Trivedi", email: "dintriv@gmail.com"},
+		{cons: "BASIRHAT", name: "Idris Ali", email: "janabidrisali@gmail.com, idris.ali@sansad.nic.in"},
+		{cons: "BASTAR", name: "Dinesh Kashyap", email: "dinesh.kashyap@sansad.nic.in"},
+		{cons: "BASTI", name: "Harish Chandra", email: "Bjpharish@gmail.com"},
+		{cons: "BATHINDA", name: "Harsimrat Kaur Badal", email: "harsimratk.badal@sansad.nic.in, simratbadal@yahoo.com"},
+		{cons: "BEED", name: "Munde Pritam", email: "pritammunde@gmail.com"},
+		{cons: "BEGUSARAI", name: "Bhola Singh", email: "mpdrbholasingh@gmail.com"},
+		{cons: "BELGAUM", name: "Suresh Angadi", email: "suresh.angadimp@gmail.com"},
+		{cons: "BELLARY", name: "B Sreeramulu", email: "sreeramulu.devinagar@gmail.com"},
+		{cons: "BERHAMPUR", name: "Sidhant Mohapatra", email: "mp20berhampur@gmail.com, sssm234@gmail.com"},
+		{cons: "BETUL", name: "Jyoti Dhurve", email: "jyoti.dhurve@sansad.nic.in, jyotidhurvememberofparliament@gmail.com"},
+		{cons: "BHADOHI", name: "Virendra Singh", email: "bdh.bjp@gmail.com"},
+		{cons: "BHADRAK", name: "Arjun Charan Sethi", email: "ac.sethi@sansad.nic.in, nama.kmm@gmail.com"},
+		{cons: "BHAGALPUR", name: "Shailesh Kumar Urph Bulo Mandal", email: "rjdbhagalpur@gmail.com"},
+		{cons: "BHANDARA-GONDIYA", name: "Nanabhau Falgunrao Patole", email: "nana.patole05@gmail.com"},
+		{cons: "BHARATPUR", name: "Bahadur Singh", email: "mpbhadursinghkoli@gmail.com"},
+		{cons: "BHARUCH", name: "Mansukhbhai Dhanjibhai Vasava", email: "mansukhbhaidhanjibhaivasava@gmail.com"},
+		{cons: "BHAVNAGAR", name: "Shyal Bhartiben Dhirubhai", email: "bharatishyal@gmail.com"},
+		{cons: "BHILWARA", name: "Subhash Chandra Baheria", email: "baheriasc@gmail.com"},
+		{cons: "BHIND", name: "Bhagirath Prasad", email: "bhagirath.prasad2@gmail.com"},
+		{cons: "BHIWANDI", name: "Kapil Moreshwar Patil", email: "purushottamenterprises@rediffmail.com"},
+		{cons: "BHIWANI-MAHENDRAGARH", name: "Dharambir", email: "dharambirsingh136@gmail.com"},
+		{cons: "BHONGIR", name: "Dr. Narsaiah Boora", email: "bnarsaiah.goud@sansad.nic.in, drbnarsaiah@yahoo.com"},
+		{cons: "BHOPAL", name: "Alok Sanjar", email: "aloksanjar.mp@gmail.com"},
+		{cons: "BHUBANESWAR", name: "Prasanna Kumar Patasani-", email: "prasanna.patasani@sansad.nic.in"},
+		{cons: "BIDAR", name: "Bhagwanth", email: "bhagwantkhuba@gmail.com"},
+		{cons: "BIJNOR", name: "Kunwar Bhartendra", email: "bharatendrasingh@yahoo.com"},
+		{cons: "BIKANER", name: "Arjun Ram Meghwal", email: "arjunrammeghwal@gmail.com"},
+		{cons: "BILASPUR", name: "Lakhanlal Sau S/O Kalyan Lal Sahu", email: "lakhanlalsahu1971@gmail.com"},
+		{cons: "BIRBHUM", name: "Satabdi Roy(Banerjee)", email: "satabdi2roy@yahoo.co.in"},
+		{cons: "BISHNUPUR", name: "Saumitra Khan", email: "sumitrakhan@gmail.com, khan.saumitra@sansad.nic.in"},
+		{cons: "BOLANGIR", name: "Kalikesh Narayan Singh Deo", email: "mpbolangir@gmail.com, kalikesh.singhdeo@sansad.nic.in"},
+		{cons: "BOLPUR", name: "Anupam Hazra", email: "anupam688@yahoo.co.in, anupam.hazra@sansad.nic.in"},
+		{cons: "BULANDSHAHR", name: "Dr. Bhola Singh", email: "drbholasingh@gmail.com"},
+		{cons: "BULDHANA", name: "Jadhav Prataprao Ganpatrao", email: "jadhaoprataprao25@gmail.com"},
+		{cons: "BUXAR", name: "Ashwini Kumar Choubey", email: "ashwinikrchoubey@gmail.com"},
+		{cons: "CHALAKUDY", name: "Innocent", email: "inncentthekkcthala@gmail.com, innocent.mp@sansad.nic.in"},
+		{cons: "CHAMARAJANAGAR", name: "R. Dhruvanarayana", email: "dhruvanarayana@gmail.com"},
+		{cons: "CHANDAULI", name: "Mahendra Nath", email: "76chandauli.mp@gmail.com"},
+		{cons: "CHANDIGARH", name: "Smt. Kirron Kher", email: "kirronkher14@gmail.com"},
+		{cons: "CHANDNI CHOWK", name: "Dr. Harsh Vardhan", email: "drhrshvardhan@gmail.com"},
+		{cons: "CHANDRAPUR", name: "Ahir Hansraj Gangaram", email: "hansrajahir1954@gmail.com"},
+		{cons: "CHATRA", name: "Sunil Kumar Singh", email: "sunilsingh_ps@yahoo.com"},
+		{cons: "CHELVELLA", name: "Konda Vishweshwar Reddy", email: "reachme@kvformp.org, kvishweshwar.reddy@sansad.nic.in"},
+		{cons: "CHENNAI CENTRAL", name: "S.R. Vijayakumar", email: "srvijayakumar74@gmail.com"},
+		{cons: "CHENNAI NORTH", name: "Venkatesh Babu .T.G", email: "tgvbabu@gmail.com"},
+		{cons: "CHENNAI SOUTH", name: "Dr. J. Jayavardhan", email: "j.jayavardhan@sansad.nic.in, jayavardhanjayakumar@gmail.com"},
+		{cons: "CHHINDWARA", name: "Kamal Nath", email: "knshikarpur@gmail.com"},
+		{cons: "CHHOTA UDAIPUR", name: "Rathwa Ramsingbhai Patalbhai", email: "ramsinhrathwa@yahoo.co.in"},
+		{cons: "CHIDAMBARAM", name: "M.Chandrakasi", email: "m.chandrakasi@sansad.nic.in, mckasi1969@gmail.com"},
+		{cons: "CHIKKBALLAPUR", name: "M Veerappa Moily", email: "vmoily@kar.nic.in"},
+		{cons: "CHIKKODI", name: "Prakash Hukkeri", email: "prakashhukkerimla@ymail.com"},
+		{cons: "CHITRADURGA", name: "B.N.Chandrappa", email: "bnchandrappa1955@gmail.com"},
+		{cons: "CHITTORGARH", name: "Chandra Prakash", email: "cpjoshi_cor@yahoo.com, cpjoshi_cor@rediffmail.com"},
+		{cons: "CHURU", name: "Rahul Kaswan", email: "rahulkaswan2@gmail.com"},
+		{cons: "COIMBATORE", name: "Nagarajan- P.", email: "nagarajan.p19@sansad.nic.in, apnagarajanb2@gmail.com"},
+		{cons: "COOCHBEHAR", name: "Renuka Sinha", email: "renukasinha2014@gmail.com, renuka.sinha@sansad.nic.in, bangabhawan@gmail.com"},
+		{cons: "CUDDALORE", name: "A.Arunmozhithevan", email: "arun2868@gmail.com, a.arunmozhithevan@sansad.nic.in"},
+		{cons: "CUTTACK", name: "Bhartruhari Mahatab", email: "bhartruhari.mahtab@gmail.com"},
+		{cons: "DADRA & NAGAR HAVELI", name: "Natubhai G. Patel", email: "natubhaipatel.mp@gmail.com"},
+		{cons: "DAHOD", name: "Bhabhor Jasvantsinh Sumanbhai", email: "jsmpdhd@gmail.com"},
+		{cons: "DAKSHINA KANNADA", name: "Nalin Kumar Katil", email: "mpdkannada@gmail.com"},
+		{cons: "DAMAN & DIU", name: "Patel Lalubhai Babubhai", email: "damanmp@rediffmail.com"},
+		{cons: "DAMOH", name: "Prahalad Singh Patel", email: "prahaladspatel@gmail.com, prahladspatel@rediffmail.com"},
+		{cons: "DARBHANGA", name: "Kirti Azad", email: "kirtiazad.mp@gmail.com"},
+		{cons: "DARJEELING", name: "Surendrajeet Singh Ahluwalia", email: "tengrg@gmail.com, ahluwalia.ss@gmail.com"},
+		{cons: "DAUSA", name: "Harish Chandra", email: "hcmeena54@gmail.com"},
+		{cons: "DAVANAGERE", name: "G.M. Siddeshwara", email: "siddeshwaragm@gmail.com"},
+		{cons: "DEORIA", name: "Kalraj Mishra", email: "kalraj.mishra@sansad.nic.in"},
+		{cons: "DEWAS", name: "Manohar Untwal", email: "Utwalmanohar@gmail.com"},
+		{cons: "DHANBAD", name: "Pashupati Nath Singh", email: "pashupati.ns@sansad.nic.in"},
+		{cons: "DHAR", name: "Savitri Thakur", email: "smtsavitrithakur@gmail.com"},
+		{cons: "DHARMAPURI", name: "Anbumani Ramadoss", email: "draramadoss@gmail.com, dranbu910@gmail.com"},
+		{cons: "DHARWAD", name: "Pralhad Joshi", email: "pralhadjoshi@rediffmail.com"},
+		{cons: "DHAURAHRA", name: "Rekha", email: "rekhavermabjpddrama@gmail.com"},
+		{cons: "DHENKANAL", name: "Tathagata Satpathy", email: "tatzaudi@yahoo.com"},
+		{cons: "DHUBRI", name: "Badruddin Ajmal", email: "amarhuzoor@gmail.com"},
+		{cons: "DHULE", name: "Bhamare Subhash Ramrao", email: "dr.subhash.bhamre@gmail.com"},
+		{cons: "DIAMOND HARBOUR", name: "Abhishek Banerjee", email: "destination.abhishek@gmail.com, abhishekbanerjee.mp@gmail.com"},
+		{cons: "DIBRUGARH", name: "Rameshwar Teli", email: "teli.rameswar@gmail.com"},
+		{cons: "DINDIGUL", name: "Udhaya Kumar .M", email: "udhayakumaradv@gmail.com, m.udhayakumar@sansad.nic.in"},
+		{cons: "DINDORI", name: "Chavan Harishchandra Deoram", email: "harishchandra.chavan@sansad.nic.in"},
+		{cons: "DOMARIYAGANJ", name: "Jagdambika Pal", email: "jagdambikapal@gmail.com"},
+		{cons: "DUM DUM", name: "Saugata Roy", email: "saugatapolitics_roy@yahoo.com"},
+		{cons: "DUMKA", name: "Shibu Soren", email: "shisoren@sansad.nic.in"},
+		{cons: "DURG", name: "Tamradwaj Sahu", email: "tamradhwaj6@gmail.com"},
+		{cons: "EAST DELHI", name: "Mahesh Giri", email: "contact@maheishgirri.com"},
+		{cons: "ELURU", name: "Venkateswara Rao Maganti", email: "maganttibabu@gmail.com"},
+		{cons: "ERNAKULAM", name: "K.V. Thomas", email: "prof.kvthomas2014@gmail.com"},
+		{cons: "ERODE", name: "Selvakumara Chinnayan S", email: "advselvaadmk@gmail.com, ss.chinnayan@sansad.nic.in, erodempselvakumarachinnayan@gmail.com"},
+		{cons: "ETAH", name: "Rajvir Singh", email: "rajveersingh.mp@sansad.nic.in"},
+		{cons: "ETAWAH", name: "Ashok Kumar Doharey", email: "ashokkumar.doharey@sansad.nic.in"},
+		{cons: "FAIZABAD", name: "Lallu Singh", email: "lallu.singh@sansad.nic.in"},
+		{cons: "FARIDABAD", name: "Krishan Pal", email: "krishanpal.gurjar@bjp.org"},
+		{cons: "FARIDKOT", name: "Prof. Sadhu Singh", email: "prof.sadhusingh@gmail.com, singh.sadhu@sansad.nic.in"},
+		{cons: "FARRUKHABAD", name: "Mukesh Rajput", email: "mukesh.rajput@sansad.nic.in"},
+		{cons: "FATEHGARH SAHIB", name: "Harinder Singh Khalsa", email: "harsinkha@gmail.com, harinders.khalsa@sansad.nic.in"},
+		{cons: "FATEHPUR", name: "Sadhavi Niranjan Jyoti", email: "shadviniranjanjyoti@gmail.com"},
+		{cons: "FATEHPUR SIKRI", name: "Babulal", email: "ch.babulal.bjp@gmail.com"},
+		{cons: "FIROZABAD", name: "Akshay Yadav", email: "yadavakashay@yahoo.com"},
+		{cons: "FIROZPUR", name: "Sher Singh Ghubaya", email: "shersinghgubaya.mp@gmail.com, ss.ghubaya@sansad.nic.in"},
+		{cons: "GADCHIROLI-CHIMUR", name: "Ashok Mahadeorao Nete", email: "anbjp1999@gmail.com, ashoknete3@gmail.com"},
+		{cons: "GANDHINAGAR", name: "Lal Krishna Advani", email: "officelka@gmail.com, advanilk@sansad.nic.in"},
+		{cons: "GANGANAGAR", name: "Nihalchand", email: "nihal1337@gmail.com"},
+		{cons: "GARHWAL", name: "(Maj Gen (Retd.) ) Bhuwan Chandra Khanduri (Avsm)", email: "bc.khanduri@nic.in"},
+		{cons: "GAUHATI", name: "Smt. Bijoya Chakraborty", email: "charaavorty@yahoo.com"},
+		{cons: "GAUTAM BUDHHA NAGAR", name: "Mahesh Sharma", email: "demaheshsharma333@gmail.com"},
+		{cons: "GAYA", name: "Hari Manjhi", email: "manjhihari@gmail.com"},
+		{cons: "GHATAL", name: "Deepak Adhikari (Dev)", email: "dev.ak2004@gmail.com, adhikari.deepak@sansad.nic.in, medevadhikrari@gmail.com"},
+		{cons: "GHAZIABAD", name: "Vijay Kumar Singh", email: "veekaysingh@gmail.com"},
+		{cons: "GHAZIPUR", name: "Manoj Sinha", email: "manojksinha.bjp@gmail.com"},
+		{cons: "GHOSI", name: "Harinarayan Rajbhar", email: "harinarayan.rajbhar@sansad.nic.in"},
+		{cons: "GIRIDIH", name: "Ravindra Kumar Pandey", email: "rkpandeymp1999@gmail.com"},
+		{cons: "GODDA", name: "Nishikant Dubey", email: "Nisnirantdubay@gmail.com"},
+		{cons: "GONDA", name: "Kirti Vardhan Singh", email: "kvsng66@gmail.com"},
+		{cons: "GOPALGANJ", name: "Janak Ram", email: "janakchamarbjp78@gmail.com"},
+		{cons: "GORAKHPUR", name: "Adityanath", email: "yogi.adityanath@sansad.nic.in, yogiadityanath72@gmail.com"},
+		{cons: "GULBARGA", name: "Mallikarjun Kharge", email: "kharge@gmail.com"},
+		{cons: "GUNA", name: "Jyotiraditya M. Scindia", email: "office.scindia@yahoo.com"},
+		{cons: "GUNTUR", name: "Jayadev Galla", email: "jaygalla@gmail.com"},
+		{cons: "GURDASPUR", name: "Vinod Khanna", email: "vinodkhanna108@gmail.com"},
+		{cons: "GURGAON", name: "Inderjit Singh", email: "mpgurgaon@gmail.com"},
+		{cons: "GWALIOR", name: "Narendra Singh Tomar", email: "mpofficebhopal@gmail.com"},
+		{cons: "HAJIPUR", name: "Ram Vilas Paswan", email: "ramvilas.paswan@sansad.nic.in"},
+		{cons: "HAMIRPUR", name: "Anurag Singh Thakur", email: "mphamirpur@gmail.com"},
+		{cons: "HAMIRPUR", name: "Kunwar Pushpendra Singh", email: "pushpendrasinghchandel777@gmail.com"},
+		{cons: "HARDOI", name: "Anshul Verma", email: "advanshul.capri77@gmail.com"},
+		{cons: "HARDWAR", name: "Ramesh Pokhariyal Nishank", email: "nishankramesh@gmail.com"},
+		{cons: "HASSAN", name: "H.D. Devegowda", email: "haradanahalli@yahoo.co.in"},
+		{cons: "HATHRAS", name: "Rajesh Kumar", email: "rk.diwaker@sansad.nic.in"},
+		{cons: "HATKANANGLE", name: "Raju Shetty", email: "rajushetti@gmail.com"},
+		{cons: "HAVERI", name: "Udasi Shivakumar Channabasappa", email: "68southavenue@gmail.com"},
+		{cons: "HAZARIBAGH", name: "Jayant Sinha", email: "jsinha21@gmail.com"},
+		{cons: "HINDUPUR", name: "Kristappa Nimmala", email: "ambareeshnimmala@gmail.com"},
+		{cons: "HINGOLI", name: "Rajeev Shankarrao Satav", email: "rajeevsataviyc@gmail.com, rajeevsatav@gmail.com"},
+		{cons: "HISAR", name: "Dushyant Chautala", email: "dchautala@hotmail.com, dushyant.chautala@sansad.nic.in, dchautala@gmail.com"},
+		{cons: "HOOGHLY", name: "Ratna De", email: "ratna.de@sansad.nic.in"},
+		{cons: "HOSHANGABAD", name: "Uday Pratap Singh", email: "udaypratap_narsinghpur@yahoo.com"},
+		{cons: "HOSHIARPUR", name: "Vijay Sampla", email: "vijaysampla@gmail.com"},
+		{cons: "HOWRAH", name: "Prasun Banerjee", email: "prasuntmscsc@gmail.com, prasun.banerjee@sansad.nic.in "},
+		{cons: "HYDERABAD", name: "Asaduddin Owaisi", email: "asadowaisi@rediffmail.com, asad.owaisi@sansad.nic.in"},
+		{cons: "IDUKKI", name: "Adv.Joice George", email: "joice.george@sansad.nic.in, joicegeorgeadv@gmail.com"},
+		{cons: "INDORE", name: "Sumitra Mahajan", email: "sumitra.tai@gmail.com"},
+		{cons: "INNER MANIPUR", name: "Dr. Thokchom Meinya", email: "meinya@sansad.nic.in"},
+		{cons: "JABALPUR", name: "Rakesh Singh Urf Ghanshyam Singh", email: "rakesh.singh@sansad.nic.in, mpjbp@yahoo.com"},
+		{cons: "JADAVPUR", name: "Sugata Bose", email: "sugatabose@icloud.com, bosesugata@gmail.com, sugata.bose@sansad.nic.in"},
+		{cons: "JAGATSINGHPUR", name: "Kulamani Samal", email: "kulamani.samal@sansad.nic.in"},
+		{cons: "JAHANABAD", name: "Dr. Arun Kumar", email: "drarunkumarjahanabad@gmail.com"},
+		{cons: "JAIPUR", name: "Ramcharan Bohara", email: "ramcharanbohra@gmail.com"},
+		{cons: "JAIPUR RURAL", name: "Rajyavardhan Singh Rathore", email: "rathorebjp@gmail.com"},
+		{cons: "JAJPUR", name: "Rita Tarai", email: "rita.tarai@sansad.nic.in"},
+		{cons: "JALANDHAR", name: "Santokh Singh Chaudhary", email: "santokhschaudhary@gmail.com"},
+		{cons: "JALAUN", name: "Bhanu Pratap Singh", email: "bhanus@sansad.nic.in"},
+		{cons: "JALGAON", name: "Patil Ashok Tapiram", email: "atnana.patil@sansad.nic.in"},
+		{cons: "JALNA", name: "Danve Raosaheb Dadarao", email: "rddanvepatil@yahoo.com"},
+		{cons: "JALORE", name: "Devji Patel", email: "jaloremp@gmail.com"},
+		{cons: "JALPAIGURI", name: "Bijoy Chandra Barman", email: "bc.barman@sansad.nic.in, bijoychandrabarman@gmail.com, rezasamim@yahoo.com"},
+		{cons: "JAMMU", name: "Jugal Kishore", email: "jugal.bjp@gmail.com"},
+		{cons: "JAMNAGAR", name: "Maadam Poonamben Hematbhai", email: "poonammaadam@gmail.com"},
+		{cons: "JAMUI", name: "Chirag Kumar Paswan", email: "chiragpaswan@yahoo.com"},
+		{cons: "JANGIPUR", name: "Abhijit Mukherjee", email: "abhijitkumarjeegk2@gmail.com, abhijit.mukherjee@sansad.nic.in"},
+		{cons: "JANJGIR-CHAMPA", name: "Smt. Kamla Patle", email: "sansadjanjgir66@gmail.com"},
+		{cons: "JAUNPUR", name: "Krishna Pratap", email: "kpsinghjnp@gmail.com"},
+		{cons: "JAYNAGAR", name: "Pratima Mondal", email: "pratimamondal66@yahoo.com, pratima.mondal@sansad.nic.in "},
+		{cons: "JHALAWAR-BARAN", name: "Dushyant", email: "dushyant@dholpurpalace.com"},
+		{cons: "JHANJHARPUR", name: "Birendra Kumar Chaudhary", email: "bkumar.chaudhary@sansad.nic.in"},
+		{cons: "JHANSI", name: "Uma Bharti", email: "umashribharti@gmail.com"},
+		{cons: "JHARGRAM", name: "Uma Saren", email: "dr.umasaren@gmail.com, uma.saren@sansad.nic.in"},
+		{cons: "JHUNJHUNU", name: "Santosh Ahlawat", email: "santoshahlawat@gmail.com"},
+		{cons: "JODHPUR", name: "Gajendrasingh Shekhawat", email: "regentjodhpur@gmail.com"},
+		{cons: "JORHAT", name: "Kamakhya Prasad Tasa", email: "kamakhyatasa@gmail.com"},
+		{cons: "JUNAGADH", name: "Chudasama Rajeshbhai Naranbhai", email: "rajne@yahoo.com"},
+		{cons: "KACHCHH", name: "Chavda Vinod Lakhmashi", email: "vinod5467@gmail.com"},
+		{cons: "KADAPA", name: "Avinash Reddy Yeduguri Sandinti", email: "ys.avinash@gmail.com"},
+		{cons: "KAIRANA", name: "Hukum Singh", email: "hukum.singh@sansad.nic.in, hukumbjp@gmail.com"},
+		{cons: "KAISERGANJ", name: "Brij Bhusan Sharan Singh", email: "bjp2014kaisherganj@gmail.com"},
+		{cons: "KAKINADA", name: "Thota Venkata Narasimham", email: "narasimham@sansad.nic.in, thotanarasimhammp@gmail.com, thotanarasimhamdelhioffice@gmail.com"},
+		{cons: "KALAHANDI", name: "Arka Keshari Deo", email: "arkakeshari@gmail.com"},
+		{cons: "KALIABOR", name: "Gourav Gogoi", email: "gaurav.g@eclectic.co.in"},
+		{cons: "KALLAKURICHI", name: "K. Kamaraj", email: "kkamarajdr@gmail.com, k.kamaraj@sansad.nic.in"},
+		{cons: "KALYAN", name: "Dr.Shrikant Eknath Shinde", email: "shrikantshinde87@yahoo.in"},
+		{cons: "KANCHEEPURAM", name: "Maragatham K", email: "k.maragatham@sansad.nic.in, maragathamkmj@gmail.com"},
+		{cons: "KANDHAMAL", name: "Pratyusha Rajeshwari Singh", email: "mpkandhamal@gmail.com, pratyusha.singh@sansad.nic.in, pratyusharsingh@gmail.com"},
+		{cons: "KANGRA", name: "Shanta Kumar", email: "skyamini@gmail.com"},
+		{cons: "KANKER", name: "Vikram Usendi", email: "vikram_usendi@ymail.com"},
+		{cons: "KANNAUJ", name: "Dimple Yadav", email: "dimpalyadav78@gmail.com"},
+		{cons: "KANNIYAKUMARI", name: "Radhakrishnan P.", email: "ponnaar@gmail.com"},
+		{cons: "KANNUR", name: "P K Sreemathi", email: "pk.sreemathi@sansad.nic.in, pk.sreemathi@gmail.com"},
+		{cons: "KANPUR", name: "Dr.Murli Manohar Joshi", email: "murli@sansad.nic.in"},
+		{cons: "KANTHI", name: "Sisir Kumar Adhikari", email: "sisiradhikari76@yahoo.com"},
+		{cons: "KARAKAT", name: "Upendra Kushwaha", email: "upendrakushwahapatna@gmail.com"},
+		{cons: "KARAULI-DHOLPUR", name: "Manoj Rajoria", email: "dr.manojrajoria001@gmail.com"},
+		{cons: "KARIMGANJ", name: "Radheshyam Biswas", email: "radheshyam.biswas@sansad.nic.in"},
+		{cons: "KARIMNAGAR", name: "Vinod Kumar Boinapally", email: "vinodkumarboianapalli@yahoo.com"},
+		{cons: "KARNAL", name: "Ashwini Kumar", email: "ashwinikumar001@gmail.com"},
+		{cons: "KARUR", name: "Thambidurai.M", email: "thambiduraikarurmp@gmail.com"},
+		{cons: "KASARAGOD", name: "P Karunakaran", email: "karunakaran.p@sansad.nic.in, pkarunakaranmp@gmail.com"},
+		{cons: "KATIHAR", name: "Shah Tariq Anwar", email: "tariqanwarindia@gmail.com, katihar2014@gmail.com"},
+		{cons: "KAUSHAMBI", name: "Vinod Kumar", email: "bjpvinodsonkar@gmail.com"},
+		{cons: "KENDRAPARA", name: "Sri Baijayant Panda", email: "office@bjpanda.org, bj.panda@sansad.nic.in"},
+		{cons: "KEONJHAR", name: "Sakuntala Laguri", email: "sakuntala.laguri@sansad.nic.in"},
+		{cons: "KHAGARIA", name: "Choudhary Mahboob Ali Kaiser", email: "Choudharymahboobalikaiser@gmail.com"},
+		{cons: "KHAJURAHO", name: "Nagendra Singh", email: "nagendra.s@sansad.nic.in, nsinghnagod@gmail.com"},
+		{cons: "KHAMMAM", name: "Ponguleti Srinivasa Reddy", email: "psrysrcp@gmail.com"},
+		{cons: "KHANDWA", name: "Nandkumar Singh Chouhan", email: "nandkumar.bjp@gmail.com"},
+		{cons: "KHARGONE", name: "Subhash Patel", email: "skpatel07777@gmail.com, subhashpatel1610@gmail.com"},
+		{cons: "KHEDA", name: "Chauhan Devusinh Jesingbhai", email: "devusinh@yahoo.co.in"},
+		{cons: "KHERI", name: "Ajay Kumar", email: "ajay.kumar19@sansad.nic.in"},
+		{cons: "KHUNTI", name: "Karia Munda", email: "kariya.munda@sansad.nic.in"},
+		{cons: "KISHANGANJ", name: "Mohammad Asrarul Haque", email: "mahaqqasmi@gmail.com, masrarul.haque@sansad.nic.in "},
+		{cons: "KODARMA", name: "Ravindra Kumar Ray", email: "rkraibjp@gmail.com"},
+		{cons: "KOKRAJHAR", name: "Naba Kumar Sarania", email: "saranianabakumar@yahoo.com"},
+		{cons: "KOLAR", name: "K H Muniyappa", email: "khmuni@sansad.nic.in"},
+		{cons: "KOLHAPUR", name: "Dhananjay Bhimrao Mahadik", email: "dhananjaymahadik@hotmail.com, dbmahadik@gmail.com, dbmahadik15@gmail.com"},
+		{cons: "KOLKATA UTTAR", name: "Sudip Bandyopadhyay", email: "sudip_bandyopadhyay2006@yahoo.com, sudip@sansad.nic.in"},
+		{cons: "KOLLAM", name: "N.K.Premachandran", email: "nk.premachandran@sansad.nic.in, nkprem07@gmail.com"},
+		{cons: "KOPPAL", name: "Sanganna A. Karadi", email: "sakkpl24@gmail.com"},
+		{cons: "KORAPUT", name: "Jhina Hikaka", email: "mlalaxmipur@gmail.com, jhina.hikaka@sansad.nic.in"},
+		{cons: "KORBA", name: "Dr. Banshilal Mahato", email: "banshilalmahto@gmail.com"},
+		{cons: "KOTA", name: "Om Birla", email: "ombirlakota@gmail.com"},
+		{cons: "KOTTAYAM", name: "Jose K Mani", email: "josekmaniktym@gmail.com, josekmanimp@gmail.com, mani.josek@sansad.nic.in"},
+		{cons: "KOZHIKODE", name: "M .K Raghavan", email: "mk.raghavan@sansad.nic.in, calicutmp@yahoo.co.in"},
+		{cons: "KRISHNAGIRI", name: "Ashok Kumar.K", email: "ashokkumarkgdc@gmail.com, k.ashokkumar@sansad.nic.in"},
+		{cons: "KRISHNANAGAR", name: "Tapas Paul", email: "tpaulmp@gmail.com, tapas.paul@sansad.nic.in"},
+		{cons: "KURNOOL", name: "Butta Renuka", email: "brnk2106@gmail.com"},
+		{cons: "KURUKSHETRA", name: "Rajkumar Saini", email: "rajkumarsaini1953@gmail.com"},
+		{cons: "KUSHI NAGAR", name: "Rajesh Pandey Urf Guddu", email: "rajeshmangal@gmail.com"},
+		{cons: "LADAKH", name: "Thupstan Chhewang", email: "thupstanc@yahoo.co.in"},
+		{cons: "LAKHIMPUR", name: "Sarbananda Sonowal", email: "sarbanandaSonowal@gmail.com, sarbanandaSonowal@gmail.com"},
+		{cons: "LAKSHADWEEP", name: "Mohammed Faizal.P.P", email: "mohammed.faizal@sansad.nic.in, faizalpp786@gmail.com"},
+		{cons: "LALGANJ", name: "Neelam", email: "neelamsonker15@gmail.com"},
+		{cons: "LATUR", name: "Gaikwad Sunil Baliram", email: "sbgbjp@gmail.com"},
+		{cons: "LOHARDAGA", name: "Sudarshan Bhagat", email: "s.bhagat@sansad.nic.in"},
+		{cons: "LUCKNOW", name: "Raj Nath Singh", email: "38ashokroad@gmail.com, 4kdmarg2014@gmail.com"},
+		{cons: "LUDHIANA", name: "Ravneet Singh Bittu", email: "ravneetbittu@gmail.com"},
+		{cons: "MACHHLISHAHR", name: "Ram Charitra Nishad", email: "ram.charitra@sansad.nic.in"},
+		{cons: "MACHILIPATNAM", name: "Konakalla Narayana Rao", email: "knr012699@gmail.com"},
+		{cons: "MADHA", name: "Mohite Patil Vijaysinh Shankarrao", email: "mpv.shankarrao@sansad.nic.in"},
+		{cons: "MADHEPURA", name: "Rajesh Ranjan Urf Pappu Yadav", email: "yadav.pappu63@gmail.com"},
+		{cons: "MADURAI", name: "R.Gopalakrishnan", email: "eramgopal@gmail.com"},
+		{cons: "MAHABUBABAD", name: "Prof. Azmeera Seetaram Naik", email: "aseetaram.naik@sansad.nic.in, asrnaik9@gmail.com"},
+		{cons: "MAHABUBNAGAR", name: "A P Jithender Reddy", email: "jrinfra@gmail.com, jreddy@sansad.nic.in"},
+		{cons: "MAHARAJGANJ", name: "Pankaj", email: "pankajchaudhary.loksabha91@gmail.com"},
+		{cons: "MAHASAMUND", name: "Chandu Lal Sahu (Chandu Bhaiya) S/O Late Puneen Ram", email: "chandulal.sahu@sansad.nic.in"},
+		{cons: "MAINPURI", name: "Tej Pratap Singh Yadav", email: "yadavteju@gmail.com"},
+		{cons: "MALDAHA DAKSHIN", name: "Abu Hasem Kahn Chowdhury", email: "Distcongresscommitteemalda@gmail.com"},
+		{cons: "MALDAHA UTTAR", name: "Mausam Noor", email: "mausamnoor.15@gmail.com"},
+		{cons: "MALKAJGIRI", name: "Ch.Malla Reddy", email: "mallareddy.777@gmail.com"},
+		{cons: "MANDI", name: "Ram Swaroop Sharma", email: "rssjnagar@gmail.com"},
+		{cons: "MANDLA", name: "Faggan Singh Kulaste", email: "fskulaste@gmail.com"},
+		{cons: "MANDSOUR", name: "Sudhir Gupta", email: "sudhirgupta2760@gmail.com"},
+		{cons: "MANDYA", name: "C.S.Puttaraju", email: "cs.puttaraju@sansad.nic.in"},
+		{cons: "MANGALDOI", name: "Ramen Deka", email: "ramendeka16@gmail.com"},
+		{cons: "MATHURA", name: "Deol Hema Malini Dharmendra", email: "h.malini@sansad.nic.in, hema3pol@gmail.com"},
+		{cons: "MATHURAPUR", name: "Choudhury Mohan Jatua", email: "mj.choudhury@sansad.nic.in"},
+		{cons: "MAVAL", name: "Barne Shrirang Chandu", email: "sc.barne@sansad.nic.in, appabarne@gmail.com"},
+		{cons: "MAVELIKKARA", name: "Kodikunnil Suresh", email: "kodikunnilsuresh@yahoo.com"},
+		{cons: "MAYILADUTHURAI", name: "Bharathi Mohan R.K", email: "rkm.bharathi@sansad.nic.in, rkbmp2014@gmail.com"},
+		{cons: "MEDAK", name: "Kotha Prabhakar Reddy", email: "prabhakarreddy.kotta@gmail.com, kprmedakmp@gmail.com"},
+		{cons: "MEDINIPUR", name: "Sandhya Roy", email: "sandhya.roy@sansad.nic.in, roysandhya@yahoo.com"},
+		{cons: "MEERUT", name: "Rajendra Agarwal", email: "rajendra.agrawal51@gmail.com"},
+		{cons: "MEHSANA", name: "Patel Jayshreeben Kanubhai", email: "jkpatelgujarat@gmail.com, jk.patel@sansad.nic.in"},
+		{cons: "MIRZAPUR", name: "Anupriya Singh Patel", email: "mlarohaniya@gmail.com, anupriyasingh.patel@sansad.nic.in, mirzapur.mp@gmail.com"},
+		{cons: "MISRIKH", name: "Anju Bala", email: "anju.bala@sansad.nic.in"},
+		{cons: "MIZORAM", name: "C. L. Ruala", email: "cl.ruala@sansad.nic.in"},
+		{cons: "MOHANLALGANJ", name: "Kaushal Kishore", email: "kaushalkishore39@gmail.com"},
+		{cons: "MORADABAD", name: "Kunwar Sarvesh Kumar", email: "sarveshsinghbjp@gmail.com"},
+		{cons: "MUMBAI NORTH", name: "Gopal Chinayya Shetty", email: "helpdeskgopalshetty@gmail.com"},
+		{cons: "MUMBAI NORTH CENTRAL", name: "Poonam Mahajan Alias Poonam Vajendla Rao", email: "pmahajanr@gmail.com"},
+		{cons: "MUMBAI NORTH EAST", name: "Kirit Somaiya", email: "ksofficemail@gmail.com"},
+		{cons: "MUMBAI NORTH WEST", name: "Gajanan Chandrakant Kirtikar", email: "gc.kirtikar@sansad.nic.in, gajanan.kirtikar@yahoo.com"},
+		{cons: "MUMBAI SOUTH", name: "Sawant Arvind Ganpat", email: "arvind.sawant@sansad.nic.in, arvindsawantg@gmail.com"},
+		{cons: "MUMBAI SOUTH CENTRAL", name: "Shewale Rahul Ramesh", email: "rr.shewale@sansad.nic.in, rahul.shewale@gmail.com, rahul.shewale2014@gmail.com"},
+		{cons: "MUNGER", name: "Veena Devi", email: "veena.devi@sansad.nic.in"},
+		{cons: "MUZAFFARNAGAR", name: "Dr. Sanjeev Kumar Balyan", email: "drbalyan@rediffmail.com"},
+		{cons: "MUZAFFARPUR", name: "Ajay Nishad", email: "nishadgas@gmail.com"},
+		{cons: "MYSORE", name: "Prathap Simha", email: "mepratap@gmail.com"},
+		{cons: "NABARANGPUR", name: "Balabhadra Majhi", email: "balabhadra.majhi@sansad.nic.in, bmajhi86@yahoo.co.in"},
+		{cons: "NAGALAND", name: "Neiphiu Rio", email: "neiphiu.rio@sansad.nic.in, rioneiphiu@gmail.com, nrio1950@gmail.com"},
+		{cons: "NAGAPATTINAM", name: "Gopal. Dr. K", email: "gopalnannilam@gmail.com"},
+		{cons: "NAGARKURNOOL", name: "Nandi Yellaiah", email: "nandiyellaiah@yahoo.co.in"},
+		{cons: "NAGAUR", name: "C R Choudhary", email: "propresident@mewaruniversity.org"},
+		{cons: "NAGINA", name: "Yashwant Singh", email: "yashwant.singh19@sansad.nic.in"},
+		{cons: "NAGPUR", name: "Gadkari Nitin Jairam", email: "email@nitingadkari.org"},
+		{cons: "NAINITAL-UDHAMSINGH NAGAR", name: "Bhagat Singh Koshyari", email: "connect2bhagat@gmail.com, bhagat.koshyari@sansad.nic.in, J123uk@gmail.com"},
+		{cons: "NALANDA", name: "Kaushlendra Kumar", email: "kaushalendra.k@sansad.nic.in"},
+		{cons: "NALGONDA", name: "Gutha Sukhender Reddy", email: "mpnalgonda@gmail.com"},
+		{cons: "NAMAKKAL", name: "Sundaram P.R", email: "pr.sundaram@sansad.nic.in, aiadmkprs@gmail.com"},
+		{cons: "NANDED", name: "Shri Chavan Ashokrao Shankarrao", email: "ashokchavan009@gmail.com, ashokchavan009@hotmail.com, asho.shankarrao@sansad.nic.in"},
+		{cons: "NANDURBAR", name: "Dr.Gavit Heena Vaijaykumar", email: "drheenagavit@gmail.com"},
+		{cons: "NANDYAL", name: "S.P.Y Reddy", email: "spyreddymp@hotmail.com"},
+		{cons: "NARASARAOPET", name: "Rayapati Sambasiva Rao", email: "rayapatisambasiva@gmail.com"},
+		{cons: "NARSAPURAM", name: "Gokaraju Ganga Raju", email: "chairman@lailanutra.com"},
+		{cons: "NASHIK", name: "Godse Hement Tukaram", email: "hemantgodse@gmail.com, ht.godse@sansad.nic.in"},
+		{cons: "NAVSARI", name: "Patil Chandrakant Raghunath", email: "c_r_patil@yahoo.com"},
+		{cons: "NAWADA", name: "Giriraj Singh", email: "girirajsinghbjp@gmail.com"},
+		{cons: "NELLORE", name: "Mekapati Rajamohan Reddy", email: "mrajamohanreddy@gmail.com"},
+		{cons: "NEW DELHI", name: "Smt. Meenakshi Lekhi", email: "meenakashi.lekhi@sansad.nic.in, mrs.mlekhi@gmail.com"},
+		{cons: "NILGIRIS", name: "Gopalakrishnan- C.", email: "c.gopalakrishnan@sansad.nic.in, cgopal777@gmail.com"},
+		{cons: "NIZAMABAD", name: "Kalvakuntla Kavitha", email: "kavi_24@yahoo.com, kalvakuntla.kavitha@sansad.nic.in"},
+		{cons: "NORTH EAST DELHI", name: "Manoj Tiwari", email: "mt7tiwari@gmail.com"},
+		{cons: "NORTH GOA", name: "Shripad Yesso Naik", email: "nshripadmp@gmail.com"},
+		{cons: "NORTH WEST DELHI", name: "Udit Raj", email: "dr.uditraj@gmail.com"},
+		{cons: "NOWGONG", name: "Rajen Gohain", email: "r.gohain463@gmail.com"},
+		{cons: "ONGOLE", name: "Yarram Venkata Subbareddy", email: "yvsrpa@gmail.com"},
+		{cons: "OSMANABAD", name: "Gaikwad Ravindra Vishwanath", email: "ravigaikwad@gmail.com, prof.ravi@sansad.nic.in"},
+		{cons: "OUTER MANIPUR", name: "Thangso Baite", email: "t.baite@sansad.nic.in, tbaite@live.com"},
+		{cons: "PALAKKAD", name: "M B Rajesh", email: "mb.rajesh@sansad.nic.in, mbrajesh05@yahoo.com"},
+		{cons: "PALAMAU", name: "Vishnu Dayal Ram", email: "vishnudayalram.mp@gmail.com, vishnudayal.ram@sansad.nic.in"},
+		{cons: "PALGHAR", name: "Wanaga Chintaman Navasha", email: "cn.wanaga@sansad.nic.in"},
+		{cons: "PALI", name: "P P Choudhary", email: "ppchoudhary@gmail.com"},
+		{cons: "PARBHANI", name: "Jadhav Sanjay (Bandu) Haribhau", email: "mla.parbhani@gmail.com"},
+		{cons: "PASCHIM CHAMPARAN", name: "Dr. Sanjay Jayaswal", email: "drsanjayjaiswal@gmail.com"},
+		{cons: "PATALIPUTRA", name: "Ram Kripal Yadav", email: "ramkripalyadav2014@gmail.com"},
+		{cons: "PATAN", name: "Vaghela Liladharbhai Khodaji", email: "vaghela.liladharbhai@gmail.com"},
+		{cons: "PATHANAMTHITTA", name: "Anto Antony", email: "anto.antony@sansad.nic.in"},
+		{cons: "PATIALA", name: "Dr.Dharam Vira Gandhi", email: "dvgandhi1951@yahoo.com, dharamv.gandhi@sansad.nic.in"},
+		{cons: "PATNA SAHIB", name: "Shatrughan Sinha", email: "shatrughansinha@ymail.com"},
+		{cons: "PEDDAPALLE", name: "Balka Suman", email: "balka.suman@sansad.nic.in"},
+		{cons: "PERAMBALUR", name: "R.P.Marutharajaa", email: "r.p.marutharajaa@gmail.com"},
+		{cons: "PHULPUR", name: "Keshav Prasad", email: "keshav.prasad@sansad.nic.in"},
+		{cons: "PILIBHIT", name: "Maneka Sanjay Gandhi", email: "gandhim@nic.in"},
+		{cons: "POLLACHI", name: "Mahendran.C", email: "cmfarm99@gmail.com, mahendran.c@sansad.nic.in"},
+		{cons: "PONNANI", name: "E. T. Mohammed Basheer", email: "basheeret@gmail.com, basheer.et@sansad.nic.in"},
+		{cons: "PRATAPGARH", name: "Kuwar Harivansh Singh", email: "hbgroupofcompany@gmail.com, hbgroupofcompany@gmail.com"},
+		{cons: "PUDUCHERRY", name: "R. Radhakrishnan", email: "rrrpondy@gmail.com"},
+		{cons: "PUNE", name: "Anil Shirole", email: "anil@anilshirole.com"},
+		{cons: "PURI", name: "Pinaki Mishra", email: "pinakimisra@hotmail.com, pinakimisra@gmail.com, 12forestpark@gmail.com"},
+		{cons: "PURNIA", name: "Santosh Kumar", email: "santosh.kumar19@sansad.nic.in"},
+		{cons: "PURULIA", name: "Mriganka Mahato", email: "dr.m.mahato@gmail.com, mriganka.mahato@sansad.nic.in"},
+		{cons: "PURVI CHAMPARAN", name: "Radha Mohan Singh", email: "radhamohansinghmp@gmail.com"},
+		{cons: "RAE BARELI", name: "Sonia Gandhi", email: "raebareli.inc@gmail.com"},
+		{cons: "RAICHUR", name: "B.V.Nayak", email: "bvnaik66@gmail.com"},
+		{cons: "RAIGAD", name: "Geete Anant Gangaram", email: "geete@sansad.nic.in"},
+		{cons: "RAIGANJ", name: "Md. Salim", email: "salim5657@gmail.com"},
+		{cons: "RAIGARH", name: "Vishnudev Sai", email: "vishnudeo.sai@sansad.nic.in"},
+		{cons: "RAIPUR", name: "Ramesh Bais", email: "rameshbais47@gmail.com"},
+		{cons: "RAJAHMUNDRY", name: "Murali Mohan Maganti", email: "muralimohan@jayabherigroup.com"},
+		{cons: "RAJAMPET", name: "P.V.Midhun Reddy", email: "mmnaidu1984@yahoo.in"},
+		{cons: "RAJGARH", name: "Rodmal Nagar", email: "rodmalnagar@gmail.com"},
+		{cons: "RAJKOT", name: "Mohanbhai Kalyanjibhai Kundariya", email: "pareshkumar_kundaria1981@yahoo.co.in"},
+		{cons: "RAJMAHAL", name: "Vijay Kumar Hansdak", email: "vijayhansdak@gmail.com"},
+		{cons: "RAJNANDGAON", name: "Abhishek Singh", email: "abhishek.36garh@gmail.com"},
+		{cons: "RAJSAMAND", name: "Hari Om Singh Rathore", email: "hariomkelwa@gmail.com"},
+		{cons: "RAMANATHAPURAM", name: "Anwhar Raajhaa.A", email: "raajhaa7786@gmail.com"},
+		{cons: "RAMPUR", name: "Dr. Nepal Singh", email: "mail_nepalsingh@rediffmail.com"},
+		{cons: "RAMTEK", name: "Krupal Balaji Tumane", email: "tumane.krupal@gmail.com, kb.tumane@sansad.nic.in"},
+		{cons: "RANAGHAT", name: "Tapas Mandal", email: "tapas.mandal@sansad.nic.in, tmbckv@gmail.com"},
+		{cons: "RANCHI", name: "Ramtahal Choudhary", email: "ramtahal.choudhary@sansad.nic.in"},
+		{cons: "RATLAM", name: "Dileep Singh Bhuriya", email: "bhuriadilipsingh@gmail.com"},
+		{cons: "RATNAGIRI SINDHUDURG", name: "Vinayak Bhaurao Raut", email: "vinayakbraut@gmail.com"},
+		{cons: "RAVER", name: "Khadase Raksha Nikhil", email: "rakshataikhadse@gmail.com"},
+		{cons: "REWA", name: "Janardan Mishra", email: "Janardan.BJP.@gmail.com"},
+		{cons: "ROBERTSGANJ", name: "Chhote Lal", email: "kuwar.chotelalkharwar@gmail.com"},
+		{cons: "ROHTAK", name: "Deepender Singh", email: "office@deepender.in"},
+		{cons: "SAGAR", name: "Laxmi Narayan Yadav", email: "laxminarayan.yadav@sansad.nic.in, lnyadavsagar@gmail.com"},
+		{cons: "SAHARANPUR", name: "Raghav Lakhanpal", email: "rlpmla@gmail.com"},
+		{cons: "SALEM", name: "Pannerselvam.V", email: "v.pannerselvam@sansad.nic.in, vpselvam.salem@gmail.com"},
+		{cons: "SALEMPUR", name: "Ravindra Kushawaha", email: "kushawaharavindra@gmail.com"},
+		{cons: "SAMASTIPUR", name: "Ram Chandra Paswan", email: "ramchandra.paswan@sansad.nic.in"},
+		{cons: "SAMBALPUR", name: "Nagendra Kumar Pradhan", email: "nagendra.pradhan@sansad.nic.in, nagendrakp1952@gmail.com"},
+		{cons: "SAMBHAL", name: "Satya Pal Singh", email: "satyapalsingh.mp@sansad.nic.in, spsinghsainimbd@gmail.com"},
+		{cons: "SANGLI", name: "Sanjaykaka Patil", email: "sanjaykaka404@gmail.com"},
+		{cons: "SANGRUR", name: "Bhagwant Mann", email: "bhagwantmann@gmail.com, bhagwant.mann@sansad.nic.in"},
+		{cons: "SANT KABIR NAGAR", name: "Sharad Tripathi", email: "sharad.tripathi@sansad.nic.in, sharad.skn@gmail.com"},
+		{cons: "SARAN", name: "Rajiv Pratap Rudy", email: "rprudy.office@gmail.com, rprudy.saran@gmail.com"},
+		{cons: "SASARAM", name: "Chhedi Paswan", email: "chhedi.paswan@sansad.nic.in, chhedipaswan.mp@gmail.com"},
+		{cons: "SATARA", name: "Shrimant Chh. Udayanraje Pratapsinha Bhonsale", email: "jalmandirpalace@gmail.com, udayanrajebhonsle@yahoo.in"},
+		{cons: "SATNA", name: "Ganesh Singh", email: "sganesh@sansad.nic.in"},
+		{cons: "SECUNDERABAD", name: "Bandaru Dattatreya", email: "bandarudattatreya1947@gmail.com"},
+		{cons: "SERAMPORE", name: "Kalyan Banerjee", email: "kalyanbanerjee@hotmail.com, kalyan.banerjee@sansad.nic.in "},
+		{cons: "SHAHDOL", name: "Dalpat Singh Paraste", email: "dalpatsinghparaste@gmail.com"},
+		{cons: "SHAHJAHANPUR", name: "Krishna Raj", email: "krishna.raj19@sansad.nic.in"},
+		{cons: "SHEOHAR", name: "Rama Devi", email: "ramadevimp@gmail.com"},
+		{cons: "SHILLONG", name: "Vincent H. Pala", email: "vincentpala@gmail.com"},
+		{cons: "SHIMLA", name: "Virender Kashyap", email: "virenderkashyapbjp@yahoo.com, virendra.kashyap@sansad.nic.in"},
+		{cons: "SHIMOGA", name: "B.S. Yeddyurappa", email: "info@yeddyurappa.in"},
+		{cons: "SHIRDI", name: "Lokhande Sadashiv Kisan", email: "sk.lokhande@sansad.nic.in, khemanand2012@gmail.com"},
+		{cons: "SHIRUR", name: "Adhalrao Shivaji Dattatrey", email: "shivajirao@sansad.nic.in , shivajirao@vsnl.com"},
+		{cons: "SHRAWASTI", name: "Daddan Mishra", email: "daddanmishravip@gmail.com"},
+		{cons: "SIDHI", name: "Riti Pathak", email: "riti.sidhi@gmail.com"},
+		{cons: "SIKAR", name: "Sumedha Nand Saraswati", email: "sss.piprali@gmail.com"},
+		{cons: "SIKKIM", name: "Prem Das Rai", email: "pdrai8@gmail.com, mpsikkim@gmail.com"},
+		{cons: "SILCHAR", name: "Sushmita Dev", email: "sushmita-dev@gmail.com"},
+		{cons: "SINGHBHUM", name: "Laxman Giluwa", email: "laxman.giluwa@sansad.nic.in"},
+		{cons: "SIRSA", name: "Charanjeet Singh", email: "charanjeet.rori@sansad.nic.in"},
+		{cons: "SITAPUR", name: "Rajesh Kumar Singh", email: "rajesh.verma61160@gmail.com"},
+		{cons: "SIVAGANGA", name: "Pr Senthilnathan", email: "senthi.admk.svg.ds@gmail.com, senthilnathan.pr@sansad.nic.in "},
+		{cons: "SOLAPUR", name: "Sharad Bansode", email: "sbansode9@yahoo.co.in"},
+		{cons: "SONIPAT", name: "Ramesh Kaushik", email: "ramesh.kaushik@sansad.nic.in, mp.sonepat@gmail.com"},
+		{cons: "SOUTH DELHI", name: "Ramesh Bidhuri", email: "rameshbidhuri@yahoo.in"},
+		{cons: "SOUTH GOA", name: "Adv. Narendra Keshav Sawaikar", email: "sawaikar.narendera@gmail.com"},
+		{cons: "SRIKAKULAM", name: "Rammohannaidu Kinjarapu", email: "rammohannaidu.k@sansad.nic.in, rammnk9@gmail.com, rammchannaidu@gmail.com"},
+		{cons: "SRINAGAR", name: "Tariq Hameed Karra", email: "karratariq@gmail.com"},
+		{cons: "SRIPERUMBUDUR", name: "Ramachandran- K.N. Thiru", email: "targetknramachandran@gmail.com, knt.ramachandran@sansad.nic.in"},
+		{cons: "SULTANPUR", name: "Feroze Varun Gandhi", email: "ferozevarun.gandhi@sansad.nic.in, 14ashokaroad@gmail.com"},
+		{cons: "SUNDARGARH", name: "Jual Oram", email: "jualoram@hotmail.com, oram.jual@gmail.com, jualoram@samsad.nic.in"},
+		{cons: "SUPAUL", name: "Ranjeet Ranjan", email: "ranjeet.r01@yahoo.com"},
+		{cons: "SURAT", name: "Jardosh Darshnaben Vikrambhai", email: "mail@darshanajardosh.in"},
+		{cons: "SURENDRANAGAR", name: "Fatepara Devajibhai Govindbhai", email: "dfatepra@gmail.com"},
+		{cons: "SURGUJA", name: "Kamalbhan Singh", email: "kamalbhansingh@gmail.com"},
+		{cons: "TAMLUK", name: "Suvendu Adhikari", email: "adhikarisuvendu@gmail.com, adhikari.suvendu@sansad.nic.in "},
+		{cons: "TEHRI GARHWAL", name: "Mala Rajya Laxmi Shah", email: "malarajyalaxmishah@gmail.com"},
+		{cons: "TENKASI", name: "Vasanthi.M", email: "vasanthiadmk@gmail.com, vasanthi.m@sansad.nic.in"},
+		{cons: "TEZPUR", name: "Ram Prasad Sarmah", email: "ramsarmah@gmail.com"},
+		{cons: "THANE", name: "Vichare Rajan Baburao", email: "rb.vichare@sansad.nic.in, rajanbvichare@gmail.com"},
+		{cons: "THANJAVUR", name: "Parasuraman.K", email: "parasuramanaiadmk@gmail.com, parasuraman.k@sansad.nic.in"},
+		{cons: "THENI", name: "Parthipan- R.", email: "parthipanraju1963@gmail.com, r.parthipan@sansad.nic.in"},
+		{cons: "THIRUVANANTHAPURAM", name: "Dr. Shashi Tharoor", email: "tharoor.shashi@gmail.com"},
+		{cons: "THOOTHUKKUDI", name: "Jeyasingh Thiyagaraj Natterjee.J", email: "natterjee@gmail.com, jjtnatterjee@gmail.com"},
+		{cons: "THRISSUR", name: "C N Jayadevan", email: "cn.jayadevan@sansad.nic.in"},
+		{cons: "TIKAMGARH", name: "Dr. Virendra Kumar", email: "vkumar@sansad.nic.in"},
+		{cons: "TIRUCHIRAPPALLI", name: "P.Kumar S/O Palanivel", email: "trichy.mp@gmail.com, p.kumar@sansad.nic.in"},
+		{cons: "TIRUNELVELI", name: "Prabakaran.K.R.P", email: "prabakarankrp79@gmail.com"},
+		{cons: "TIRUPATI", name: "Varaprasad Rao Velagapalli", email: "vvpr53@yahoo.com"},
+		{cons: "TIRUPPUR", name: "V.Sathyabama", email: "sathyabama.vasu@gmail.com, v.sathyabama@sansad.nic.in"},
+		{cons: "TIRUVALLUR", name: "Venugopal. P. Dr.", email: "drvenugopalmp@gmail.com, p.venugopal@sansad.nic.in"},
+		{cons: "TIRUVANNAMALAI", name: "Vanaroja R", email: "r.vanaroja@sansad.nic.in, vanarojaadmka@gmail.com"},
+		{cons: "TONK-SAWAI MADHOPUR", name: "Sukhbir Singh Jaunapuria", email: "sukhbirjaunapuria@gmail.com"},
+		{cons: "TRIPURA EAST", name: "Jitendra Choudhury", email: "jitendra.chaudhury@sansad.nic.in, jchaudhury2008@gmail.com"},
+		{cons: "TRIPURA WEST", name: "Sankar Prasad Datta", email: "sankar.datta@sansad.nic.in"},
+		{cons: "TUMKUR", name: "S.P.Muddahanumegowda", email: "spmuddahanumegowda@gmail.com"},
+		{cons: "TURA", name: "Purno Agitok Sangma", email: "pasangma@sansad.nic.in"},
+		{cons: "UDAIPUR", name: "Arjunlal Meena", email: "arjunmeena@gmail.com"},
+		{cons: "UDHAMPUR", name: "Dr. Jitendra Singh", email: "drjitendras@gmail.com"},
+		{cons: "UDUPI CHIKMAGALUR", name: "Shobha Karandlaje", email: "info@shobhakarandlaje.com"},
+		{cons: "UJIARPUR", name: "Nityanand Rai", email: "nityanadrai85@gmail.com"},
+		{cons: "UJJAIN", name: "Chintamani Malviya", email: "drcmmalviya@gmail.com"},
+		{cons: "ULUBERIA", name: "Sultan Ahmed", email: "sultan.ahmed@nic.in"},
+		{cons: "UNNAO", name: "Swami Sachchidanand Hari Sakshi", email: "sakshi@sansad.nic.in, swamijisakshijimaharaj@gmail.com"},
+		{cons: "UTTARA KANNADA", name: "Anantkumar Hegde", email: "anantkumarhedge@gmail.com"},
+		{cons: "VADAKARA", name: "Mullappally Ramachandran", email: "mullappally.ramachandran@gmail.com"},
+		{cons: "VADODARA", name: "Bhatt Ranjanaben Dhananjay", email: "RANJANBHATT135@GMAIL.COM, BHATTRANJAND@GMAIL.COM"},
+		{cons: "VAISHALI", name: "Rama Kishore Singh", email: "rksvaishali@gmail.com"},
+		{cons: "VALMIKI NAGAR", name: "Satish Dubey", email: "satishchandradubey21@gmail.com, satishchandradubey.nke@gmail.com"},
+		{cons: "VALSAD", name: "Dr. K.C.Patel", email: "drkepate110@gmail.com"},
+		{cons: "VARANASI", name: "Narendra Modi", email: "n_modi2012@yahoo.com, appt.pmo@gov.in"},
+		{cons: "VELLORE", name: "Senguttuvan- B.", email: "senguttuvanb_gp@yahoo.com, senguttuvanb.adv@gmail.com"},
+		{cons: "VIDISHA", name: "Sushma Swaraj", email: "2009vidisha@gmail.com"},
+		{cons: "VIJAYAWADA", name: "Srinivas Kesineni", email: "cmd@kesinenigroup.com"},
+		{cons: "VISAKHAPATNAM", name: "Dr. Kambhampati Hari Babu", email: "kharibabumla@radiffmail.com"},
+		{cons: "VIZIANAGARAM", name: "Ashok Gajapathi Raju Pusapati", email: "agajapathiraju.p@sansad.nic.in"},
+		{cons: "WARANGAL", name: "Kadiyam Srihari", email: "kadiyam.srihari9@gmail.com, kadiyam.srihari@sansad.nic.in"},
+		{cons: "WARDHA", name: "Ramdas Chandrabhanji Tadas", email: "rtadas@rediffmail.com"},
+		{cons: "WAYANAD", name: "M I Shanavas", email: "mishanavas@yahoo.com"},
+		{cons: "WEST DELHI", name: "Parvesh Sahib Singh", email: "parveshsahibsingh@gmail.com"},
+		{cons: "YAVATMAL-WASHIM", name: "Gawali Bhavana Pundlikrao", email: "bhavana.gawali0222@gmail.com"},
+		{cons: "ZAHIRABAD", name: "B.B.Patil", email: "bbpatil7777@gmail.com"}],
+			email = "Dear {name},\n\n{message}\n\nHowdy.";
+		
+		var supports = {
+			mailto: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent), // use mailto on mobile
+			breakEncode: !(/(iPad|iPhone|iPod)/g.test(navigator.userAgent)), // line breaks are not encoded by encodeURIComponent on iOS
+			commandKey: false // true for Macs
+		};
+
+		function pickOne(arr) {
+			return arr[Math.floor(Math.random() * arr.length)];
+		}
+
+		var selectedMp, personalMessage, body, subject,
+			bccAddress = pickOne(["netneutralityindia@gmail.com"]);
+
+		$(function() {
+			renderMps("");
+
+			$(".search").keyup(function() {
+				searchMps($(this).val());
+			});
+
+			$(".start-over").click(function() {
+				switchToStep(1);
+			});
+
+			$(".choose-answers").click(function() {
+				switchToStep(2);
+			});
+
+			$(".send-response").click(function() {
+        personalMessage = $('.personal-message').val();
+				body = generateBody();
+				subject = generateSubject();
+        
+				var encodedBody;
+        
+        $(".subject-text").html(subject);
+				$(".response-text").val(body);
+
+				if (supports.mailTo) {
+					encodedBody = encodeURIComponent(body);
+					if (!supports.breakEncode) encodedBody = encodedBody.replace("\n", "%0A");
+					window.location.href = "mailto:" + selectedMp.email + "?subject=" + subject.replace(/\s+/, "+") + "&bcc=" + bccAddress + "&body=" + encodedBody;
+					switchToStep(5);
+				} else {
+					switchToStep(3);
+					$(".step3 .response-text").focus();
+				}
+			});
+
+			$(".copy-complete").click(function() {
+				switchToStep(4);
+			});
+
+			$(".open-email.gmail").click(function() {
+				window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=" + selectedMp.email + "&bcc=" + bccAddress + "&su=" + subject);
+				switchToStep(5);
+			});
+			$(".open-email.yahoo").click(function() {
+				window.open("http://compose.mail.yahoo.com/?Subject=" + subject + "&To=" + selectedMp.email + "&Bcc=" + bccAddress);
+				switchToStep(5);
+			});
+			$(".open-email.other-email").click(function() {
+				window.open("mailto:" + selectedMp.email + "?subject=" + subject + "&bcc=" + bccAddress);
+				switchToStep(5);
+			});
+
+			$(".response-text").focus(function() {
+        var self = this;
+				setTimeout(function () { self.select(); }, 100);
+			});
+      
+      $(".response-text").on("copy", function() {
+        setTimeout(function () { switchToStep(4); }, 100);
+      });
+			
+			$(".mp").click(function () {
+        console.log("click event", $(this).html());
+				var cons = $(this).html().split('<')[0];
+        selectedMp = mps.filter(function (it) {return it.cons == cons})[0];
+        $(".mp-name").html(selectedMp.name);
+        $(".mp-cons").html(selectedMp.cons);
+        $(".mp-email").html(selectedMp.email);
+        switchToStep(2);
+			});
+
+		});
+
+		function renderMps() {
+			$(".picker").html(
+				mps.map(function (it) {
+					return '<div class="mp" id="mp-' + it.cons.replace(/\W+/g, '-') + '">' + it.cons + '<br />' + it.name + '</div>';
+				}).join("\n")
+			);
+		}
+      
+    function searchMps(q) {
+      $(".mp").css({display:"none"});
+      mps.filter(function (it) {
+        if(!q) return true;
+        return (it.cons + " " + it.name).toUpperCase().indexOf(q.toUpperCase()) >= 0;
+      }).forEach(function (it) {
+        $("#mp-" + it.cons.replace(/\W+/g, '-')).css({display: "block"});
+      });
+    }
+
+		function switchToStep(n) {
+			$(".step").hide();
+			$(".step" + n).show();
+		}
+
+		function generateBody() {
+			return email.replace(/\{name\}/gi, selectedMp.name).replace(/\{message\}/gi, personalMessage);
+		}
+
+		function generateSubject() {
+			return pickOne([
+				pickOne(["Stop " + pickOne(["operators", "ISPs", "TSPs", "telcos"]) + " from "]) +
+				pickOne(["breaking ", "violating ", "destroying "]) +
+				pickOne(["Net Neutrality", "network neutrality", "net neutrality", "the open internet", "the internet"])
+			]);
+		}
+
+		
+    </script>
+  </body>
+</html>
