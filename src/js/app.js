@@ -1,4 +1,6 @@
-window.NN = {}
+'use strict';
+
+var NN = {};
 NN.userDataState = {};
 
 Handlebars.registerHelper('math', function(lvalue, operator, rvalue, options) {
@@ -43,7 +45,7 @@ NN.renderQuestions = function() {
 
         if (first === this.activeElement) {
           $('.pagination-'+index+' > .page-prev').addClass('disabled');
-        };
+        }
 
         if (last === this.activeElement) {
           $('.pagination-'+index+' > .page-next').addClass('disabled');
@@ -76,7 +78,7 @@ NN.renderQuestions = function() {
 
     });
   });
-}
+};
 
 NN.constructBody =  function(forClipboard) {
   var nLine = '\r\n';
@@ -84,31 +86,31 @@ NN.constructBody =  function(forClipboard) {
     nLine = '%0D%0A';
   }
   var response = 'To TRAI, '+nLine+'From a concerned citizen.'+nLine+nLine;
-  for (var i = 0; i < questionsData['questions'].length; i++) {
-    var question = (i+1)+') '+questionsData['questions'][i]['questionText'];
+  for (var i = 0; i < questionsData.questions.length; i++) {
+    var question = (i+1)+') '+questionsData.questions[i].questionText;
 
   var chosenAnswer = NN.userDataState.questions[i].chosenAnswer;
-  var answer = questionsData['questions'][i]['answers'][chosenAnswer]['answerText'];
+  var answer = questionsData.questions[i].answers[chosenAnswer].answerText;
 
   response = response + question + ''+nLine+'' +answer+''+nLine+''+nLine+'';
-  };
+  }
   response = response + 'Regards,'+nLine+nLine;
   return response;
-}
+};
 
 
 NN.isMobile = false;
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  isMobile = true;
+  NN.isMobile = true;
 }
 NN.toAddress = 'advqos@trai.gov.in';
 NN.bccAddress = 'netneutralityindia@gmail.com';
 NN.subject = 'In response to the Consultation Paper on Regulatory Framework for Over-the-top (OTT) services';
 
 $('#send').click(function(e) {
-  if(isMobile) {
+  if(NN.isMobile) {
     e.preventDefault();
-    window.open('mailto:'+toAddress+'?subject='+subject+'&bcc='+bccAddress+'&body='+constructBody(), '_blank');
+    window.open('mailto:'+NN.toAddress+'?subject='+NN.subject+'&bcc='+NN.bccAddress+'&body='+NN.constructBody(), '_blank');
   }
 });
 
@@ -118,10 +120,10 @@ $(function() {
   $('.page-prev').addClass('disabled');
   $('.pagination li:nth-child(2)').addClass('active');
   var questions = [];
-  for (var i = questionsData['questions'].length - 1; i >= 0; i--) {
+  for (var i = questionsData.questions.length - 1; i >= 0; i--) {
     questions.push({
       chosenAnswer:0,
-      answersLength:questionsData['questions'][i]['answers'].length
+      answersLength:questionsData.questions[i].answers.length
     });
   }
   NN.userDataState = {
@@ -135,10 +137,10 @@ $(function() {
     var clip = new ZeroClipboard.Client();
     //event
     clip.addEventListener('mousedown',function() {
-      clip.setText(NN.constructBody(forClipboard=true));
+      clip.setText(NN.constructBody(NN.forClipboard=true));
     });
     clip.addEventListener('complete',function(client,text) {
-      alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
+      window.alert('Your response has been copied to your clipboard. Please paste it in the body of your email once Gmail opens.');
       window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to='+NN.toAddress+'&bcc='+NN.bccAddress+'&su='+NN.subject,'_blank');
     });
     //glue it to the button

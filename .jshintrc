@@ -29,6 +29,8 @@
     "window": true,
     "document": true,
     "setTimeout": true,
-    "questionsData" : true
+    "questionsData" : true,
+    "Handlebars" : true,
+    "ZeroClipboard" : true
   }
 }
