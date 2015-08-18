@@ -27,10 +27,10 @@ module.exports = function(grunt) {
         },
         files: [
           {
-          expand: true,     
-          cwd: 'dist/',   
+          expand: true,
+          cwd: 'dist/',
           src: ['**/*.html'],
-          dest: 'dist/',  
+          dest: 'dist/',
           ext: '.html'
         },
         ],
@@ -42,6 +42,13 @@ module.exports = function(grunt) {
           'dist/js/compiled.min.js': ['dist/js/bootstrap.js', 'dist/js/socialite.min.js', 'dist/js/dragend.js', 'dist/js/ZeroClipboard.js', 'dist/js/data.js', 'dist/js/app.js'  ] // Load in the correct order
         }
       }
+    },
+    jshint : {
+      options: {
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
+      },
+      all: ['Gruntfile.js', 'src/js/app.js', 'src/js/data.js', 'src/js/ZeroClipboard.js']
     }
   });
   // Load the plugins
@@ -50,6 +57,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   // Default tasks.
-  grunt.registerTask('default', ['copy', 'uglify', 'uncss','processhtml']);
+  grunt.registerTask('default', ['jshint:all', 'copy', 'uglify', 'uncss','processhtml']);
 };

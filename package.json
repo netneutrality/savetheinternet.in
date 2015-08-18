@@ -4,7 +4,9 @@
   "description": "Response generator for the TRAI consultation paper",
   "main": "app.js",
   "dependencies": {
-    "express": "4.x"
+    "express": "4.x",
+    "grunt-contrib-jshint": "^0.11.2",
+    "jshint-stylish": "^2.0.1"
   },
   "devDependencies": {
     "forever": "latest",
