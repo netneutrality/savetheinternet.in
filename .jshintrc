@@ -29,24 +29,6 @@
     "window": true,
     "document": true,
     "setTimeout": true,
-    "jQuery": true,
-    "define": true,
-    "gettext": true,
-    "describe": true,
-    "it": true,
-    "before": true,
-    "beforeEach": true,
-    "afterEach": true,
-    "expect": true,
-    "spyOn": true,
-    "jasmine": true,
-    "loadFixtures": true,
-    "angular":false,
-    "_":false,
-    "$":false,
-    "d3":false,
-    "highcharts":true,
-    "Highcharts":true,
-    "moment": true
+    "questionsData" : true
   }
 }
