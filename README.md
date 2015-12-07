@@ -6,7 +6,7 @@ Join us in fighting for net neutrality. Let’s remind TRAI that their job is to
 
 
 ## Help us ##
-Help us by [reporting issues, suggestions](https://github.com/netneutrality/savetheinternet.in/issues), or contributing to the code.
+Help us by [reporting issues and by giving suggestions](https://github.com/netneutrality/savetheinternet.in/issues), or contributing to the code.
 
 If you'd like to join our discussions, please contact us via email.
 
