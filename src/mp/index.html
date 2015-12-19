@@ -237,6 +237,7 @@
         
         .step1 {
             display: block;
+            height: 10em;
         }
 
     </style>
@@ -271,7 +272,7 @@
         <input type="text" class="search" placeholder="Type constituency or MP name to search" />
         <div class="picker"></div>
 
-        <div style="clear: both">We couldn’t find some MPs’ information. If you know another MP’s contact information, <a href="#">add it to this page</a>.</div>
+        <!-- <div style="clear: both">We couldn’t find some MPs’ information. If you know another MP’s contact information, <a href="#">add it to this page</a>.</div> -->
     </div>
 
     <div class="container step step3">
@@ -424,7 +425,7 @@
         	$(".picker").html(
         		mps.map(function(it) {
         			return '<div class="mp" id="mp-' + it.cons.replace(/\W+/g, '-') + '">' + it.cons + '<br />' + it.name + '</div>';
-        		}).join("\n")
+        		}).join("\n") + '<div style="clear:both"></div>'
         	);
         }
 
