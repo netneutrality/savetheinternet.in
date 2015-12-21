@@ -305,6 +305,7 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
             $('.mp-cons').text(item.cons);
             toAddress = item.email;
             $("#email-action").show();
+            setButtonEmails();
           },
           showHintOnFocus: true
         });
@@ -391,6 +392,12 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
               selectOneAnswer(answers);
             };
         }
+
+        function setButtonEmails() {
+          $("#otherSend").attr("href", "mailto:"+encodeURIComponent(toAddress)+"?subject="+encodeURIComponent(subject)+"&bcc="+encodeURIComponent(bccAddress));
+          $("#gmailSend").attr("href", "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+encodeURIComponent(toAddress)+"&bcc="+encodeURIComponent(bccAddress)+"&su="+encodeURIComponent(subject));
+          $("#yahooSend").attr("href", "http://compose.mail.yahoo.com/?Subject="+encodeURIComponent(subject)+"&To="+encodeURIComponent(toAddress)+"&Bcc="+encodeURIComponent(bccAddress));
+        }
         
         function initListeners() {
 
@@ -417,15 +424,11 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
               $("#submitModal").modal("show");
             });
 
-            $("#otherSend").attr("href", "mailto:"+encodeURIComponent(toAddress)+"?subject="+encodeURIComponent(subject)+"&bcc="+encodeURIComponent(bccAddress));
             if(IEMobile) {
               $('#gmailSend, #yahooSend').hide();
               $('#otherSend').text('Send')
             }
-            else {
-              $("#gmailSend").attr("href", "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+encodeURIComponent(toAddress)+"&bcc="+encodeURIComponent(bccAddress)+"&su="+encodeURIComponent(subject));
-              $("#yahooSend").attr("href", "http://compose.mail.yahoo.com/?Subject="+encodeURIComponent(subject)+"&To="+encodeURIComponent(toAddress)+"&Bcc="+encodeURIComponent(bccAddress));
-            }
+            setButtonEmails();
           }
         }
         
