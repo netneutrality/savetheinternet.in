@@ -55,7 +55,7 @@
       opacity: 0.9;
       bottom: -4px;
     }
-    #email-action {
+    #email-action, #no-email {
       display: none;
     }
     .dropdown-item > strong {
@@ -109,6 +109,10 @@
             <h4>Don't know who your MP is?</h4>
             <pre>Find out <a href="http://www.prsindia.org/mptrackmap/index.html" target="_blank">here</a> or send the SMS <span class="label label-primary">MP &lt;six digit pin code&gt;</span> to 9223051616<small> <a href="http://www.prsindia.org/" target="_blank">[src]</a></pre>
           </div>
+        </div>
+        <div id="no-email">
+          <h4>Email address for <span class="mp-name"></span> is not available</h4>
+          <p>Know the email address for <span class="mp-name"></span>? <a id="report-unknown-email" target="_blank">Please let us know here</a></p>
         </div>
         <div id="email-action">
           <button class="btn btn-info btn-lg sendResponseAuto" id="mainSend">Email <span class="mp-name"></span> now</button>
@@ -309,9 +313,16 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
             $('.mp-cons').text(item.cons);
             if(item.gender === "m") $('#mp-salutation').text('Sir');
             else if(item.gender === "f") $('#mp-salutation').text('Madam');
-            toAddress = item.email;
-            $("#email-action").show();
-            setButtonEmails();
+            if(item.email) {
+              toAddress = item.email;
+              $("#email-action").show();
+              setButtonEmails();
+            }
+            else {
+              unknownEmail = "https://github.com/netneutrality/savetheinternet.in/issues/new?title=Email+of+{mpname}+missing&body=Email+address+of+{mpname}:+&labels[]=mailyourmp&assignee=miteshashar"
+              $('#report-unknown-email').attr('href', unknownEmail.replace(new RegExp('{mpname}','g'),encodeURIComponent(item.name)));
+              $('#no-email').show();
+            }
           },
           showHintOnFocus: true
         });
@@ -321,7 +332,7 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
           $('#mp-selector').focus();
           $(this).hide();
           $('#mp-info-block').show();
-          $("#email-action").hide();
+          $("#email-action, #no-email").hide();
           $('#collapseContainer').collapse('hide');
           $('.navBarSend').hide();
           $('#mp-selector').focus();
