@@ -110,7 +110,7 @@
          <p><strong>TRAI has issued another consultation paper asking once again, if we want Net Neutrality. This time, it's about differential pricing - Airtel Zero and Internet.org type services.</strong></p>
         </div>
         <button class="btn btn-info btn-lg sendResponseAuto" id="mainSend">Respond to TRAI now</button>
-          or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">edit your answers</a> (email to <strong>advisorfea1@trai.gov.in</strong> and a copy to us)
+          or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">edit your answers</a> (email to <strong>advisorfea1@trai.gov.in</strong> and a copy to us on <strong class="bccAddressModal"></strong>)
           <small><a href="javascript:void(0)" onclick="$('#policyModal').modal('show')">Privacy Policy</a></small>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
@@ -341,7 +341,7 @@
                 <p>You will be able to edit before you send.</p>
                 </div>
                 <p>Emails should be sent to <strong><span class="text-info">advisorfea1@trai.gov.in</span></strong><br />
-                Please bcc us at <strong><span class="text-info" id="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
+                Please bcc us at <strong><span class="text-info" class="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
                 We will try to ensure that your response is acknowledged by TRAI.</p>
               </div>
           </div>
@@ -501,7 +501,7 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
           var IEMobile = /IEMobile/i.test(navigator.userAgent);
           var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/i.test(navigator.userAgent) && !IEMobile;
 
-          $('#bccAddressModal').html(bccAddress);
+          $('.bccAddressModal').html(bccAddress);
 
           if(isMobile) {
             $('.sendResponse, .sendResponseAuto').click(function() {

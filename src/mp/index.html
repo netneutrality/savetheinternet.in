@@ -116,7 +116,7 @@
         </div>
         <div id="email-action">
           <button class="btn btn-info btn-lg sendResponseAuto" id="mainSend">Email <span class="mp-name"></span> now</button>
-            or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">edit your email</a><br>(email to <strong class="mp-email"></strong> and a copy to us)<br>
+            or <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">edit your email</a><br>(email to <strong class="mp-email"></strong> and a copy to us on <strong class="bccAddressModal"></strong>)<br>
             <small><a href="javascript:void(0)" onclick="$('#policyModal').modal('show')">Privacy Policy</a></small>
         </div>
       </div>
@@ -217,7 +217,7 @@
                 <p>You will be able to edit before you send.</p>
                 </div>
                 <p>Emails should be sent to <strong><span class="text-info mp-email"></span></strong><br />
-                Please bcc us at <strong><span class="text-info" id="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
+                Please bcc us at <strong><span class="text-info" class="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
                 We will try to ensure that your response is acknowledged by TRAI.</p>
               </div>
           </div>
@@ -422,7 +422,7 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
           var IEMobile = /IEMobile/i.test(navigator.userAgent);
           var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/i.test(navigator.userAgent) && !IEMobile;
 
-          $('#bccAddressModal').html(bccAddress);
+          $('.bccAddressModal').html(bccAddress);
 
           if(isMobile) {
             $('.sendResponse, .sendResponseAuto').click(function() {
