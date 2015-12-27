@@ -344,7 +344,7 @@
                 <p>You will be able to edit before you send.</p>
                 </div>
                 <p>Emails should be sent to <strong><span class="text-info">advisorfea1@trai.gov.in</span></strong><br />
-                Please bcc us at <strong><span class="text-info" class="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
+                Please bcc us at <strong><span class="text-info" id="bccAddressModal">netneutralityindia@gmail.com</span></strong><br />
                 We will try to ensure that your response is acknowledged by TRAI.</p>
               </div>
           </div>
@@ -504,7 +504,7 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
           var IEMobile = /IEMobile/i.test(navigator.userAgent);
           var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/i.test(navigator.userAgent) && !IEMobile;
 
-          $('.bccAddressModal').html(bccAddress);
+          $('#bccAddressModal,.bccAddressModal').html(bccAddress);
 
           if(isMobile) {
             $('.sendResponse, .sendResponseAuto').click(function() {
