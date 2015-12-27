@@ -571,7 +571,7 @@ We’ve updated this policy on 18 December 2015, in conjunction with the launch 
 
         function sendEmailMobile() {
           var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
-          var body = generateResponse()
+          var body = generateResponse(true)
           if(iOS) {
               /* I'm guessing encodeURIComponent works differently with line breaks on iOS? */
               body = body.replace("\n","%0D%0A");
