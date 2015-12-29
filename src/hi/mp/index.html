@@ -1,0 +1,339 @@
+<!doctype html>
+
+<html lang="hi">
+
+<head>
+  <title>अपने सांसद को ईमेल भेजें</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  <link type="text/plain" rel="author" href="http://www.savetheinternet.in/humans.txt" />
+
+  <link rel="stylesheet" href="/css/bootstrap.css?v1">
+  <link rel="stylesheet" type="text/css" href="/css/custom.css?v1">
+  <style>
+    #header {
+      padding-top: 81px;
+    }
+    .panel-title {
+          font-size: 20px;
+    }
+    p { padding: 0; margin: 1em 0; }
+    .hidden { display: none; }
+    .question { margin: 2em 0 0 0; }
+    .answer {
+        margin: 1em 0;
+        padding: 0 1em;
+        border: none;
+        border-radius: 4px;
+        max-height: 150px;
+        overflow: hidden;
+        box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.5);
+        transition: 200ms all ease-in;
+    }
+    .button-bar .btn { margin-bottom: 5px }
+
+    .answer.focused {
+        overflow: auto;
+        transition: 200ms all ease-in;
+        outline: none;
+    }
+    
+    #copy-instruction { display: none; }
+    #response-copied { display: none; }
+    #responseTextarea { width: 100%; height: 10em; font-size: 15px; line-height: 1em; border: 1px solid #ccc; }
+    label[for=responseSubject] {width: 100%;}
+    #responseSubject {width: 100%; padding: 2px;}
+    .social-col {
+      display: inline-block;
+      padding: 0 8px;
+      vertical-align: top;
+    }
+    #report-problem {
+      font-weight: bold;
+      position: fixed;
+      right: -4px;
+      opacity: 0.9;
+      bottom: -4px;
+    }
+    #email-action, #no-email {
+      display: none;
+    }
+    .dropdown-item > strong {
+      background-color: #CCC;
+      padding: 0px 1px;
+      color: #000
+    }
+  </style>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-9752294-8', 'auto');
+    ga('set', 'forceSSL', true);
+    ga('require', 'linkid');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">#SaveTheInternet</a>
+        <a class="navbar-toggle btn btn-info hidden-md hidden-lg navBarSend sendResponse disabled" style="display:none;" id="mobileNavBarSend">Send</a>
+      </div>
+      <div class="nav navbar-nav navbar-right hidden-xs hidden-sm navBarSend" style="display:none;">
+        <button type="button" class="btn btn-info navbar-btn sendResponse disabled" id="navBarSend"><span class="mp-name"></span> को अभी ईमेल भेजें</button>
+      </div>
+    </div>
+  </nav>
+  <div id="header">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
+        <h1> इंटरनेट को बचायें (भाग 3)</h1>
+        <h2>अपने सांसद से अपील करें नेट नूट्रालिटी का पूरा समर्थन करने के लिए</h2>
+        <div class="alert alert-warning hidden" id="browser_warning" role="alert">
+          <span class="browser_name">ईस ब्राउज़र</span> से इस फार्म को जमा करने में परेशानी होती है। यह काम नहीं करता है, तो किसी अन्य ब्राउज़र का उपयोग करें।
+        </div>
+        <noscript>इस फार्म को जमा करने के लिए एक जावास्क्रिप्ट सक्षम ब्राउज़र की आवश्यकता है। जैसे कि गूगल क्रोम। </noscript>
+        <div class="button-bar">
+         <p><strong>ट्राई ने एक और परामर्श पत्र जारी किया है जिस पर  वह जनता की राय जानना चाहती है  । इस बार, यह कीमत निर्धारण में असंगति(differential pricing) के बारे में है - जैसे एयरटेल ज़ीरो और फ्री बेसिक्स(Free Basics)/इंटरनेट.ऑर्ग (internet.org) प्र्कार की सेवाएं।</strong></p>
+        </div>
+        <div id="select-mp" class="form-group">
+          <label for="mp-selector"><h3>आपके सांसद कौन हैं?</h3></label>
+          <p class="help-block">अपने सांसद का नाम, चुनाव क्षेत्र या राज्य नीचे भरें</p>
+          <input type="text" class="form-control" id="mp-selector" autocomplete="off" style="font-weight: bold" placeholder="अपने सांसद को खोजें; Search for your MP…">
+          <a href="javascript:void(0)" style="display: none" id="change-mp">दूसरे सांसद को चुनें</a>
+          <div class="help-block" id="mp-info-block">
+            <h4>आप नहीं जानते आपके सांसद कौन हैं?</h4>
+            <pre><a href="http://www.prsindia.org/mptrackmap/index.html" target="_blank">इस वेबसाइट</a> पर जाकर पता लगाएं या फिर SMS करें <span class="label label-primary">MP &lt;6 अंकों का पिनकोड&gt;</span> 9223051616 पर<small> <a href="http://www.prsindia.org/" target="_blank">[स्रोत]</a></small></pre>
+          </div>
+        </div>
+        <div id="no-email">
+          <h4><span class="mp-name"></span> का ईमेल उपलब्ध नहीं है</h4>
+          <p>आपको <span class="mp-name"></span> का ईमेल मालूम है? <a id="report-unknown-email" target="_blank">कृपया हमें यहां पर बताएं</a></p>
+        </div>
+        <div id="email-action">
+          <button class="btn btn-info btn-lg sendResponseAuto" id="mainSend"><span class="mp-name"></span> को अभी ईमेल भेजें</button>
+            या <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">अपने ईमेल को अपने अनुसार बदलकर भेजें</a><br>(ईमेल <strong class="mp-email"></strong> पर करें और हमें <strong class="bccAddressModal"></strong> पर बीसीसी(bcc) में रखें)<br>
+            <small><a href="javascript:void(0)" onclick="$('#policyModal').modal('show')">गोपनीयता नीति</a></small>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+        <img src="/images/netneutrality.png" class="new-logo" />
+      </div>
+    </div>
+    <div class="content row collapse" id="collapseContainer">
+      <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1" id="responseContainer">
+        <h1>The Response</h1>
+        <div class="question">
+          <p>
+            To,<br>
+            <span class="mp-name"></span><br>
+            Member of Parliament, <span class="mp-cons"></span>
+          </p>
+        </div>
+        <div class="answer">
+          <p>Respected <span id="mp-salutation">Madam / Sir</span>,</p>
+
+          <p>It has been nine months since over 12 lakh Indian Internet users wrote to the TRAI in favour of Net Neutrality. Over 450 Internet Startups wrote to the Prime Minister for his support in ensuring that the telecom industry and Facebook not to gain control over the Internet by controlling what users access. It has also been five months since thousands of Internet users, in response to a Department of Telecom committee report on Net Neutrality, registered on the Prime Minister’s MyGov.in website, asking the government of India to support Net Neutrality.</p>
+
+          <p>In spite of such large scale support for Net Neutrality, including that from many of you in Parliament:</p>
+
+          <p>* Telecom operators continue to launch services that violate Net Neutrality, by offering free access to services that they prefer or have tie-ups with.</p>
+
+          <p>* Facebook continues to offer and aggressively promote its Free Basics (Internet.org) service, which gives a competitive advantage to Facebook and its partners. The Free Basics service will colonise the Indian startup ecosystem by making Facebook a gatekeeper and the kingmaker for any online website or application.</p>
+ 
+          <p>* The Department of Telecom has not published an amended report considering the clear opposition in responses on MyGov.in to all forms of zero rated services. There has been no notice on how and when it will do so and at present there is a level of uncertainty and confusion which is being caused by some stakeholders by rolling out services which violate net neutrality.  </p>
+
+          <p>At the same time, telecom operators are partnering with Facebook to run Net Neutrality violating services like Internet.org/Free Basics. These services are aggressively expanding without due respect for the sanctity of ongoing regulatory processes. It is relevant to mention that the DOT draft report in Para 12.7 and 12.8 calls for a complete prohibition specifically on Internet.org. Completely ignoring the spirit of these regulatory processes Facebook has been using its large user base on Facebook with automated popups and campaigns to misinform and mislead Indian users into sending responses favouring Internet.org/Free Basics. </p>
+
+          <p>The issue of Net Neutrality is an issue of Internet Freedom, and of the independence of Internet access in India from the control of large oligopolies. The Internet as it is accessed today is  the fundamental reason for the progress and innovation we have seen online over the past 15 years. Net Neutrality means that a telecom operator or ISP cannot give competitive advantage to their favoured Internet companies, and therefore will provide a fair opportunity for the development of India’s startup ecosystem and innovative solutions to the economic and social needs of our country.</p>
+
+          <p>We endorse the idea of providing “all of the Internet, to all of the people, all of the time”, put forth by the World Wide Web foundation and various international organisations, such as Mozilla, which are seeking to further access without compromising net neutrality. It is our belief that the goals of access and net neutrality are incredibly important for India and the TRAI can further them both without coming at the cost of either. Access and net neutrality are too important to be put into a binary exchange. </p>
+
+          <p>As a member and a voter in your constituency, I urge you to please raise your voice in support of Net Neutrality in Parliament, and ask the government to take urgent action by:</p>
+
+          <p>1. Putting a moratorium on services such as Internet.org/Free Basics until the governments policy is finalised. We believe and agree with the TRAI that it has adequate jurisdiction to ensure net neutrality through tariff regulation measures. These measures must be exercised urgently, in the interim to prevent widespread breaches that are being done in the absence of binding rules.</p>
+
+          <p>2. Asking for the TRAI to choose in favour of Net Neutrality and submit its report before the budget session of Parliament in 2016.</p>
+
+          <p>3. A commitment by the Department of Telecom to publish a firm timetable with actionable steps for the introduction of a net neutrality law in India. A firm timetable and consultation process will improve predictability and trust in the consultation framework. It is our fear that despite the TRAI acting in our best interests, certain stakeholders may rely on the earlier consultation, or recommendations following the consultation to instill ambiguity and prevent firm and clear regulations.</p>
+
+          <p>Thanking you.</p>
+
+        </div>
+
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-lg-12 text-center">
+        <button class="btn btn-info btn-lg sendResponse" id="bottomSend">ईमेल भेज दें</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <hr>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">निष्पक्ष इंटरनेट (न्यूट्रल इंटरनेट) क्या है?</h3>
+            </div>
+            <div class="panel-body">
+              <a href="http://blog.savetheinternet.in/what-is-net-neutrality/">और पढ़ें…</a>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">फेसबुक की फ्री बेसिक्स सेवा</h3>
+            </div>
+            <div class="panel-body">
+              <a href="http://blog.savetheinternet.in/free-basics/">फ्री बेसिक्स — हमारा अध्ययन</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">#SaveTheInternet टीम के सन्देश और समाचार</h3>
+            </div>
+            <div class="panel-body">
+              <ul>
+                <li><a href="http://blog.savetheinternet.in/what-facebook-wont-tell-you-about-freebasics/">फेसबुक आपको फ्री बेसिक्स के बारे में क्या नहीं बताएगा</a></li>
+                <li><a href="http://blog.savetheinternet.in/trai-suspend-free-basics/">ट्राई के रिलायंस को अस्थायी रूप से फ्री बेसिक्स निलंबित करने  के आदेश पर हमारा वक्तव्य</a></li>
+                <li><a href="http://blog.savetheinternet.in/if-youve-been-misled-by-facebook/">अगर फेसबुक ने आपका बेठीक प्रतिनिधित्व किया है</a></li>
+              </ul>
+              <p class="text-right"><a href="http://blog.savetheinternet.in/">ब्लॉग पर जाएँ &raquo;</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center"> 
+          <p>
+            <a href="https://github.com/netneutrality/" role="button" class="btn btn-sm btn-info">बस आप जैसे लोगों ने ♥ के साथ बनाया</a>
+            <a href="https://github.com/netneutrality/savetheinternet.in/issues/new?title=Please+enter+the+name+of+the+MP+here&body=Please+type+the+details+of+the+bounced+email+address(es)+here%E2%80%A6" role="button" class="btn btn-sm btn-warning" target="_blank">निष्क्रिय ईमेल का रिपोर्ट दर्ज़ करें</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+    <style>
+      <!-- got bored of scrolling up all the way -->
+      
+      #response-copied { display: none; }
+    
+    </style>
+    
+      <!-- Modal -->
+      <div class="modal fade" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Submit Response</h4>
+            </div>
+            <div class="modal-body">
+              <label for="responseSubject">
+                <h4>विषय</h4>
+                <input type="text" id="responseSubject" readonly class="form-control"></label>
+              <h4>आप का संदेश</h4>
+              <textarea class="form-control" id="responseTextarea" readonly></textarea>
+              <h4 id="copy-instruction">ऊपर लिखित संदेश कॉपी करें <span class="copy-short">Right-click->Copy करके(या <span class="control-str">Ctrl</span>+C दबाके)</span> <button id="copyBtn" class="btn btn-primary">हो गया, कॉपी कर लिया</button></h4>
+              <div id="response-copied"><h4>एक ईमेल रचें और, और उसके बॉडी में कॉपी किया हुआ संदेश पेस्ट करें <span class="copy-short">Right-click->Paste करके (या <span class="control-str">Ctrl</span>+V दबाके)</span> </h4>
+              <p class="button-bar">
+                <a href="#" target="_blank" class="btn btn-primary btn" id="gmailSend">Gmail</a>
+                <a href="#" target="_blank" class="btn btn-primary btn" id="yahooSend">Yahoo</a>
+                <a href="#" target="_blank" class="btn btn-primary btn" id="otherSend">Other</a>
+              </p>
+                <p>भेजने के पूर्व आप अपने ईमेल को पढ़ कर अपने अनुसार बदलाव कर सकेंगे</p>
+                </div>
+                <p>ईमेल <strong><span class="text-info mp-email"></span></strong> को भेजा जाना चाहिए<br />
+                <strong><span class="text-info" id="bccAddressModal">netneutralityindia@gmail.com</span></strong> को बीसीसी(bcc) में रखें|</p>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="policyModal" tabindex="-1" role="dialog" aria-labelledby="policyLabel" aria-hidden="true" style="height: 80%">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">गोपनीयता नीति</h4>
+              <h5>अंतिम बार संशोधित: 18 December 2015</h5>
+            </div>
+            <div class="modal-body" style="height: 500px; overflow: auto;">
+<pre>
+SaveTheInternet advocates for your right to privacy, and we work to protect your privacy when you visit our websites and engage with us, online and offline.
+We wrote this Privacy Policy, and will update it as necessary, to let you know how we protect your personal data and keep it confidential.
+We do not rent or sell visitor or donor information to third parties. We will not transfer or share this information unless compelled by law, and we will vigorously challenge any overbroad government request to access it.
+This Privacy Policy applies to all the SaveTheInternet volunteers who have access to your data (“we” or “us”).
+What we collect
+We strive to collect as little personal data as we need to further our mission.
+We collect information when you visit our site, use our petition tool, and subscribe to our campaigns or mailing lists. We’ll let you know what information is required for each action, and try to require the least amount of information necessary. This will usually involve details such as your name and email. 
+We collect information regarding visits to our website. Like most servers IP addresses [which include location data, browser, operating system, visiting time (local and server), session, actions per visit, pageviews per visit, returning visitors, and referring site information] are logged automatically on access to our website however these IP addresses are not tied or collated against the responses that you send by using our forms and petitions. We undertake to delete these IP logs after a 90 day retention period as required by law. 
+To sign up for our newsletter and petitions, we require a name e-mail address, postal code, and country.
+SavetheInternet.in’s website and services are not intended for, or designed to attract, individuals under the age of 18. We do not knowingly collect personally identifiable information from any person under the age of 18. By using our petition tools you agree that you are over the age of 18. 
+Cookies
+We use cookies for a limited number of purposes. A “cookie” is a tiny element of data that our site can send to your browser, which may then be stored on your hard drive. If you are concerned about your privacy and the use of cookie technology you may set your web browser to notify you when you receive a cookie. You may also set your browser to refuse the cookies our site attempts to send you. However, if you choose to reject cookies from SavetheInternet.in, some functions on the website may be limited.
+How we store and use your data
+We take industry standard security measures to protect personal information under our control from loss, misuse, and breach, but like with every website, there are risks associated with uploading your information online.
+When you are asked for your personal information, you are sharing that information with SavetheInternet.in and its team alone, unless stated otherwise. We use this information to further our mission, to further net neutrality specifically and fundamental human rights online.
+You retain the right to view and request copies, deletion, and modification of the personal data we collect from you. Contact [insert contact email id] to start exercising these rights.
+We store contact data for our mailing list subscription and sending you campaign information to which we seek specific and prior consent in addition to this policy. This data is stored in our contact relationship database (CRM). 
+Social Media and third party platforms
+We use social media and third party platforms to advance our mission. These platforms and applications are often provided by third party service providers. Please see their privacy policies for more information, and let us know if you have specific concerns.
+Updates and Contact
+We’ve updated this policy on 18 December 2015, in conjunction with the launch of our new website. If we update or change it we will send you an email and contact you. In case of any question, comments or complaints please send us an email on team@savetheinternet.in.
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">धन्यवाद!</h4>
+            </div>
+            <div class="modal-body">
+              <p><span class="mp-name"></span> को ईमेल भेजने के लिए और उन्हें नेट नूट्रालिटी का समर्थन करने के लिए अपील करने के लिए धन्यवाद!</p>
+              <div class="social-buttons cf">
+                <div class="social-col">
+                      <a href="http://twitter.com/share" class="socialite twitter-share" data-text="ट्राई को अपने विचार व्यक्त करें, #NetNeutrality की रक्षा करें। #SaveTheInternet" data-url="http://www.savetheinternet.in/hi" data-count="vertical" rel="nofollow" target="_blank"><span class="vhidden">ट्विटर पर शेयर करें</span></a>
+                </div>
+                <div class="social-col">
+                    <a href="https://plus.google.com/share?url=http://www.savetheinternet.in" class="socialite googleplus-one" data-size="tall" data-href="http://www.savetheinternet.in/hi" rel="nofollow" target="_blank"><span class="vhidden">गूगल+ पर शेयर करें</span></a>
+                </div>
+                <div class="social-col">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=www.savetheinternet.in&t=#SaveTheInternet" class="socialite facebook-like" data-href="http://www.savetheinternet.in/hi" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank"><span class=" btn btn-primary btn">फ़ेसबुक पर शेयर करें</span></a>
+                </div>
+                <div class="social-col">
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.savetheinternet.in/hi&title=Socialite.js" class="socialite linkedin-share" data-url="http://www.savetheinternet.in/hi" data-counter="top" rel="nofollow" target="_blank"><span class="vhidden">लिंकडिन पर शेयर करें</span></a>
+                </div>
+                <div class="social-col">
+                  <a href="whatsapp://send?text=ट्राई%20को%20अपने%20विचार%20व्यक्त%20करें,%20%23NetNeutrality%20की%20रक्षा%20करें।%20%23SaveTheInternet%20http://www.savetheinternet.in/hi" target="_blank" class="btn-sm btn-success btn">व्हाटसपप पर शेयर करें<br><small>सिर्फ़ मोबाइल पर</small></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+      <script src="/js/basic-assets.js"></script>
+      <script src="/js/typeahead.js"></script>
+      <script src="/js/mp.js"></script>
+</body>
+</html> 

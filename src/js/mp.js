@@ -17,7 +17,7 @@ $('#mp-selector').typeahead({
       setButtonEmails();
     }
     else {
-      unknownEmail = "https://github.com/netneutrality/savetheinternet.in/issues/new?title=Email+of+{mpname}+missing&body=Email+address+of+{mpname}:+&labels[]=mailyourmp&assignee=miteshashar"
+      unknownEmail = "https://github.com/netneutrality/savetheinternet.in/issues/new?title=Email+of+{mpname}+missing&body=Email+address+of+{mpname}:+"
       $('#report-unknown-email').attr('href', unknownEmail.replace(new RegExp('{mpname}','g'),encodeURIComponent(item.name)));
       $('#no-email').show();
     }
