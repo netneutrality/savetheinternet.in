@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Email your MP</title>
+  <title>अपने सांसद को ईमेल भेजें</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta charset="utf-8" />
@@ -93,14 +93,17 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
-        <h1>इंटरनेट को बचायें (भाग 3)। अपने सांसद से इंटरनेट की निष्पक्षता के पक्ष में संसद में बोलने के लिए अनुरोध कीजिये</h1>
+        <h1>इंटरनेट को बचायें (भाग 3)।
+            एक बार फिर से हमें TRAI
+            <abbr title="भारतीय दूरसंचार नियामक प्राधिकरण">TRAI</abbr>
+            को फिर से को सूचित करने कीँ जरूरत है की हमें एक तटस्थ इंटरनेट (न्यूट्रल इंटरनेट) चाहिए(दिसम्बर 2015)(दिसंबर 2015)</h1>
 
         <div class="alert alert-warning hidden" id="browser_warning" role="alert">
-          <span class="browser_name">This browser</span> is known to have problems submitting this form. Please use another browser if it doesn't work.
+          <span class="browser_name">इस ब्राउज़र </span> से इस फार्म को जमा करने में परेशानी होती है या  यह काम नहीं करता है, तो किसी अन्य ब्राउज़र का उपयोग करें।
         </div>
-        <noscript>You need a JavaScript-capable browser to submit this form.</noscript>
+        <noscript>इस फार्म को जमा करने के लिए एक जावास्क्रिप्ट सक्षम ब्राउज़र की आवश्यकता है। जैसे कि गूगल क्रोम।</noscript>
         <div class="button-bar">
-         <p><strong>ट्राई ने एक और परामर्श पत्र जारी किया है जिस पर  वह जनता की राय जानना चाहती है । इस बार, यह अंतर मूल्य निर्धारण के बारे में है - एयरटेल जीरो एवं फ्री बेसिक्स / Internet.org प्रकार की सेवाओं के बारे में </strong></p>
+         <p><strong>ट्राई ने एक और परामर्श पत्र जारी किया है जिस पर  वह जनता की राय जानना चाहती है  । इस बार, यह कीमत निर्धारण में असंगति के बारे में है - Airtel Zero एवं Free Basics / Internet.org प्रकार की सेवाओं के बारे में</strong></p>
         </div>
         <div id="select-mp" class="form-group">
           <label for="mp-selector"><h3>अपने सांसद का चयन करें</h3></label>
@@ -120,10 +123,10 @@
         </div>
         <div id="email-action">
           <button class="btn btn-info btn-lg sendResponseAuto" id="mainSend"> <span class="mp-name"></span> को ईमेल भेजें</button>
-            या <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">ईमेल को संपादित करें </a><br>
+            या <a href="#" class="chooseAnswers" data-toggle="collapse" data-target="#collapseContainer" id="editAnswers">अपने जवाब को जरूरत के अनुसार बदलकर भेजें </a><br>
             (<strong class="mp-email"></strong> को ईमेल करें और हमें BCC  में रखें <strong class="bccAddressModal"></strong>)<br>
             <small>
-            <a href="javascript:void(0)" onclick="$('#policyModal').modal('show')">Privacy Policy</a></small>
+            <a href="javascript:void(0)" onclick="$('#policyModal').modal('show')">गोपनीयता नीति</a></small>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
@@ -237,7 +240,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">अपनी प्रतिक्रिया भेजें।</h4>
+              <h4 class="modal-title"> प्रतिक्रिया भेजें।</h4>
             </div>
             <div class="modal-body">
               <label for="responseSubject">
@@ -245,18 +248,18 @@
                 <input type="text" id="responseSubject" readonly class="form-control"></label>
               <h4>आप का जवाब</h4>
               <textarea class="form-control" id="responseTextarea" readonly></textarea>
-              <h4 id="copy-instruction">ऊपर लिखा हुआ टेक्स्ट कॉपी करें <span class="copy-short"> Right-click->Copy (or <span class="control-str">Ctrl</span>+C)</span> <button id="copyBtn" class="btn btn-primary">हो गया</button></h4>
-              <div id="response-copied"><h4>एक ईमेल लिखें, फिर उसमें कॉपी किया हुआ टेक्स्ट <span class="copy-short"> (<span class="control-str">Ctrl</span>+V)</span> पेस्ट करें</h4>
+              <h4 id="copy-instruction">ऊपर लिखित जवाब कॉपी करें <span class="copy-short"> Right-click->Copy (or <span class="control-str">Ctrl</span>+C)</span> <button id="copyBtn" class="btn btn-primary">हो गया</button></h4>
+              <div id="response-copied"><h4>एक ईमेल लिखें, फिर उसमें कॉपी किया हुआ जवाब <span class="copy-short"> (<span class="control-str">Ctrl</span>+V)</span> पेस्ट करें</h4>
               <p class="button-bar">
                 <a href="#" target="_blank" class="btn btn-primary btn" id="gmailSend">Gmail</a>
                 <a href="#" target="_blank" class="btn btn-primary btn" id="yahooSend">Yahoo</a>
                 <a href="#" target="_blank" class="btn btn-primary btn" id="otherSend">Other</a>
               </p>
-                <p>आप ईमेल भेजने से पहले संपादित कर सकेंगे</p>
+                <p>आप पढ़ कर अपने अनुसार बदलाव कर सकेंगे</p>
                 </div>
                 <p>ईमेल <strong><span class="text-info mp-email"></span></strong><br /> को भेजा जाना चाहिए
                 और कृपया हमारे ईमेल <strong><span class="text-info" id="bccAddressModal">netneutralityindia@gmail.com </span></strong>को BCC में रखें|<br />
-                हम आपकी प्रतिक्रिया ट्राई ने स्वीकार किया है कि यह सुनिश्चित करने की कोशिश करेंगे।</p>
+                हम आपकी प्रतिक्रिया ट्राई ने स्वीकार किया है यह सुनिश्चित करने की कोशिश करेंगे।</p>
               </div>
           </div>
         </div>
@@ -267,8 +270,8 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Privacy Policy</h4>
-              <h5>Last modified: 18 December 2015</h5>
+              <h4 class="modal-title">गोपनीयता नीति</h4>
+              <h5>अंतिम बार संशोधित: 18 December 2015</h5>
             </div>
             <div class="modal-body" style="height: 500px; overflow: auto;">
 <pre>
