@@ -4891,6 +4891,47 @@ a.badge:focus {
     font-size: 67.5px;
   }
 }
+
+.jumbotroninfo {
+  padding: 10px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #DFF0D8;
+}
+.jumbotroninfo h1,
+.jumbotroninfo .h1 {
+  color: inherit;
+}
+.jumbotroninfo p {
+  margin-bottom: 15px;
+  font-size: 23px;
+  font-weight: 200;
+}
+.jumbotroninfo > hr {
+  border-top-color: #cfd9db;
+}
+.container .jumbotroninfo,
+.container-fluid .jumbotroninfo {
+  border-radius: 6px;
+}
+.jumbotroninfo .container {
+  max-width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .jumbotroninfo {
+    /*padding: 48px 0;*/
+  }
+  .container .jumbotroninfo,
+  .container-fluid .jumbotroninfo {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .jumbotroninfo h1,
+  .jumbotroninfo .h1 {
+    font-size: 67.5px;
+  }
+}
+
 .thumbnail {
   display: block;
   padding: 4px;
