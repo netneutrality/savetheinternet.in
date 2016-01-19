@@ -76,7 +76,7 @@ function initListeners() {
   var IEMobile = /IEMobile/i.test(navigator.userAgent);
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/i.test(navigator.userAgent) && !IEMobile;
 
-  $('#bccAddressModal,.bccAddressModal').html(bccAddress);
+  // $('#bccAddressModal,.bccAddressModal').html(bccAddress);
 
   if(isMobile) {
     $('.sendResponse, .sendResponseAuto').click(function() {
