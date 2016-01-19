@@ -18,14 +18,14 @@ function getSubject() {
     pickOne(["Net Neutrality", "the open internet", "the internet", "the equally open Internet", "the equally accessible Internet"])
     ]);
 }
-var toAddress = "ankhi@fb.com, advisorfea1@trai.gov.in, fb-trai@email.savetheinternet.in";
-var ccAddress = "advisorfea1@trai.gov.in";
+var toAddress = "ankhi@fb.com";
+var ccAddress = "advisorfea1@trai.gov.in, fb-trai@email.savetheinternet.in";
 
 // Don't give me that look. I know this is horrible. But limits ok! - https://support.google.com/a/answer/1366776?hl=en
 // Out of rotation: "netneutrality62@gmail.com"
 // Warning: there are no #32 & #42. Someone else owns that address. Don't add it here.
-var bccAddresses = ["fb-trai@email.savetheinternet.in"];
-var bccAddress = pickOne(bccAddresses);
+// var bccAddresses = ["fb-trai@email.savetheinternet.in"];
+// var bccAddress = pickOne(bccAddresses);
 
 //        ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
 
@@ -96,14 +96,14 @@ function initListeners() {
       $("#submitModal").modal("show");
     });
 
-    $("#otherSend").attr("href", "mailto:"+encodeURIComponent(toAddress)+"?subject="+encodeURIComponent(subject)+"&bcc="+encodeURIComponent(bccAddress));
+    $("#otherSend").attr("href", "mailto:"+encodeURIComponent(toAddress)+"?subject="+encodeURIComponent(subject)+"&cc="+encodeURIComponent(ccAddress));
     if(IEMobile) {
       $('#gmailSend, #yahooSend').hide();
       $('#otherSend').text('Send')
     }
     else {
-      $("#gmailSend").attr("href", "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+encodeURIComponent(toAddress)+"&bcc="+encodeURIComponent(bccAddress)+"&su="+encodeURIComponent(subject));
-      $("#yahooSend").attr("href", "http://compose.mail.yahoo.com/?Subject="+encodeURIComponent(subject)+"&To="+encodeURIComponent(toAddress)+"&Bcc="+encodeURIComponent(bccAddress));
+      $("#gmailSend").attr("href", "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to="+encodeURIComponent(toAddress)+"&cc="+encodeURIComponent(ccAddress)+"&su="+encodeURIComponent(subject));
+      $("#yahooSend").attr("href", "http://compose.mail.yahoo.com/?Subject="+encodeURIComponent(subject)+"&To="+encodeURIComponent(toAddress)+"&Cc="+encodeURIComponent(ccAddress));
     }
   }
 }
@@ -149,7 +149,7 @@ function sendEmailMobile() {
       body = body.replace("\n","%0D%0A");
   }
 
-  window.location.href = "mailto:"+ encodeURIComponent(toAddress) +"?subject="+encodeURIComponent(subject)+"&bcc="+encodeURIComponent(bccAddress)+"&body="+body;
+  window.location.href = "mailto:"+ encodeURIComponent(toAddress) +"?subject="+encodeURIComponent(subject)+"&cc="+encodeURIComponent(ccAddress)+"&body="+body;
 }
 
 function generateResponse(forClipboard) {
