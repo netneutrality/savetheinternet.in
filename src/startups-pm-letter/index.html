@@ -51,39 +51,36 @@
         <h1>Save The Internet</h1>
         <noscript>You need a JavaScript-capable browser to submit this form.</noscript>
         <div class="button-bar">
-         <p>SaveTheInternet is sending a letter to the PM on behalf of the signatories from the Indian Startup fraternity.</p>
-         <p>You can read and sign the letter below.</p>
+         <p>We are sending a letter to the PM on behalf of the signatories from the Indian startup fraternity. You can read and sign the letter below.</p>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <h3>Read the Letter</h3>
+        <h3>Read the letter <small>(<a href="https://docs.google.com/document/d/1LKPULwTaetQ2Rmvd6WWKlv0mJTm23kWH54NVkPzL3Tc/pub?embedded=true" target="_blank">open in new window</a>)</small></h3>
         <div class="container">
           <div class="row">
             <iframe class="col-xs-12" id="startup-pm-letter" src="https://docs.google.com/document/d/1LKPULwTaetQ2Rmvd6WWKlv0mJTm23kWH54NVkPzL3Tc/pub?embedded=true"></iframe>
-            <a href="https://docs.google.com/document/d/1LKPULwTaetQ2Rmvd6WWKlv0mJTm23kWH54NVkPzL3Tc/pub?embedded=true" target="_blank">Open in new window</a>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <h3>Sign the Letter</h3>
-        <p>Please fill up your details below to sign the letter.</p>
+        <h3>Sign the letter</h3>
         <div class="container">
           <div class="row jumbotron">
             <form action="https://docs.google.com/forms/d/1FYjlfmfNCpofdqciLIcvK9PAMfjaEu0BQks0rZfCGEI/formResponse" method="get" accept-charset="utf-8" data-toggle="validator" target="_blank" id="startup_form">
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="form-group">
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="entrepreneur"> I am an entrepreneur</label>
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="key"> I am a key employee at a startup</label>
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="investor"> I am an Investor</label>
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="employee"> I am a Startup Employee</label>
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="support"> I represent a Startup Support Organisation</label>
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="corporate"> I am a Corporate Employee/Professional</label>
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="aspirant"> I am an Aspiring Entrepreneur</label>
-                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="student"> I am a Student</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="founder"> I am a founder</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="management"> I am a CxO or VP in a startup</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="investor"> I am an investor</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="employee"> I am a startup employee</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="support"> I represent a startup ecosystem support org</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="corporate"> I am a corporate employee/professional</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="aspirant"> I am an aspiring entrepreneur</label>
+                    <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="student"> I am a student</label>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -96,12 +93,13 @@
                   <label for="user_email">Email</label>
                   <input type="email" class="form-control" id="user_email" name="entry.265253678" required>
                   <div class="help-block with-errors"></div>
+                  <small>We may call or email you to verify your identity.</small>
                 </div>
                 <div class="form-group data" data-user-types="all">
                   <label for="user_mobile">Mobile No.</label>
                   <input type="text" pattern="^\+91[0-9]{10}$|^\+[0-8][02-9]([0-9]{6,})$" class="form-control" id="user_mobile" name="entry.155892190" value="+91" required data-error="Please enter a valid Mobile Number">
                   <div class="help-block with-errors"></div>
-                  <small>Privacy Policy: We will not share/publish your email address or mobile number anywhere, except when we forward the letter to the PMO. We will email you updates regarding the proceedings/responses from the PMO/TRAI.</small>
+                  <small>Privacy Policy: We will not share/publish your email address or mobile number anywhere, except when we forward the letter to the PM. We will email you updates regarding the proceedings/responses from the PMO/TRAI.</small>
                 </div>
                 <div class="form-group data" data-user-types="all">
                   <label for="user_city">City</label>
@@ -1328,19 +1326,19 @@
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                <div class="form-group data" data-user-types="entrepreneur,key,employee,investor,support,corporate,student">
-                  <label for="user_org"><span class="entrepreneur investor corporate utype">Name of Company</span><span class="key employee utype">Name of Startup</span><span class="support utype">Name of Organisation</span><span class="student utype">Institution</span></label>
+                <div class="form-group data" data-user-types="founder,management,employee,investor,support,corporate,student">
+                  <label for="user_org"><span class="founder investor corporate utype">Name of Company</span><span class="management employee utype">Name of Startup</span><span class="support utype">Name of Organisation</span><span class="student utype">Institution</span></label>
                   <input type="text" class="form-control" id="user_org" name="entry.496827736">
                   <div class="help-block with-errors"></div>
                 </div>
-                <div class="form-group data" data-user-types="entrepreneur,corporate,student,key,employee,investor,support">
-                  <label for="user_role"><span class="entrepreneur key support utype">Role</span><span class=" utype">Types of Investments you deal in</span><span class="student utype">Discipline of Education</span><span class="corporate employee investor utype">Designation</span></label>
+                <div class="form-group data" data-user-types="founder,corporate,student,management,employee,investor,support">
+                  <label for="user_role"><span class="founder management support utype">Role</span><span class=" utype">Types of Investments you deal in</span><span class="student utype">Discipline of Education</span><span class="corporate employee investor utype">Designation</span></label>
                   <div id="user_role_container"></div>
                   <input type="hidden" id="user_role_data" name="entry.1371710501" value="">
                   <div class="help-block with-errors"></div>
                 </div>
-                <div class="form-group data" data-user-types="entrepreneur,key,employee,investor">
-                  <label for="user_segment"><span class="entrepreneur key employee utype">Segment/Industry</span><span class="investor utype">Types of Investments you deal in</span></label>
+                <div class="form-group data" data-user-types="founder,management,employee,investor">
+                  <label for="user_segment"><span class="founder management employee utype">Segment/Industry</span><span class="investor utype">Types of Investments you deal in</span></label>
                   <div id="user_segment_container"></div>
                   <input type="hidden" id="user_segment_data" value="" name="entry.1494267255">
                   <div class="help-block with-errors"></div>

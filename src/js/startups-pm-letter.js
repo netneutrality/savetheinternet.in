@@ -1,7 +1,7 @@
 $(function(){
 	var roles = {
-		entrepreneur: ['', 'Founder', 'Co-founder', 'CxO', 'Partner', 'Director', 'Proprietor', 'Other'],
-		key: ['', 'CxO', 'Director', 'Managing Director', 'Other'],
+		founder: ['', 'Founder', 'Co-founder', 'CxO', 'Partner', 'Director', 'Proprietor', 'Other'],
+		management: ['', 'CxO', 'Director', 'Managing Director', 'Other'],
 		employee: [],
 		investor: [],
 		support: ['', 'Director', 'Founder/Co-founder', 'Mentor', 'Employee', 'Volunteer', 'Other'],
@@ -9,9 +9,9 @@ $(function(){
 		corporate: []
 	};
 	var segments = {
-		entrepreneur: ['',"Big Data","Biotechnology","Business Products","Business Services","Cloud","Construction & Real Estate","Creative","E-commerce","E-Learning","Education","Energy","Enterprise Software","Entertainment","Environment","Events","Fashion","Finance","FinTech","Food, Water & Agriculture","FoodTech","Healthcare & Pharma","Job Listing","Lifestyle","Manufacturing","Marketing/Advertising","Mobile","Multimedia","Nanotechnology","News, Media & Entertainment","Social Entrepreneurship","Software","Technology","Transportation","Other"],
-		key: this.entrepreneur,
-		employee: this.entrepreneur,
+		founder: ['',"Big Data","Biotechnology","Business Products","Business Services","Cloud","Construction & Real Estate","Creative","E-commerce","E-Learning","Education","Energy","Enterprise Software","Entertainment","Environment","Events","Fashion","Finance","FinTech","Food, Water & Agriculture","FoodTech","Healthcare & Pharma","Job Listing","Lifestyle","Manufacturing","Marketing/Advertising","Mobile","Multimedia","Nanotechnology","News, Media & Entertainment","Social Entrepreneurship","Software","Technology","Transportation","Other"],
+		management: this.founder,
+		employee: this.founder,
 		investor: ['', 'Venture Capital', 'Private Equity', 'Angel Investor', 'Personal Investor', 'Incubator', 'Other']
 	};
 	var user_role_input = {
@@ -87,5 +87,5 @@ $(function(){
 		}
 	});
 
-	$(':radio.user_type[value=entrepreneur]').click();
+	$(':radio.user_type[value=founder]').click();
 }());
