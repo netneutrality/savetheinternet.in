@@ -57,7 +57,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <h3>Read the letter <small>(<a href="https://docs.google.com/document/d/1LKPULwTaetQ2Rmvd6WWKlv0mJTm23kWH54NVkPzL3Tc/pub?embedded=true" target="_blank">open in new window</a>)</small></h3>
+        <h3>Read the letter <small><a href="https://docs.google.com/document/d/1LKPULwTaetQ2Rmvd6WWKlv0mJTm23kWH54NVkPzL3Tc/pub?embedded=true" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></small></h3>
         <div class="container">
           <div class="row">
             <iframe class="col-xs-12" id="startup-pm-letter" src="https://docs.google.com/document/d/1LKPULwTaetQ2Rmvd6WWKlv0mJTm23kWH54NVkPzL3Tc/pub?embedded=true"></iframe>
@@ -82,8 +82,6 @@
                     <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="aspirant"> I am an aspiring entrepreneur</label>
                     <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="student"> I am a student</label>
                 </div>
-              </div>
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="form-group data" data-user-types="all">
                   <label for="user_name">Name</label>
                   <input type="text" class="form-control" id="user_name" name="entry.296747710" required>
@@ -93,14 +91,15 @@
                   <label for="user_email">Email</label>
                   <input type="email" class="form-control" id="user_email" name="entry.265253678" required>
                   <div class="help-block with-errors"></div>
-                  <small>We may call or email you to verify your identity.</small>
                 </div>
                 <div class="form-group data" data-user-types="all">
                   <label for="user_mobile">Mobile No.</label>
                   <input type="text" pattern="^\+91[0-9]{10}$|^\+[0-8][02-9]([0-9]{6,})$" class="form-control" id="user_mobile" name="entry.155892190" value="+91" required data-error="Please enter a valid Mobile Number">
                   <div class="help-block with-errors"></div>
-                  <small>Privacy Policy: We will not share/publish your email address or mobile number anywhere, except when we forward the letter to the PM. We will email you updates regarding the proceedings/responses from the PMO/TRAI.</small>
+                  <small>We may call or email you to verify your identity.</small>
                 </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="form-group data" data-user-types="all">
                   <label for="user_city">City</label>
                   <select class="form-control" id="user_city" name="entry.415009120" required>
@@ -1324,8 +1323,6 @@
                   </select>
                   <div class="help-block with-errors"></div>
                 </div>
-              </div>
-              <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                 <div class="form-group data" data-user-types="founder,management,employee,investor,support,corporate,student">
                   <label for="user_org"><span class="founder investor corporate utype">Name of Company</span><span class="management employee utype">Name of Startup</span><span class="support utype">Name of Organisation</span><span class="student utype">Institution</span></label>
                   <input type="text" class="form-control" id="user_org" name="entry.496827736">
@@ -1343,12 +1340,22 @@
                   <input type="hidden" id="user_segment_data" value="" name="entry.1494267255">
                   <div class="help-block with-errors"></div>
                 </div>
+                <div class="form-group">
+                  <label for="user_referral">Referred by (Optional)<br>
+                  <small>If someone referred you to this document, please name them</small></label>
+                  <input type="text" class="form-control" id="user_referral" name="entry." value="">
+                </div>
                 <div class="form-group data" data-user-types="all">
                   <label for="user_comments">Comments (Optional)</label>
                   <textarea class="form-control" rows="3" name="entry.1078467646" id="user_comments" maxlength="500" data-error="Please limit your comment to 500 characters"></textarea>
                   <div class="help-block with-errors"></div>
                 </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit your signature &raquo;</button>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <small>Privacy Policy: We will not share/publish your email address or mobile number anywhere, except when we forward the letter to the PM. We will email you updates regarding the proceedings/responses from the PMO/TRAI.</small>
               </div>
             </form>
           </div>
