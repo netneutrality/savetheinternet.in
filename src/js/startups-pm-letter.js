@@ -45,7 +45,7 @@ $(function(){
 			if(roles[$(':radio.user_type:checked').val()].length) {
 				$('#user_role_container').html(user_role_input['dropdown']);
 				$('#user_role').change(function(e) {
-					$('#user_role_data').val($('#user_role option:selected').val());
+					$('#user_role_data').val($('#user_role').val());
 					if($('#user_role option:selected').val() == 'Other') {
 						$('#user_role_container').append(user_role_input['other']);
 						$('#user_role_other').change(function(){$('#user_role_data').val('Other: ' + $('#user_role_other').val());});
@@ -67,7 +67,7 @@ $(function(){
 			if(segments[$(':radio.user_type:checked').val()] && segments[$(':radio.user_type:checked').val()].length) {
 				$('#user_segment_container').html(user_segment_input['dropdown']);
 				$('#user_segment').change(function(e) {
-					$('#user_segment_data').val($('#user_segment option:selected').val());
+					$('#user_segment_data').val($('#user_segment').val());
 					if($('#user_segment option:selected').val() == 'Other') {
 						$('#user_segment_container').append(user_segment_input['other']);
 						$('#user_segment_other').change(function(){$('#user_segment_data').val('Other: ' + $('#user_segment_other').val());});
