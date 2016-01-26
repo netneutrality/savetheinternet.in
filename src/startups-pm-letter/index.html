@@ -69,89 +69,21 @@
     <div class="row">
       <div class="col-xs-12">
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">Sign the Letter</a></li>
-          <li role="presentation"><a href="#viewsigns" aria-controls="viewsigns" role="tab" data-toggle="tab">View Signatories</a></li>
+          <li role="presentation"><a href="#sign" class="disabled" aria-controls="sign" role="tab" data-toggle="tab">Sign the Letter</a></li>
+          <li role="presentation" class="active"><a href="#viewsigns" aria-controls="viewsigns" role="tab" data-toggle="tab">View Signatories</a></li>
         </ul>
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="sign">
+          <div role="tabpanel" class="tab-pane" id="sign">
             <div class="container">
               <div class="row jumbotron">
-                <form action="https://docs.google.com/forms/d/1FYjlfmfNCpofdqciLIcvK9PAMfjaEu0BQks0rZfCGEI/formResponse" method="get" accept-charset="utf-8" data-toggle="validator" target="_blank" id="startup_form">
-                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group">
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="founder"> I am a founder</label>
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="management"> I am a CxO or VP in a startup</label>
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="investor"> I am an investor</label>
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="employee"> I am a startup employee</label>
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="support"> I represent a startup ecosystem support org</label>
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="corporate"> I am a corporate employee/professional</label>
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="aspirant"> I am an aspiring entrepreneur</label>
-                        <label class="radio"><input type="radio" name="entry.681742716" class="user_type" value="student"> I am a student</label>
-                    </div>
-                    <div class="form-group data" data-user-types="all">
-                      <label for="user_name">Name</label>
-                      <input type="text" class="form-control" id="user_name" name="entry.296747710" required>
-                      <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group data" data-user-types="all">
-                      <label for="user_email">Email</label>
-                      <input type="email" class="form-control" id="user_email" name="entry.265253678" required>
-                      <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group data" data-user-types="all">
-                      <label for="user_mobile">Mobile No.</label>
-                      <input type="text" pattern="^\+91[0-9]{10}$|^\+[0-8][02-9]([0-9]{6,})$" class="form-control" id="user_mobile" name="entry.155892190" value="+91" required data-error="Please enter a valid Mobile Number">
-                      <div class="help-block with-errors"></div>
-                      <small>We may call or email you to verify your identity.</small>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group data" data-user-types="all">
-                      <label for="user_city">City</label>
-                      <input type="text" class="form-control" id="user_city" name="entry.415009120" required>
-                      <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group data" data-user-types="founder,management,employee,investor,support,corporate,student">
-                      <label for="user_org"><span class="founder investor corporate utype">Name of Company</span><span class="management employee utype">Name of Startup</span><span class="support utype">Name of Organisation</span><span class="student utype">Institution</span></label>
-                      <input type="text" class="form-control" id="user_org" name="entry.496827736">
-                      <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group data" data-user-types="founder,corporate,student,management,employee,investor,support">
-                      <label for="user_role"><span class="founder management support utype">Role</span><span class=" utype">Types of Investments you deal in</span><span class="student utype">Discipline of Education</span><span class="corporate employee investor utype">Designation</span></label>
-                      <div id="user_role_container"></div>
-                      <input type="hidden" id="user_role_data" name="entry.1371710501" value="">
-                      <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group data" data-user-types="founder,management,employee,investor">
-                      <label for="user_segment"><span class="founder management employee utype">Segment/Industry</span><span class="investor utype">Types of Investments you deal in</span></label>
-                      <div id="user_segment_container"></div>
-                      <input type="hidden" id="user_segment_data" value="" name="entry.1494267255">
-                      <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group">
-                      <label for="user_referral">Referred by (Optional)<br>
-                      <small>If someone referred you to this document, please name them</small></label>
-                      <input type="text" class="form-control" id="user_referral" name="entry.2003825312" value="">
-                    </div>
-                    <div class="form-group data" data-user-types="all">
-                      <label for="user_comments">Comments (Optional)</label>
-                      <textarea class="form-control" rows="3" name="entry.1078467646" id="user_comments" maxlength="500" data-error="Please limit your comment to 500 characters"></textarea>
-                      <div class="help-block with-errors"></div>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit your signature &raquo;</button>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <small>Privacy Policy: We will not share/publish your email address or mobile number anywhere. We will email you updates regarding the proceedings/responses from the PMO/TRAI.</small>
-                  </div>
-                </form>
+                <h3>The letter is now closed for signing</h3>
               </div>
             </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="viewsigns">
+          <div role="tabpanel" class="tab-pane active" id="viewsigns">
             <div class="container">
               <div class="row jumbotron">
+                <h3>The letter is now closed for signing</h3>
                 <small><a href="https://docs.google.com/spreadsheets/d/1412rZIbvVXOrA1JZo2WkkGHTxhht6TfsxtbQcZJrUv8/pubhtml?gid=2129363438&single=true&chrome=false&widget=false" target="_blank">open in a new window <strong>&boxbox;</strong></a></small>
                 <iframe id="signatories" class="col-xs-12" src="https://docs.google.com/spreadsheets/d/1412rZIbvVXOrA1JZo2WkkGHTxhht6TfsxtbQcZJrUv8/pubhtml?gid=2129363438&single=true&chrome=false&widget=false"></iframe>
               </div>
