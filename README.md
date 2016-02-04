@@ -43,3 +43,5 @@ Install node
 > npm install
 > npm start
 ```
+
+### This project has been forked from the Save The Internet[STI] project and we would like to thank the STI team for their whole hearted project
