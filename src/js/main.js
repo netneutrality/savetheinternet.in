@@ -77,6 +77,10 @@ function initListeners() {
 
   $('#bccAddressModal,.bccAddressModal').html(bccAddress);
 
+  // toggle chevron on faq click
+  $('#faq').on('hidden.bs.collapse', toggleChevron);
+  $('#faq').on('shown.bs.collapse', toggleChevron);
+
   if(isMobile) {
     $('.sendResponse, .sendResponseAuto').click(function() {
       sendEmailMobile();
@@ -178,3 +182,11 @@ var uc = /UCBrowser/g.test( navigator.userAgent );
 var uiwebview = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(navigator.userAgent);
 if(uc) $('.browser_name').text('UC Browser');
 if(uc || uiwebview)$('#browser_warning').removeClass('hidden');
+
+
+function toggleChevron(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find("i.indicator")
+        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+}
