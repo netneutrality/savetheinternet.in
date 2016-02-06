@@ -68,16 +68,16 @@
       bottom: -4px;
     }
   </style>
-  <!-- <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-9752294-8', 'auto');
-  ga('set', 'forceSSL', true);
-  ga('require', 'linkid');
-  ga('send', 'pageview');
-</script> -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-43044929-4', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 <script>
     var shiftWindow = function() { scrollBy(0, -50) };
     window.addEventListener("hashchange", shiftWindow);
@@ -90,11 +90,11 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="#">#MumbaiPollution</a>
         <p class="navbar-text navbar-right navBarSend hidden-md hidden-lg"><!-- <a href="/hi/">हिंदी में देखें</a> --></p>
-        <a class="navbar-toggle btn btn-info hidden-md hidden-lg navBarSend sendResponse" style="display:none;" id="mobileNavBarSend">Send</a>
+        <a class="navbar-toggle btn btn-info hidden-md hidden-lg navBarSend sendResponse" style="display" id="mobileNavBarSend">Send</a>
       </div>
       <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
         <li><p class="navbar-text navbar-right navBarSend"><!-- <a href="/hi/">हिंदी में देखें</a> --></p></li>
-          <button type="button" class="btn btn-info navbar-btn sendResponse navBarSend" style="display:none;" id="navBarSend">Respond to TRAI now</button>
+          <button type="button" class="btn btn-info navbar-btn sendResponse navBarSend" style="display" id="navBarSend">Respond now</button>
       </ul>
     </div>
   </nav>
@@ -103,9 +103,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9">
-
         <h1>Save Mumbai's Air</h1>
-
         <div class="alert alert-warning hidden" id="browser_warning" role="alert">
           <span class="browser_name">This browser</span> is known to have problems submitting this form. Please use another browser if it doesn't work.
         </div>
@@ -115,9 +113,14 @@
         </div>
         <div class="jumbotroninfo">
           <h5>
-            <strong>Mumbai - Deonar dumping ground - One of Asia's largest and oldest dumping grounds is overflowing with 20 storey high garbage mounds.  The garbage catches frequent fires, major and minor,  right through the year. This emits toxic gases through the year over Mumbai, exposing the Mumbaikars to serious and fatal health issues. Despite being a century old, it is still in use, far having outlived the recommended life of 25 to 30 years of usage for any site for dumping garbage. And it is in the midst of thickly populated suburbs of Mumbai.
-Mumbai is breathing toxic air and it's citizens are gasping. The government and the administrative establishment are unfazed and unwilling to SHUT down the dumping ground, which is operating beyond its capacity and expiry date.
-ACT NOW,  do your precious bit, save the Mumbaikar.  A BUTTON CLICKED is a VOICE HEARD. AN EMAIL SENT is an ACTION DEMANDED.</strong>
+            <strong>Mumbai - Deonar dumping ground - One of Asia's largest and oldest dumping grounds is overflowing with 20 storey high garbage mounds.
+                    The garbage catches frequent fires, major and minor,  right through the year. This emits toxic gases through the year over Mumbai,
+                    exposing the Mumbaikars to serious and fatal health issues. Despite being a century old, it is still in use, far having outlived the
+                    recommended life of 25 to 30 years of usage for any site for dumping garbage. And it is in the midst of thickly populated suburbs of Mumbai.
+                    Mumbai is breathing toxic air and it's citizens are gasping. The government and the administrative establishment are unfazed and unwilling
+                    to SHUT down the dumping ground, which is operating beyond its capacity and expiry date. ACT NOW, do your precious bit, save the
+                    Mumbaikar.  A BUTTON CLICKED is a VOICE HEARD. AN EMAIL SENT is an ACTION DEMANDED.
+            </strong>
           </h5>
         </div>
       </div>
@@ -125,7 +128,8 @@ ACT NOW,  do your precious bit, save the Mumbaikar.  A BUTTON CLICKED is a VOICE
         <img src="images/mumbaipollution-logo.png" class="new-logo" />
       </div>
     </div>
-    <div class="content row collapse in" id="collapseContainer">
+    <button data-toggle="collapse" class="btn btn-info" data-target="#collapseContainer">Act now</button>
+    <div class="content row collapse" id="collapseContainer">
       <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1" id="responseContainer">
         <h1>The Response</h1>
         <div class="question">
@@ -156,12 +160,9 @@ ACT NOW,  do your precious bit, save the Mumbaikar.  A BUTTON CLICKED is a VOICE
         </div>
         <div class="answer">
           <p>1. Shut down the Deonar dumping ground with immediate effect</p>
-
           <p>2. Start Scientific closure of the site with immediate effect</p>
-
           <p>3. Hand over possession to the BMC, of an alternate site for garbage dumping immediately, without any further delay, keeping in mind the best interests
             of your citizens. This alternate site should be of a sufficient size and scale as would be required to replace the Deonar dumping ground. </p>
-
           <p>We hope you will oblige and provide your citizens with the right to have clean air to breathe.</p>
         </div>
         <div class="question">
@@ -174,7 +175,6 @@ ACT NOW,  do your precious bit, save the Mumbaikar.  A BUTTON CLICKED is a VOICE
           <p>4. To immediately adopt scientific solid waste management process for all dumping grounds in operation across the city</p>
           <p>5. To adopt waste segregation at the household, district, waste collection and dumping site levels with immediate effect.</p>
         </div>
-
         <div class="question">
           <strong>Maharashtra Pollution Control Board, we urge you to take the following steps immediately:</strong>
         </div>
@@ -183,7 +183,6 @@ ACT NOW,  do your precious bit, save the Mumbaikar.  A BUTTON CLICKED is a VOICE
              has been put through due to non compliance of scientific solid waste management over these years. </p>
           <p>2. Act without delay in penalising future mishaps</p>
         </div>
-
         <div class="question">
           <strong>National Human Rights Commission, we urge you to:</strong>
         </div>
