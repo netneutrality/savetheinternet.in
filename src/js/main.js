@@ -4,7 +4,7 @@ function pickOne(arr) {
 }
 
 function getSubject() {
-  return "Submissions to the Consultation Paper on Differential Pricing for Data Services";
+  return " Toxic Gases in Mumbai & Navi Mumbai's Air - Give us our right to breathe clean air";
   return pickOne([
     pickOne(["Re:", "Regarding the", "On the", "About the", "Sub:", "Response:", "In reply to the"]) +" "+
     pickOne(["Paper", "paper", "Consultation Paper", "proposal", "publication"])+" "+
@@ -18,12 +18,12 @@ function getSubject() {
     pickOne(["Net Neutrality", "the open internet", "the internet", "the equally open Internet", "the equally accessible Internet"])
     ]);
 }
-var toAddress = "advisorfea1@trai.gov.in";
+var toAddress = "chiefminister@maharashtra.gov.in,mc@mcgm.gov.in,enquiry@mpcb.gov.in,connect@mygov.nic.in,covdnhrc@nic.in,Ionhrc@nic.in,rg.ngt@nic.in,connect@mygov.nic.in";
 
 // Don't give me that look. I know this is horrible. But limits ok! - https://support.google.com/a/answer/1366776?hl=en
 // Out of rotation: "netneutrality62@gmail.com"
 // Warning: there are no #32 & #42. Someone else owns that address. Don't add it here.
-var bccAddresses = ["trai@email.savetheinternet.in"];
+var bccAddresses = ["bmc@email.mumbaipollution.in"];
 var bccAddress = pickOne(bccAddresses);
 
 //        ZeroClipboard.setMoviePath('swf/ZeroClipboard.swf');
