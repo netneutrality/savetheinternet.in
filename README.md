@@ -1,12 +1,12 @@
-# SaveTheInternet.in #
+# MumbaiPollution.in #
 
-## Send your views to TRAI! ##
+## Send your views to CM BMC & PMO! ##
 
-Join us in fighting for net neutrality. Let’s remind TRAI that their job is to protect the rights of consumers, not the profit margins of telcos. Let’s demand access to the free, open Internet.
+Join us in fighting for clean, breathable air. Let’s remind the CM BMC & PMO that their job is to protect the rights of citizens, not the profit margins of telcos. Let’s demand our right to clean, breathable air.
 
 
 ## Help us ##
-Help us by [reporting issues and by giving suggestions](https://github.com/netneutrality/savetheinternet.in/issues), or contributing to the code.
+Help us by [reporting issues and by giving suggestions](https://github.com/mumbaipollution/mumbaipollution.org/issues), or contributing to the code.
 
 If you'd like to join our discussions, please contact us via email.
 
@@ -20,7 +20,7 @@ If you are making major changes, create a new issue (or comment on the existing 
 Please make sure you merge the latest commits from `stage` into your pull request at the time of creating it. If there are conflicts while merging your pull request we will ask you to pull the latest changes, resolve conflicts, and come back. To do this:
 ```
 > # add remote repo if you haven't already
-> git remote add upstream git@github.com:netneutrality/savetheinternet.in.git
+> git remote add upstream git@github.com:mumbaipollution/mumbaipollution.org.git
 
 > # fetch and incorporate upstream changes
 > git fetch upstream
@@ -43,3 +43,5 @@ Install node
 > npm install
 > npm start
 ```
+
+### This project has been forked from the Save The Internet[STI] project and we would like to thank the STI team for their support and help

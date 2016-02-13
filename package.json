@@ -1,10 +1,12 @@
 {
-  "name": "savetheinternet-in",
+  "name": "mumbaipollution-in",
   "version": "0.0.2",
-  "description": "Response generator for the TRAI consultation paper",
+  "description": "Petition to shutdown the Deonar dumping ground",
   "main": "app.js",
   "dependencies": {
-    "express": "4.x"
+    "express": "4.x",
+    "pm2"  : "1.0.0",
+    "pmx": "0.6.0"
   },
   "devDependencies": {
     "forever": "latest",
@@ -24,18 +26,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/netneutrality/savetheinternet.in"
+    "url": "https://github.com/mumbaipollution/mumbaipollution.org.git"
   },
   "keywords": [
+    "shut",
+    "Deonar",
+    "dumping",
     "save",
-    "internet",
-    "neutrality",
-    "netneutrality"
+    "Mumbai",
+    "air"
   ],
-  "author": "",
+  "author": "https://github.com/mumbaipollution",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/netneutrality/savetheinternet.in/issues"
+    "url": "https://github.com/mumbaipollution/mumbaipollution.org/issues"
   },
-  "homepage": "https://github.com/netneutrality/savetheinternet.in"
+  "homepage": "https://github.com/mumbaipollution/mumbaipollution.org"
 }
