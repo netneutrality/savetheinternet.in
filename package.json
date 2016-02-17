@@ -5,7 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "express": "4.x",
-    "pm2"  : "1.0.0",
+    "pm2": "1.0.0",
     "pmx": "0.6.0"
   },
   "devDependencies": {
@@ -16,7 +16,11 @@
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-processhtml": "^0.3.7",
-    "grunt-uncss": "^0.4.2"
+    "grunt-uncss": "^0.4.2",
+    "gulp": "3.9.1",
+    "gulp-livereload": "3.8.1",
+    "gulp-nodemon": "2.0.6",
+    "gulp-notify": "2.2.0"
   },
   "engines": {
     "node": "0.10.x"
