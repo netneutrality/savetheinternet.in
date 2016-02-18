@@ -4,6 +4,7 @@
   "description": "Petition to shutdown the Deonar dumping ground",
   "main": "app.js",
   "dependencies": {
+    "compression": "1.6.1",
     "express": "4.x",
     "pm2": "1.0.0",
     "pmx": "0.6.0"
