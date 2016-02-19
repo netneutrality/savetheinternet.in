@@ -9,6 +9,8 @@ var pmx = require('pmx').init({
 
 
 var express = require('express');
+var compress = require('compression');
+
 var app = express();
 
 var go_to_root = function(req, res){
@@ -19,6 +21,8 @@ app.get('/mp', go_to_root);
 app.get('/hi', go_to_root);
 app.get('/hi/mp', go_to_root);
 app.get('/fb-trai', go_to_root);
+
+app.use(compress());
 
 app.use(express.static(__dirname + '/src'));
 
