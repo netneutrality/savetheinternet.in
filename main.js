@@ -1,15 +1,23 @@
-console.error("in main1");
 var pm2 = require('pm2');
 
+var pmx = require('pmx').init({
+  http          : true, // HTTP routes logging (default: true)
+  ignore_routes : [/socket\.io/, /notFound/], // Ignore http routes with this pattern (Default: [])
+  errors        : true, // Exceptions loggin (default: true)
+  custom_probes : true, // Auto expose JS Loop Latency and HTTP req/s as custom metrics
+  network       : true, // Network monitoring at the application level
+  ports         : true  // Shows which ports your app is listening on (default: false)
+});
 
-
-var MACHINE_NAME = 'heroku';
+var MACHINE_NAME = process.env.pm2_host;
 var PRIVATE_KEY  = process.env.pm2_private ;   // Keymetrics Private key
 var PUBLIC_KEY   = process.env.pm2_public;   // Keymetrics Public  key
 
 var instances = process.env.WEB_CONCURRENCY || -1; // Set by Heroku or -1 to scale to max cpu core -1
 var maxMemory = process.env.WEB_MEMORY      || 512;// " " "
-console.error("in main");
+console.log('The number of instances spawned is ' + instances);
+console.log('The max memory allocated by ' + MACHINE_NAME + ' is ' + maxMemory);
+
 
 pm2.connect(function() {
   pm2.start({
