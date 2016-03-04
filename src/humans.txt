@@ -1,53 +1,7 @@
 /* WEBSITE TEAM */
 
-  Name: Anand Chitipothu 
-  Website: http://anandology.com/
-  Twitter: @anandology
-  From: India
 
-  Name: Aravind R S
-  Twitter: @_aravind
-  From: India
+/* THANKS */
 
-  Name: Ishan Sharma
-  Website: http:/ishan.co
-  From: India
-
-  Name: Karthik Balakrishnan
-  Website: http://www.karthikbalakrishnan.com/
-  Twitter: @karthikb351
-  From: India
-
-  Name: Kiran Jonnalagadda
-  Twitter: @jackerhack
-  From: India
-  
-  Name: Mitesh Ashar
-  Website: http://2paise.tumblr.com/
-  Twitter: @iMBA
-  From: India
-  
-  Name: Nikhil Pahwa
-  Website: http://www.medianama.com/
-  Twitter: @nixxin
-  From: India
-  
-  Name: Rohin Dharmakumar
-  Website: http://rohin.dk/
-  Twitter: @r0h1n
-  From: India
-  
-/* LAWYERS */
-
-  Name: Amba
-  Twitter: @Ambakak1
-  From: India
-
-  Name: Apar Gupta
-  Website: http://www.apargupta.com/
-  Twitter: @aparatbar
-
-  Name: Raman Chima
-  Twitter: @tame_wildcard
-  From: India
-
+Name : Save the Internet team
+Site: http://www.savetheinternet.in/humans.txt
