@@ -288,3 +288,11 @@ html, body {
 .darker-color {
   color: #564431;
 }
+
+.mobile-width-column {
+  text-align: center;
+}
+
+.mobile-width-logo {
+  max-width: 50%;
+}

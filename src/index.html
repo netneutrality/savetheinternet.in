@@ -39,11 +39,12 @@
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <div class="container">
         <div class="row">
-          <div class="four columns"><img class="u-max-full-width" src="images/netneutrality.png" alt="Internet Freedom Foundation"></div>
+          <div class="four columns" id="mobile-width-column"><img class="u-max-full-width" id="mobile-width-logo" src="images/netneutrality.png" alt="Internet Freedom Foundation"></div>
           <div class="eight columns" style="margin-top:">
             <h3>#SaveTheInternet</h3>
             <h5>The <span class="darker-color">TRAI</span> has issued another <span class="darker-color">Net Neutrality</span> consultation paper, this time on <span class="darker-color">Free Data</span>.</h5>
             <p>The deadline for this consultation is June 16th, so we have very little time left to participate. Tell the TRAI that under the guide of giving free data, anti-net neutrality platforms should not be allowed.</p>
+            <button class="button button-primary-color twelve columns send-anchor-mobile" style="display:none;">Email the TRAI</button>
           </div>
         </div>
         <div class="row">
@@ -93,6 +94,7 @@ If the TRAI allows this, it will lead to the telecom operator shaping the users 
             <a target="_blank" id="send-anchor-gmail" class="button button-primary four columns gmail">Send (via Gmail)</a>
             <a target="_blank" id="send-anchor-yahoo" class="button button-primary four columns yahoo">Send (via Yahoo Mail)</a>
             <a target="_blank" id="send-anchor-other" class="button button-primary four columns other">Send (via Other)</a>
+            <button class="button button-primary-color twelve columns send-anchor-mobile" style="display:none;">Email the TRAI</button>
           </div>
         </div>
       </div>
@@ -164,6 +166,9 @@ If the TRAI allows this, it will lead to the telecom operator shaping the users 
       $("#message").click(function() { selectTextById('message') } );
       if(isMobile) {
         $('.desktop-only').hide();
+        $('.send-anchor-mobile').show();
+        $('#mobile-width-logo').addClass('mobile-width-logo');
+        $('#mobile-width-column').addClass('mobile-width-column');
         $('#send-anchor-gmail, #send-anchor-yahoo, #send-anchor-other').hide();
         $('.send-anchor-mobile').click(function(e) {
           sendEmailMobile();
